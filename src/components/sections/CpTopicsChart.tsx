@@ -17,13 +17,14 @@ import type { CpStackedTopicRow } from "@/lib/cp-topic-categories";
 import type { CpTopicPlatformSection } from "@/types/portfolio";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { CpLiveIndicator } from "@/components/sections/CpLiveIndicator";
+import { CpDataSourceIndicator } from "@/components/sections/CpLiveIndicator";
+import type { CpDataSource } from "@/components/sections/CpLiveIndicator";
 import { ChevronDown, Table2 } from "lucide-react";
 
 interface CpTopicsChartProps {
   sections: CpTopicPlatformSection[];
   loading?: boolean;
-  isLive?: boolean;
+  dataSource?: CpDataSource;
   className?: string;
 }
 
@@ -230,7 +231,7 @@ function TopicHeatmap({
 export function CpTopicsChart({
   sections,
   loading,
-  isLive,
+  dataSource = "static",
   className,
 }: CpTopicsChartProps) {
   const [selectedKey, setSelectedKey] = useState(ALL_PLATFORMS_KEY);
@@ -275,7 +276,7 @@ export function CpTopicsChart({
         )}
       >
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border px-4 py-2">
-          <CpLiveIndicator show={isLive} />
+          <CpDataSourceIndicator source={dataSource} loading={loading} />
           <div className="flex items-center gap-2">
             <button
               type="button"

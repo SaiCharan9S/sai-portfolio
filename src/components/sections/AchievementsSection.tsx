@@ -18,7 +18,7 @@ const VIEW_LABELS: Record<ViewMode, string> = {
 };
 
 /** Shared content height so Table / Problems / Topics don't shift layout */
-const CP_VIEW_HEIGHT = 292;
+const CP_VIEW_HEIGHT = 320;
 
 function PlatformLogo({ logo, platform }: { logo?: string; platform: string }) {
   if (!logo) return null;
@@ -42,13 +42,13 @@ function TableView({
   loading: boolean;
 }) {
   return (
-    <div className="overflow-auto rounded-md border border-border">
-      <table className="w-full min-w-[520px] table-fixed text-sm">
+    <div className="h-full overflow-hidden rounded-md border border-border">
+      <table className="w-full table-fixed text-sm">
         <colgroup>
-          <col className="w-[26%]" />
-          <col className="w-[14%]" />
-          <col className="w-[30%]" />
-          <col className="w-[30%]" />
+          <col className="w-[24%]" />
+          <col className="w-[13%]" />
+          <col className="w-[28%]" />
+          <col className="w-[35%]" />
         </colgroup>
         <thead>
           <tr className="border-b border-border bg-accent/30 text-left text-xs text-muted-foreground">
@@ -62,9 +62,9 @@ function TableView({
           {rows.map((row) => (
             <tr
               key={row.platform}
-              className="border-b border-border last:border-0 transition-colors hover:bg-notion-hover"
+              className="h-14 border-b border-border last:border-0 transition-colors hover:bg-notion-hover"
             >
-              <td className="px-4 py-2.5">
+              <td className="px-4 align-middle">
                 <div className="flex items-center gap-2 font-medium">
                   <PlatformLogo logo={row.logo} platform={row.platform} />
                   <span>{row.platform}</span>
@@ -72,13 +72,13 @@ function TableView({
               </td>
               <td
                 className={cn(
-                  "px-4 py-2.5",
+                  "px-4 align-middle",
                   loading && row.isLive && "text-muted-foreground",
                 )}
               >
                 {row.rating}
               </td>
-              <td className="px-4 py-2.5">
+              <td className="px-4 align-middle">
                 <a
                   href={row.displayHref}
                   target="_blank"
@@ -94,12 +94,12 @@ function TableView({
               </td>
               <td
                 className={cn(
-                  "px-4 py-2.5",
+                  "px-4 align-middle",
                   loading && row.isLive && "opacity-70",
                 )}
               >
                 {row.bestRanks.length > 0 ? (
-                  <div className="flex max-w-[9.5rem] flex-wrap gap-1">
+                  <div className="flex flex-wrap content-center gap-1">
                     {row.bestRanks.map((rank) => (
                       <Badge
                         key={rank}
@@ -124,7 +124,7 @@ function TableView({
 
 export function AchievementsSection() {
   const [view, setView] = useState<ViewMode>("table");
-  const { data, loading, error, source } = useCodolioStats();
+  const { data, loading, source } = useCodolioStats();
 
   return (
     <FadeIn>
@@ -153,14 +153,14 @@ export function AchievementsSection() {
           </div>
           <p className="mt-1 text-xs text-muted-foreground">
             Database · {VIEW_LABELS[view]} view
-            {source === "live" && !loading && " · Live via Codolio"}
-            {source === "snapshot" && !loading && " · Cached snapshot"}
-            {source === "static" && !loading && error && " · Offline fallback"}
           </p>
         </NotionBlock>
 
-        <div className="mt-4" style={{ height: CP_VIEW_HEIGHT }}>
-          <div className="h-full">
+        <div
+          className="mt-4 overflow-hidden"
+          style={{ height: CP_VIEW_HEIGHT }}
+        >
+          <div className="h-full min-h-0">
             {view === "table" && (
               <TableView rows={data.tableRows} loading={loading} />
             )}
@@ -169,7 +169,7 @@ export function AchievementsSection() {
                 slices={data.problemBreakdown}
                 totalProblems={data.totalProblems}
                 loading={loading}
-                isLive={source === "live" && !loading}
+                dataSource={source}
                 className="h-full"
               />
             )}
@@ -177,7 +177,7 @@ export function AchievementsSection() {
               <CpTopicsChart
                 sections={data.topicBreakdownByPlatform}
                 loading={loading}
-                isLive={source === "live" && !loading}
+                dataSource={source}
                 className="h-full"
               />
             )}

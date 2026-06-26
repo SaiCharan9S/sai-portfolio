@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
-import { CpLiveIndicator } from "@/components/sections/CpLiveIndicator";
+import { CpDataSourceIndicator } from "@/components/sections/CpLiveIndicator";
+import type { CpDataSource } from "@/components/sections/CpLiveIndicator";
 import type { CpProblemSlice } from "@/types/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -8,7 +9,7 @@ interface CpProblemsChartProps {
   slices: CpProblemSlice[];
   totalProblems: number;
   loading?: boolean;
-  isLive?: boolean;
+  dataSource?: CpDataSource;
   className?: string;
 }
 
@@ -64,7 +65,7 @@ export function CpProblemsChart({
   slices,
   totalProblems,
   loading,
-  isLive,
+  dataSource = "static",
   className,
 }: CpProblemsChartProps) {
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
@@ -88,10 +89,11 @@ export function CpProblemsChart({
         className,
       )}
     >
-      <div className="mx-auto flex h-full max-w-4xl flex-col items-stretch justify-center gap-0 overflow-y-auto sm:flex-row sm:items-center sm:justify-center">
-        <div className="relative flex flex-1 items-center justify-center px-2 py-2">
-          <CpLiveIndicator
-            show={isLive}
+      <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-0 overflow-y-auto sm:flex-row sm:items-center">
+        <div className="relative flex flex-1 items-center justify-center px-2 py-2 sm:w-[65%] sm:flex-none">
+          <CpDataSourceIndicator
+            source={dataSource}
+            loading={loading}
             className="absolute top-2 left-3 z-10"
           />
           <div className="relative h-[256px] w-[256px] sm:h-[268px] sm:w-[268px]">
@@ -145,7 +147,7 @@ export function CpProblemsChart({
           </div>
         </div>
 
-        <div className="w-full border-t border-border sm:flex sm:h-full sm:w-[248px] sm:shrink-0 sm:flex-col sm:justify-center sm:border-t-0 sm:border-l">
+        <div className="w-full border-t border-border sm:flex sm:h-full sm:w-[35%] sm:shrink-0 sm:flex-col sm:justify-center sm:border-t-0 sm:border-l">
           <ul className="flex flex-col justify-center gap-1 p-2 sm:px-3 sm:py-3">
             {chartData.map((slice, index) => (
               <li key={slice.platform}>

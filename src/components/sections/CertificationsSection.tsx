@@ -203,23 +203,13 @@ export function CertificationsSection() {
     [],
   );
 
-  const statsLine = useMemo(() => {
-    const total = portfolio.certifications.length;
-    const inProgress = certsByStatus("in-progress").length;
-    const done = certsByStatus("done").length;
-    const parts = [`${total} certification${total === 1 ? "" : "s"}`];
-    if (inProgress > 0) parts.push(`${inProgress} in progress`);
-    if (done > 0) parts.push(`${done} completed`);
-    return parts.join(" · ");
-  }, []);
-
   return (
     <FadeIn>
       <section id="certifications" className="scroll-mt-8 pt-12">
         <NotionBlock>
           <NotionHeading>Certifications</NotionHeading>
           <p className="mt-1 text-xs text-muted-foreground">
-            Database · Board view · {statsLine}
+            Database · Board view
           </p>
         </NotionBlock>
 
