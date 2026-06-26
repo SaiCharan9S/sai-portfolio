@@ -23,7 +23,9 @@ export interface ExperienceItem {
   location: string;
   stack: string[];
   highlights: string[];
+  description: string;
   metric?: { label: string; value: string };
+  logo?: string;
 }
 
 export interface ProjectItem {
@@ -117,6 +119,7 @@ export interface SiteConfig {
   github: string;
   linkedin: string;
   twitter: string;
+  whatsapp: string;
   portfolio3d: string;
   workspaceName: string;
   lastUpdated: string;

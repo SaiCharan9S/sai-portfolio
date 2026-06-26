@@ -1,9 +1,13 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { portfolio } from "@/data";
 import type { ExperienceItem } from "@/types/portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { NotionBlock, NotionHeading } from "@/components/notion/NotionBlock";
+import {
+  NotionBlock,
+  NotionHeading,
+  NotionSubheading,
+} from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
 import { cn } from "@/lib/utils";
 import { MapPin } from "lucide-react";
@@ -21,6 +25,46 @@ const TABLE_HEADER_HEIGHT = 36;
 const TABLE_ROW_HEIGHT = TIMELINE_CARD_HEIGHT;
 const TABLE_STACK_MAX_HEIGHT = 56;
 
+function CompanyLogo({
+  item,
+  size = "md",
+}: {
+  item: ExperienceItem;
+  size?: "sm" | "md" | "lg";
+}) {
+  const boxClass =
+    size === "sm" ? "h-8 w-8" : size === "lg" ? "h-14 w-14" : "h-10 w-10";
+
+  if (item.logo) {
+    return (
+      <span
+        className={cn(
+          boxClass,
+          "flex shrink-0 items-center justify-center rounded-md border border-border bg-white p-1 dark:bg-background",
+        )}
+      >
+        <img
+          src={item.logo}
+          alt={`${item.company} logo`}
+          className="max-h-[88%] max-w-[88%] object-contain"
+        />
+      </span>
+    );
+  }
+
+  return (
+    <span
+      className={cn(
+        boxClass,
+        "flex shrink-0 items-center justify-center rounded-md border border-border bg-muted/40 leading-none",
+        size === "sm" ? "text-base" : size === "lg" ? "text-2xl" : "text-lg",
+      )}
+    >
+      💼
+    </span>
+  );
+}
+
 function getContentAreaHeight() {
   const timelineHeight =
     portfolio.experience.length * (TIMELINE_CARD_HEIGHT + TIMELINE_CARD_MARGIN);
@@ -30,42 +74,65 @@ function getContentAreaHeight() {
 }
 
 function ExperienceDetail({ item }: { item: ExperienceItem }) {
+  const rows: { label: string; value: ReactNode }[] = [
+    { label: "Company", value: item.company },
+    { label: "Role", value: item.role },
+    { label: "Period", value: item.period },
+    { label: "Location", value: item.location },
+  ];
+
   return (
-    <div className="space-y-4">
-      <div className="flex items-start gap-3">
-        <span className="text-3xl">💼</span>
-        <div>
-          <h2 className="text-xl font-bold">{item.company}</h2>
-          <p className="text-muted-foreground">{item.role}</p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {item.period} · {item.location}
-          </p>
-        </div>
+    <div className="space-y-5">
+      <div className="flex items-center gap-3">
+        <CompanyLogo item={item} size="lg" />
+        <h2 className="text-xl font-bold">{item.company}</h2>
       </div>
 
-      {item.metric && (
-        <div className="rounded-md border border-border bg-accent/50 px-4 py-3">
-          <p className="text-xs text-muted-foreground">{item.metric.label}</p>
-          <p className="text-2xl font-bold text-primary">{item.metric.value}</p>
+      <div className="overflow-hidden rounded-lg border border-border">
+        <div className="grid grid-cols-[minmax(100px,0.9fr)_minmax(0,1.6fr)] bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground">
+          <span>Property</span>
+          <span>Value</span>
         </div>
-      )}
-
-      <div className="flex flex-wrap gap-1.5">
-        {item.stack.map((s) => (
-          <Badge key={s} variant="tag">
-            {s}
-          </Badge>
+        {rows.map((row) => (
+          <div
+            key={row.label}
+            className="grid grid-cols-[minmax(100px,0.9fr)_minmax(0,1.6fr)] gap-3 px-3 py-2.5 text-sm"
+          >
+            <span className="text-muted-foreground">{row.label}</span>
+            <div className="min-w-0 leading-relaxed">{row.value}</div>
+          </div>
         ))}
       </div>
 
-      <ul className="space-y-2 text-sm leading-relaxed">
-        {item.highlights.map((h) => (
-          <li key={h} className="flex gap-2">
-            <span className="text-muted-foreground">•</span>
-            <span>{h}</span>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <NotionSubheading>Description</NotionSubheading>
+        <p className="text-sm leading-relaxed text-foreground/90">
+          {item.description}
+        </p>
+      </div>
+
+      <div>
+        <NotionSubheading>Stack</NotionSubheading>
+        <div className="flex flex-wrap gap-1.5">
+          {item.stack.map((s) => (
+            <Badge key={s} variant="tag">
+              {s}
+            </Badge>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <NotionSubheading>Highlights</NotionSubheading>
+        <ul className="space-y-2 text-sm leading-relaxed">
+          {item.highlights.map((h) => (
+            <li key={h} className="flex gap-2">
+              <span className="text-muted-foreground">•</span>
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
@@ -91,9 +158,12 @@ function TimelineView({
             className="mb-3 w-full rounded-md border border-border bg-card p-4 text-left transition-colors hover:bg-notion-hover"
           >
             <div className="flex flex-wrap items-start justify-between gap-2">
-              <div>
-                <p className="font-semibold">{item.company}</p>
-                <p className="text-sm text-muted-foreground">{item.role}</p>
+              <div className="flex min-w-0 items-center gap-3">
+                <CompanyLogo item={item} size="md" />
+                <div>
+                  <p className="font-semibold">{item.company}</p>
+                  <p className="text-sm text-muted-foreground">{item.role}</p>
+                </div>
               </div>
               <div className="text-right text-xs text-muted-foreground">
                 <p>{item.period}</p>
@@ -198,11 +268,11 @@ function TableView({ onSelect }: { onSelect: (item: ExperienceItem) => void }) {
           type="button"
           onClick={() => onSelect(item)}
           data-cursor-hint="Open experience details"
-          className="grid grid-cols-3 items-start gap-3 border-b border-border px-4 py-4 text-left text-sm transition-colors last:border-b-0 hover:bg-notion-hover"
+          className="grid grid-cols-3 items-center gap-3 border-b border-border px-4 py-4 text-left text-sm transition-colors last:border-b-0 hover:bg-notion-hover"
           style={{ minHeight: TABLE_ROW_HEIGHT }}
         >
-          <span className="flex min-w-0 items-start gap-2 pt-0.5 font-medium">
-            <span className="shrink-0 text-base leading-none">💼</span>
+          <span className="flex min-w-0 items-center gap-2 font-medium">
+            <CompanyLogo item={item} size="sm" />
             <span className="truncate">{item.company}</span>
           </span>
           <span className="min-w-0">

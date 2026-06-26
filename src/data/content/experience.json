@@ -12,7 +12,8 @@
       "Built an end-to-end RolePlay Scorecard from scaffold to dataviews, featuring advanced CRM filter integration.",
       "Migrated 2 legacy scorecards to a new blueprint-based scorecard with charts and an enhanced People filter."
     ],
-    "metric": { "label": "charts shipped", "value": "25+" }
+    "description": "Software Development Engineer at Highspot building analytics scorecards, blueprint-based visualizations, and coaching tools for go-to-market teams.",
+    "logo": "/logos/highspot.png"
   },
   {
     "id": "zscaler",
@@ -34,7 +35,8 @@
       "Implemented PII masking to redact sensitive data in system logs and traces.",
       "Achieved 91% data compression by evaluating 5 compression algorithms and implementing the most efficient one."
     ],
-    "metric": { "label": "data compression", "value": "91%" }
+    "description": "Software Development Engineer Intern at Zscaler working on observability infrastructure, test automation, and performance monitoring for cloud security systems.",
+    "logo": "/logos/zscaler.png"
   },
   {
     "id": "fractal",
@@ -47,6 +49,8 @@
       "Architected automated test scripts using Codecept.js and Mocha.js to ensure a bug-free user experience.",
       "Contributed to 2 projects utilizing React.js, Node.js and MySQL, enhancing front-end interfaces.",
       "Tuned prompt engineering for 4 LLMs to achieve significant improvements in model outputs."
-    ]
+    ],
+    "description": "Software Development Engineer Intern at Fractal.ai contributing to full-stack web projects, test automation, and LLM prompt engineering.",
+    "logo": "/logos/fractal.png"
   }
 ]
