@@ -1,7 +1,20 @@
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { isValidElement, type ReactNode } from "react";
+import { MermaidChart } from "@/components/projects/MermaidChart";
 import { cn } from "@/lib/utils";
+
+function getMermaidSource(children: ReactNode): string | null {
+  if (!isValidElement<{ className?: string; children?: ReactNode }>(children)) {
+    return null;
+  }
+
+  const { className, children: codeChildren } = children.props;
+  if (!className?.includes("language-mermaid")) return null;
+
+  return String(codeChildren).replace(/\n$/, "");
+}
 
 const markdownComponents: Components = {
   h1: ({ children }) => (
@@ -58,11 +71,18 @@ const markdownComponents: Components = {
       </code>
     );
   },
-  pre: ({ children }) => (
-    <pre className="mb-3 overflow-x-auto rounded-md border border-border bg-accent/40 p-3 text-xs leading-relaxed last:mb-0">
-      {children}
-    </pre>
-  ),
+  pre: ({ children }) => {
+    const mermaidSource = getMermaidSource(children);
+    if (mermaidSource) {
+      return <MermaidChart chart={mermaidSource} />;
+    }
+
+    return (
+      <pre className="mb-3 overflow-x-auto rounded-md border border-border bg-accent/40 p-3 text-xs leading-relaxed last:mb-0">
+        {children}
+      </pre>
+    );
+  },
   table: ({ children }) => (
     <div className="mb-3 overflow-x-auto last:mb-0">
       <table className="w-full min-w-[280px] border-collapse text-sm">
