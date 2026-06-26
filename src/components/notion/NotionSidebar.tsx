@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { portfolio } from "@/data";
+import { CalBookingButton } from "@/components/booking/CalBookingButton";
 import { scrollToSection } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import { Menu, Moon, Sun } from "lucide-react";
@@ -9,13 +10,9 @@ import { useTheme } from "@/components/theme-provider";
 
 interface NotionSidebarProps {
   activeSection: string;
-  onBookCall: () => void;
 }
 
-export function NotionSidebar({
-  activeSection,
-  onBookCall,
-}: NotionSidebarProps) {
+export function NotionSidebar({ activeSection }: NotionSidebarProps) {
   const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -54,16 +51,8 @@ export function NotionSidebar({
           </p>
         </div>
         <div className="min-h-0 flex-1 overflow-hidden py-2">{nav}</div>
-        <div className="shrink-0 border-t border-border space-y-2 p-3">
-          <Button
-            variant="notion"
-            size="sm"
-            className="w-full justify-start"
-            onClick={onBookCall}
-            data-cursor-hint="Schedule a meeting"
-          >
-            📅 Book a call
-          </Button>
+        <div className="shrink-0 space-y-2 border-t border-border p-3">
+          <CalBookingButton layout="full" />
           <Button
             variant="ghost"
             size="sm"
@@ -99,6 +88,9 @@ export function NotionSidebar({
               </p>
             </div>
             <div className="py-2">{nav}</div>
+            <div className="border-t border-border p-3">
+              <CalBookingButton layout="full" />
+            </div>
           </SheetContent>
         </Sheet>
         <span className="text-sm font-semibold">
@@ -112,9 +104,7 @@ export function NotionSidebar({
               <Sun className="h-4 w-4" />
             )}
           </Button>
-          <Button variant="notion" size="sm" onClick={onBookCall}>
-            Book
-          </Button>
+          <CalBookingButton layout="inline" />
         </div>
       </header>
     </>

@@ -155,6 +155,7 @@ export interface ContactLink {
   label: string;
   value: string;
   href: string;
+  logo: string;
 }
 
 export interface HeroStat {
@@ -171,8 +172,15 @@ export interface Section {
   visible: boolean;
 }
 
+export interface CalMeetingLink {
+  id: string;
+  label: string;
+  link: string;
+  hint?: string;
+}
+
 export interface SiteConfig {
-  calLink: string;
+  calLinks: CalMeetingLink[];
   cvPath: string;
   coverImage: string;
   github: string;

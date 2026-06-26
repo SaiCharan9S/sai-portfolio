@@ -1,5 +1,24 @@
 {
-  "calLink": "sk-sahil-parvez/30min",
+  "calLinks": [
+    {
+      "id": "15min",
+      "label": "15 min",
+      "hint": "Quick intro",
+      "link": "sk-sahil-parvez-ux5aqz/15min"
+    },
+    {
+      "id": "30min",
+      "label": "30 min",
+      "hint": "Standard meeting",
+      "link": "sk-sahil-parvez-ux5aqz/30min"
+    },
+    {
+      "id": "secret",
+      "label": "Secret",
+      "hint": "Private link",
+      "link": "sk-sahil-parvez-ux5aqz/secret"
+    }
+  ],
   "cvPath": "https://drive.google.com/file/d/1-fRSXu7BvFQNBZUGMZgdnIIxkuTJz-hW/view",
   "coverImage": "/Sk Sahil Parvez_banner.png",
   "github": "https://github.com/SK-ILLish-GIT",

@@ -8,8 +8,9 @@ import { GithubContributorsRow } from "@/components/projects/GithubContributorsR
 import { GithubLanguagesBreakdown } from "@/components/projects/GithubLanguagesBreakdown";
 import { ProjectMarkdownContent } from "@/components/projects/ProjectMarkdownContent";
 import type { GithubDetailsSource } from "@/hooks/useGithubProject";
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { SOCIAL_LOGOS } from "@/lib/social-logos";
 import { cn } from "@/lib/utils";
-import { Github } from "lucide-react";
 
 function DetailsSkeleton() {
   return (
@@ -260,7 +261,11 @@ export function ProjectDetailsDoc({
         <NotionSubheading className="mb-0">Details</NotionSubheading>
         {showGithubDetails && (
           <span className="inline-flex items-center gap-1 text-[10px] text-muted-foreground">
-            <Github className="h-3 w-3" />
+            <BrandLogo
+              src={SOCIAL_LOGOS.github}
+              size="sm"
+              className="h-3 w-3"
+            />
             DETAILS.md
           </span>
         )}

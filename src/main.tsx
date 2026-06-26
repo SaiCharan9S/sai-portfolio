@@ -1,4 +1,4 @@
-import { StrictMode, useState } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CursorGuideProvider } from "@/components/cursor/CursorGuide";
@@ -8,6 +8,7 @@ import {
 } from "@/components/notion/NotionSidebar";
 import { SlashCommand } from "@/components/notion/SlashCommand";
 import { NotionDivider } from "@/components/notion/NotionBlock";
+import { CalInit } from "@/components/booking/CalInit";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
@@ -21,29 +22,16 @@ import "@/index.css";
 
 function App() {
   const activeSection = useActiveSection();
-  const [bookOpen, setBookOpen] = useState(false);
-
-  const handleBookCall = () => {
-    if (window.innerWidth < 768) {
-      setBookOpen(true);
-    } else {
-      document
-        .getElementById("contact")
-        ?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <ThemeProvider>
       <CursorGuideProvider>
+        <CalInit />
         <div className="flex min-h-screen">
-          <NotionSidebar
-            activeSection={activeSection}
-            onBookCall={handleBookCall}
-          />
+          <NotionSidebar activeSection={activeSection} />
 
           <main className="min-h-screen flex-1 overflow-x-hidden md:ml-60">
-            <PageHeader onBookCall={handleBookCall} />
+            <PageHeader />
             <div className="mx-auto max-w-[900px] px-6 pb-6 sm:px-12 sm:pb-10">
               <NotionDivider />
               <AboutSection />
@@ -53,10 +41,7 @@ function App() {
               <SkillsSection />
               <CertificationsSection />
               <AchievementsSection />
-              <ContactSection
-                bookOpen={bookOpen}
-                onBookOpenChange={setBookOpen}
-              />
+              <ContactSection />
             </div>
           </main>
         </div>

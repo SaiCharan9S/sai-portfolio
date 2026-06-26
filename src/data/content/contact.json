@@ -2,22 +2,31 @@
   {
     "label": "Email",
     "value": "sksahilparvez2000@gmail.com",
-    "href": "mailto:sksahilparvez2000@gmail.com"
+    "href": "mailto:sksahilparvez2000@gmail.com",
+    "logo": "/logos/social/gmail.svg"
   },
-  { "label": "Phone", "value": "+91 98744 35806", "href": "tel:+919874435806" },
+  {
+    "label": "Phone",
+    "value": "+91 98744 35806",
+    "href": "tel:+919874435806",
+    "logo": "/logos/social/phone.svg"
+  },
   {
     "label": "LinkedIn",
     "value": "sk-sahil-parvez-iiita",
-    "href": "https://www.linkedin.com/in/sk-sahil-parvez-iiita/"
+    "href": "https://www.linkedin.com/in/sk-sahil-parvez-iiita/",
+    "logo": "/logos/social/linkedin.svg"
   },
   {
     "label": "X",
     "value": "@sahilparvez_sk",
-    "href": "https://x.com/sahilparvez_sk"
+    "href": "https://x.com/sahilparvez_sk",
+    "logo": "/logos/social/x.svg"
   },
   {
     "label": "GitHub",
     "value": "SK-ILLish-GIT",
-    "href": "https://github.com/SK-ILLish-GIT"
+    "href": "https://github.com/SK-ILLish-GIT",
+    "logo": "/logos/social/github.svg"
   }
 ]

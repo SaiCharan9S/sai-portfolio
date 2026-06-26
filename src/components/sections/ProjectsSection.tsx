@@ -15,7 +15,9 @@ import {
 } from "@/components/projects/ProjectDetailsBody";
 import { useGithubProject } from "@/hooks/useGithubProject";
 import { cn } from "@/lib/utils";
-import { ExternalLink, Github, Star } from "lucide-react";
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { SOCIAL_LOGOS } from "@/lib/social-logos";
+import { ExternalLink, Star } from "lucide-react";
 
 type BentoTileSize = "small" | "wide" | "tall";
 
@@ -337,7 +339,11 @@ function ProjectBentoCard({
                 label="Open GitHub repository"
                 onClick={(e) => e.stopPropagation()}
               >
-                <Github className="h-3.5 w-3.5" />
+                <BrandLogo
+                  src={SOCIAL_LOGOS.github}
+                  size="sm"
+                  className="h-3.5 w-3.5"
+                />
               </ProjectLinkButton>
             )}
             {project.links.demo && (

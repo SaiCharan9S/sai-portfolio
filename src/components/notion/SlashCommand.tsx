@@ -8,6 +8,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { portfolio } from "@/data";
+import { openCalModal } from "@/lib/cal";
 import { scrollToSection } from "@/lib/utils";
 
 export function SlashCommand() {
@@ -46,13 +47,13 @@ export function SlashCommand() {
         </CommandGroup>
         <CommandGroup heading="Actions">
           <CommandItem
-            value="book call"
+            value="15 min call"
             onSelect={() => {
-              scrollToSection("contact");
+              void openCalModal("15min");
               setOpen(false);
             }}
           >
-            📅 Book a call
+            📅 15 min call
           </CommandItem>
           <CommandItem
             value="cv resume"
