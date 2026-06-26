@@ -35,7 +35,7 @@ flowchart TB
       Sheet["Detail Sheet"]
       Highlights["JSON highlights"]
       GitHubMeta["GitHub metadata"]
-      DetailsMd["details.md"]
+      DetailsMd["DETAILS.md"]
     end
     Sidebar --- Header
     Header --- Sections
@@ -61,7 +61,7 @@ flowchart TB
 
 1. **Static content** — JSON files under `src/data/content/` are imported in `src/data/index.ts`, typed via `src/types/portfolio.ts`, and passed to section components.
 2. **GitHub project sheets** — When a project card opens, `useGithubProject` calls `fetchGithubProjectData()` in parallel for:
-   - `details.md` (raw markdown from repo root)
+   - `DETAILS.md` (raw markdown from repo root)
    - Repo metadata (stars, forks, topics, license, dates, size)
    - Language breakdown, latest release, top contributors
 3. **Codolio CP stats** — `useCodolioStats` fetches the Codolio profile API at runtime; on failure it falls back to `codolio-snapshot.json` (refreshed via `npm run sync:codolio`).
@@ -92,7 +92,7 @@ Rendered inside a Radix `Sheet` slide-over:
 2. **Property table** — period, status, GitHub stats (stars, forks, size, visibility, created/updated, contributors, topics, license, latest release)
 3. **Stack & languages** — JSON stack tags + GitHub language bar chart
 4. **Highlights** — bullet list from `projects.json`
-5. **Details** — this file (`details.md`), rendered with `react-markdown` + `remark-gfm`; falls back to optional `architecture` field in JSON if the file is missing
+5. **Details** — this file (`DETAILS.md`), rendered with `react-markdown` + `remark-gfm`; falls back to optional `architecture` field in JSON if the file is missing
 
 ---
 
@@ -102,7 +102,7 @@ Rendered inside a Radix `Sheet` slide-over:
 
 | Endpoint                                        | Purpose                    |
 | ----------------------------------------------- | -------------------------- |
-| `GET /repos/{owner}/{repo}/contents/details.md` | Project deep-dive markdown |
+| `GET /repos/{owner}/{repo}/contents/DETAILS.md` | Project deep-dive markdown |
 | `GET /repos/{owner}/{repo}`                     | Core repo metadata         |
 | `GET /repos/{owner}/{repo}/languages`           | Language byte breakdown    |
 | `GET /repos/{owner}/{repo}/releases/latest`     | Latest release tag         |
@@ -174,7 +174,7 @@ src/
 ## Design decisions
 
 - **JSON over CMS** — zero hosting cost, full type safety, version-controlled content, no API keys for content edits.
-- **`details.md` over README** — README stays repo-focused; `details.md` carries portfolio-specific deep dives without polluting GitHub’s default view.
+- **`DETAILS.md` over README** — README stays repo-focused; `DETAILS.md` carries portfolio-specific deep dives without polluting GitHub’s default view.
 - **Client-side API calls** — keeps deployment simple (static hosting on Vercel/Netlify/GitHub Pages); trade-off is exposed token in env var (mitigated by read-only PAT scoped to public repos).
 - **Codolio snapshot fallback** — CP section stays populated even when the live API is down or rate-limited.
 - **Bento-only projects view** — table view removed; bento grid is the primary visual showcase.

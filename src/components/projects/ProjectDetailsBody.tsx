@@ -261,7 +261,7 @@ export function ProjectDetailsDoc({
         {showGithubDetails && (
           <span className="inline-flex items-center gap-1 text-[10px] text-muted-foreground">
             <Github className="h-3 w-3" />
-            details.md
+            DETAILS.md
           </span>
         )}
         {loading && project.links.github && (
@@ -279,7 +279,7 @@ export function ProjectDetailsDoc({
         <>
           {detailsError && project.links.github && (
             <p className="mb-3 text-xs text-muted-foreground">
-              Could not load details.md ({detailsError}). Showing saved diagram
+              Could not load DETAILS.md ({detailsError}). Showing saved diagram
               instead.
             </p>
           )}
@@ -290,7 +290,7 @@ export function ProjectDetailsDoc({
       ) : (
         detailsError && (
           <p className="text-xs text-muted-foreground">
-            Could not load details.md ({detailsError}).
+            Could not load DETAILS.md ({detailsError}).
           </p>
         )
       )}

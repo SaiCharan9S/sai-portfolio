@@ -1,6 +1,6 @@
 # Notion Portfolio
 
-A Notion-inspired developer portfolio — single-page SPA with sidebar navigation, database-style sections, and detail sheets. Content lives in JSON; competitive programming stats can load live from Codolio; project sheets pull **`details.md`** and repo metadata from each GitHub repo.
+A Notion-inspired developer portfolio — single-page SPA with sidebar navigation, database-style sections, and detail sheets. Content lives in JSON; competitive programming stats can load live from Codolio; project sheets pull **`DETAILS.md`** and repo metadata from each GitHub repo.
 
 **Live:** add your deployment URL here  
 **Author:** [SK Sahil Parvez](https://github.com/SK-ILLish-GIT)
@@ -20,7 +20,7 @@ A Notion-inspired developer portfolio — single-page SPA with sidebar navigatio
 
 | Section                     | Views                                                                                               |
 | --------------------------- | --------------------------------------------------------------------------------------------------- |
-| **Projects**                | Bento grid + table; detail sheet with GitHub `details.md`, repo stats, stack, languages, highlights |
+| **Projects**                | Bento grid + table; detail sheet with GitHub `DETAILS.md`, repo stats, stack, languages, highlights |
 | **Experience**              | Timeline + table                                                                                    |
 | **Education**               | Gantt + table                                                                                       |
 | **Certifications**          | Kanban (To do / In progress / Done)                                                                 |
@@ -29,7 +29,7 @@ A Notion-inspired developer portfolio — single-page SPA with sidebar navigatio
 ### Live integrations
 
 - **Codolio** — live CP ratings, problem counts, and topic stats (with build-time snapshot + static JSON fallback)
-- **GitHub API** — `details.md` per repo, language breakdown, contributors, releases, stars/forks, topics (optional token for higher rate limits)
+- **GitHub API** — `DETAILS.md` per repo, language breakdown, contributors, releases, stars/forks, topics (optional token for higher rate limits)
 
 ### Projects bento
 
@@ -45,7 +45,7 @@ A Notion-inspired developer portfolio — single-page SPA with sidebar navigatio
 - **Tailwind CSS 4** + **shadcn/ui** (Radix)
 - **Recharts** — CP charts
 - **Framer Motion** — section animations
-- **react-markdown** + **remark-gfm** — render `details.md` from GitHub
+- **react-markdown** + **remark-gfm** — render `DETAILS.md` from GitHub
 - **Husky** + **lint-staged** — pre-commit hooks
 
 ---
@@ -96,7 +96,7 @@ cp .env.example .env
 
 | Variable            | Required | Description                                                                                                                          |
 | ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `VITE_GITHUB_TOKEN` | No       | GitHub PAT for project sheets (`details.md`, languages, contributors, releases). Without it: 60 req/hr limit; with it: 5,000 req/hr. |
+| `VITE_GITHUB_TOKEN` | No       | GitHub PAT for project sheets (`DETAILS.md`, languages, contributors, releases). Without it: 60 req/hr limit; with it: 5,000 req/hr. |
 
 Create a token at [github.com/settings/tokens](https://github.com/settings/tokens) with `public_repo` (classic) or read-only repo access (fine-grained).
 
@@ -128,7 +128,7 @@ Types are defined in `src/types/portfolio.ts`. The barrel export is `src/data/in
 
 ## Project details docs
 
-Each linked GitHub repo can include an **`details.md`** at the repo root. The portfolio fetches and renders it in the project detail sheet (after Highlights).
+Each linked GitHub repo can include an **`DETAILS.md`** at the repo root. The portfolio fetches and renders it in the project detail sheet (after Highlights).
 
 Until you add the file, repos fall back to the optional `architecture` field in `projects.json` (e.g. GameVault’s ASCII diagram).
 
@@ -136,7 +136,7 @@ Example repo layout:
 
 ```
 my-project/
-├── details.md   ← loaded by the portfolio
+├── DETAILS.md   ← loaded by the portfolio
 ├── README.md         ← not shown in the portfolio sheet
 └── ...
 ```
@@ -160,7 +160,7 @@ src/
 ├── components/
 │   ├── notion/          # Blocks, sidebar, property table
 │   ├── sections/        # Page sections (Projects, Experience, …)
-│   ├── projects/        # GitHub details.md, languages, detail body
+│   ├── projects/        # GitHub DETAILS.md, languages, detail body
 │   └── ui/              # shadcn components
 ├── data/content/        # Portfolio JSON
 ├── hooks/               # useCodolioStats, useGithubProject

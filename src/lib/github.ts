@@ -45,7 +45,7 @@ export interface GithubProjectData {
   repoError: string | null;
 }
 
-const DETAILS_MD_PATH = "details.md";
+const DETAILS_MD_PATH = "DETAILS.md";
 
 const projectCache = new Map<string, GithubProjectData>();
 
@@ -283,7 +283,7 @@ export async function fetchGithubProjectData(
     detailsResult.status === "rejected"
       ? detailsResult.reason instanceof Error
         ? detailsResult.reason.message
-        : "Failed to load details.md"
+        : "Failed to load DETAILS.md"
       : null;
 
   let repoDetails: GithubRepoDetails | null = null;
