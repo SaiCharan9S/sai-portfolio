@@ -25,7 +25,7 @@ import type {
   SiteConfig,
   SkillGroup,
   VolunteerItem,
-  RecommendationsData,
+  Recommendation,
 } from "@/types/portfolio";
 
 export const portfolio = {
@@ -37,7 +37,7 @@ export const portfolio = {
   certifications: certifications as Certification[],
   achievements: achievements as Achievement[],
   volunteer: volunteer as VolunteerItem[],
-  recommendations: recommendations as RecommendationsData,
+  recommendations: recommendations as Recommendation[],
   contact: contact as ContactLink[],
   heroStats: heroStats as HeroStat[],
   sections: (sections as Section[]).filter((s) => s.visible),

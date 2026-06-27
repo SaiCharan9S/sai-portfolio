@@ -107,11 +107,6 @@ export interface Recommendation {
   stack?: string[];
 }
 
-export interface RecommendationsData {
-  received: Recommendation[];
-  given: Recommendation[];
-}
-
 export interface Certification {
   id: string;
   text: string;

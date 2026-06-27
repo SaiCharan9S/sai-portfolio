@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { portfolio } from "@/data";
 import type { Recommendation } from "@/types/portfolio";
 import { Badge } from "@/components/ui/badge";
@@ -22,13 +22,6 @@ import {
 } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
-
-type Tab = "received" | "given";
-
-const TAB_LABELS: Record<Tab, string> = {
-  received: "Received",
-  given: "Given",
-};
 
 function initials(name: string) {
   return name
@@ -157,7 +150,7 @@ function RecommendationCard({
   );
 }
 
-function RecommendationSkeletonCard({ tab }: { tab: Tab }) {
+function RecommendationSkeletonCard() {
   return (
     <div
       className={cn(
@@ -165,7 +158,7 @@ function RecommendationSkeletonCard({ tab }: { tab: Tab }) {
         REC_CARD_MIN_H,
         SURFACE_ELEVATED,
       )}
-      aria-label={`No ${TAB_LABELS[tab].toLowerCase()} recommendations`}
+      aria-label="No recommendations"
     >
       <div className="flex shrink-0 gap-3">
         <Skeleton className="h-12 w-12 shrink-0 rounded-full" />
@@ -184,18 +177,18 @@ function RecommendationSkeletonCard({ tab }: { tab: Tab }) {
         <Skeleton className="h-3 w-[76%]" />
       </div>
       <p className="pointer-events-none absolute inset-x-4 bottom-4 text-center text-sm text-muted-foreground">
-        No {TAB_LABELS[tab].toLowerCase()} recommendations yet.
+        No recommendations yet.
       </p>
     </div>
   );
 }
 
-function RecommendationEmptyState({ tab }: { tab: Tab }) {
+function RecommendationEmptyState() {
   return (
     <div className="relative">
       <div className={RECS_SCROLL}>
         <div className={REC_SLIDE}>
-          <RecommendationSkeletonCard tab={tab} />
+          <RecommendationSkeletonCard />
         </div>
       </div>
       <div className="mt-3 min-h-[0.375rem]" aria-hidden />
@@ -323,58 +316,22 @@ function RecommendationCarousel({
 }
 
 export function RecommendationsSection() {
-  const { received, given } = portfolio.recommendations;
-  const [tab, setTab] = useState<Tab>("received");
+  const items = portfolio.recommendations;
   const [selected, setSelected] = useState<Recommendation | null>(null);
-
-  const items = useMemo(
-    () => (tab === "received" ? received : given),
-    [tab, received, given],
-  );
-
-  const counts = useMemo(
-    () => ({ received: received.length, given: given.length }),
-    [received.length, given.length],
-  );
 
   return (
     <FadeIn>
       <section id="recommendations" className={SECTION_SCROLL_MT}>
         <NotionBlock>
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <NotionHeading>Recommendations</NotionHeading>
-            <div className="flex rounded-full border border-border p-0.5 text-xs">
-              {(["received", "given"] as Tab[]).map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => setTab(t)}
-                  data-cursor-hint={`Show ${TAB_LABELS[t].toLowerCase()} recommendations`}
-                  className={cn(
-                    "rounded-full px-3 py-1 transition-colors",
-                    tab === t
-                      ? "bg-emerald-500 font-medium text-white dark:bg-emerald-400 dark:text-emerald-950"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {TAB_LABELS[t]}
-                  {counts[t] > 0 ? ` (${counts[t]})` : ""}
-                </button>
-              ))}
-            </div>
-          </div>
-          <SectionMeta label={TAB_LABELS[tab]} />
+          <NotionHeading>Recommendations</NotionHeading>
+          <SectionMeta label="Carousel" />
         </NotionBlock>
 
         <div className="mt-4">
           {items.length === 0 ? (
-            <RecommendationEmptyState tab={tab} />
+            <RecommendationEmptyState />
           ) : (
-            <RecommendationCarousel
-              key={tab}
-              items={items}
-              onSelect={setSelected}
-            />
+            <RecommendationCarousel items={items} onSelect={setSelected} />
           )}
         </div>
 
