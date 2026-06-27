@@ -5,6 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "npm run dev --prefix server",
+    "dev:all": "npm run dev:server & npm run dev",
+    "seed": "npm run seed --prefix server",
+    "build:deploy": "npm run build && npm install --prefix server",
+    "start:prod": "npm start --prefix server",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

@@ -220,3 +220,19 @@ export interface SiteConfig {
 }
 
 export type SectionId = Section["id"];
+
+export interface Portfolio {
+  profile: Profile;
+  experience: ExperienceItem[];
+  projects: ProjectItem[];
+  skills: SkillGroup[];
+  education: EducationItem[];
+  certifications: Certification[];
+  achievements: Achievement[];
+  volunteer: VolunteerItem[];
+  recommendations: Recommendation[];
+  contact: ContactLink[];
+  heroStats: HeroStat[];
+  sections: Section[];
+  site: SiteConfig;
+}

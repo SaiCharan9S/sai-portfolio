@@ -1,5 +1,6 @@
 import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
+import { PortfolioProvider } from "@/context/PortfolioProvider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CursorGuideProvider } from "@/components/cursor/CursorGuide";
 import { EasterEggsInit } from "@/components/easter-eggs/EasterEggsInit";
@@ -93,6 +94,8 @@ function App() {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <PortfolioProvider>
+      <App />
+    </PortfolioProvider>
   </StrictMode>,
 );

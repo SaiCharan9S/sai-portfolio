@@ -1,5 +1,5 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import type { Certification, CertificationStatus } from "@/types/portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
@@ -221,6 +221,7 @@ function boardGridClass(columnCount: number): string {
 }
 
 export function CertificationsSection() {
+  const { portfolio } = usePortfolio();
   const [selected, setSelected] = useState<Certification | null>(null);
 
   const certsByStatus = (status: CertificationStatus) =>
@@ -231,7 +232,7 @@ export function CertificationsSection() {
       COLUMNS.filter(
         (col) => col.status === "todo" || certsByStatus(col.status).length > 0,
       ),
-    [],
+    [portfolio.certifications],
   );
 
   return (

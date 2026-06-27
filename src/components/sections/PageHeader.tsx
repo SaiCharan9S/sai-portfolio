@@ -1,7 +1,8 @@
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import { CalBookingButton } from "@/components/booking/CalBookingButton";
 import { getDisplayStatus } from "@/lib/easter-eggs/status";
 import { ContactSocialDialog } from "@/components/contact/ContactSocialDialog";
+import { VisitorStats } from "@/components/analytics/VisitorStats";
 import { PropertyPill } from "@/components/notion/PropertyPill";
 import {
   HERO_AVATAR_OFFSET,
@@ -17,6 +18,7 @@ const HERO_ACTION_CLASS =
   "h-9 min-w-[10.25rem] justify-center px-4 text-sm font-semibold shadow-sm";
 
 export function PageHeader() {
+  const { portfolio } = usePortfolio();
   const { profile, site } = portfolio;
 
   return (
@@ -54,6 +56,10 @@ export function PageHeader() {
           <p className="mt-3 text-sm text-muted-foreground">
             {profile.tagline}
           </p>
+
+          <div className="mt-3 md:hidden">
+            <VisitorStats variant="hero" />
+          </div>
 
           <div className={cn("mt-6", PROPERTY_PILL_GRID)}>
             {profile.properties.map((prop) => (

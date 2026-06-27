@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import type { EducationItem } from "@/types/portfolio";
 import {
   BIRTHDATE_FRACTION,
@@ -120,6 +120,7 @@ function EducationDetail({ edu }: { edu: EducationItem }) {
 }
 
 export function EducationSection() {
+  const { portfolio } = usePortfolio();
   const [view, setView] = useState<ViewMode>("gantt");
   const [selected, setSelected] = useState<EducationItem | null>(null);
   const [birthdayActive, setBirthdayActive] = useState(false);

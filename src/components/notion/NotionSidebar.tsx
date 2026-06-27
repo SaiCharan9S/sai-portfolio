@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import { getDisplayStatus } from "@/lib/easter-eggs/status";
 import { CalBookingButton } from "@/components/booking/CalBookingButton";
 import { SocialLinkButton } from "@/components/ui/BrandLogo";
@@ -10,12 +10,14 @@ import { ChevronRight, Menu, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "@/components/theme-provider";
+import { VisitorStats } from "@/components/analytics/VisitorStats";
 
 interface NotionSidebarProps {
   activeSection: string;
 }
 
 function ProfileAvatar({ size = "md" }: { size?: "sm" | "md" }) {
+  const { portfolio } = usePortfolio();
   const { profile } = portfolio;
   const boxClass = size === "sm" ? "h-7 w-7" : "h-9 w-9";
 
@@ -56,6 +58,7 @@ function SidebarWorkspaceHeader({
   onNavigate?: () => void;
   inSheet?: boolean;
 }) {
+  const { portfolio } = usePortfolio();
   const { profile, site } = portfolio;
   const statusProp = profile.properties.find((p) => p.type === "status");
 
@@ -93,14 +96,17 @@ function SidebarWorkspaceHeader({
         )}
       </button>
 
-      <div className="mx-3 mb-3 flex items-center gap-1.5 rounded-md border border-border/60 bg-background/50 px-2.5 py-1.5 shadow-sm">
-        <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-          Workspace
-        </span>
-        <span className="text-muted-foreground/40">·</span>
-        <span className="truncate text-[11px] font-medium text-foreground/90">
-          {site.workspaceName}
-        </span>
+      <div className="mx-3 mb-3 space-y-2">
+        <div className="flex items-center gap-1.5 rounded-md border border-border/60 bg-background/50 px-2.5 py-1.5 shadow-sm">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+            Workspace
+          </span>
+          <span className="text-muted-foreground/40">·</span>
+          <span className="truncate text-[11px] font-medium text-foreground/90">
+            {site.workspaceName}
+          </span>
+        </div>
+        <VisitorStats className="hidden md:flex" />
       </div>
     </div>
   );
@@ -110,6 +116,8 @@ function SidebarNav({
   activeSection,
   onNavigate,
 }: NotionSidebarProps & { onNavigate?: () => void }) {
+  const { portfolio } = usePortfolio();
+
   return (
     <nav className="flex flex-col gap-0.5 px-2 pb-2">
       <p className="px-2 pb-1 pt-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
@@ -198,6 +206,7 @@ function ThemeToggle() {
 }
 
 function SidebarFooter() {
+  const { portfolio } = usePortfolio();
   const { site } = portfolio;
 
   const socialLinks = [
@@ -251,6 +260,7 @@ export function NotionSidebar({ activeSection }: NotionSidebarProps) {
 /** Top bar + slide-out nav — mobile only */
 export function MobileNavBar({ activeSection }: NotionSidebarProps) {
   const { theme, toggleTheme } = useTheme();
+  const { portfolio } = usePortfolio();
   const { profile } = portfolio;
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -310,6 +320,7 @@ export function MobileNavBar({ activeSection }: NotionSidebarProps) {
 }
 
 export function useActiveSection() {
+  const { portfolio } = usePortfolio();
   const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
@@ -366,7 +377,7 @@ export function useActiveSection() {
       window.removeEventListener("scroll", updateActiveSection);
       window.removeEventListener("resize", updateActiveSection);
     };
-  }, []);
+  }, [portfolio.sections]);
 
   return activeSection;
 }

@@ -1,6 +1,7 @@
 import { useMemo, useState, type MouseEvent, type ReactNode } from "react";
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import type { ProjectItem } from "@/types/portfolio";
+import { staticPortfolio } from "@/data/static-portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import {
@@ -230,7 +231,7 @@ function ProjectIcon({
 
 const GLOBAL_STACK_FREQ = (() => {
   const counts = new Map<string, number>();
-  for (const project of portfolio.projects) {
+  for (const project of staticPortfolio.projects) {
     for (const tech of project.stack) {
       counts.set(tech, (counts.get(tech) ?? 0) + 1);
     }
@@ -393,6 +394,7 @@ function ProjectBentoCard({
 }
 
 function ProjectStatsWidget({ size }: { size: BentoTileSize }) {
+  const { portfolio } = usePortfolio();
   const projects = portfolio.projects;
   const demoCount = projects.filter((p) => p.links.demo).length;
   const featuredCount = projects.filter((p) => p.featured).length;
@@ -434,6 +436,7 @@ function ProjectStatsWidget({ size }: { size: BentoTileSize }) {
 }
 
 function BuildingWidget({ size }: { size: BentoTileSize }) {
+  const { portfolio } = usePortfolio();
   const active = portfolio.projects.filter((p) =>
     isProjectInProgress(p.period),
   );
@@ -513,6 +516,7 @@ function BentoWidget({
 }
 
 export function ProjectsSection() {
+  const { portfolio } = usePortfolio();
   const [selected, setSelected] = useState<ProjectItem | null>(null);
 
   const projectMap = useMemo(

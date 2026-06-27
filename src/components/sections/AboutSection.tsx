@@ -1,4 +1,4 @@
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import {
   NotionBlock,
   NotionHeading,
@@ -9,6 +9,7 @@ import { FadeIn } from "@/components/notion/FadeIn";
 import { SECTION_SCROLL_MT } from "@/lib/layout";
 
 export function AboutSection() {
+  const { portfolio } = usePortfolio();
   return (
     <FadeIn>
       <section id="about" className={SECTION_SCROLL_MT}>

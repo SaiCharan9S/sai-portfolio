@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import type { Recommendation } from "@/types/portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -316,6 +316,7 @@ function RecommendationCarousel({
 }
 
 export function RecommendationsSection() {
+  const { portfolio } = usePortfolio();
   const items = portfolio.recommendations;
   const [selected, setSelected] = useState<Recommendation | null>(null);
 

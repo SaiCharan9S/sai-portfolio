@@ -1,39 +1,43 @@
-import { useEffect, useRef, useState } from "react";
-import { portfolio } from "@/data";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import { SocialLinkButton } from "@/components/ui/BrandLogo";
 import { Button } from "@/components/ui/button";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
 import { cn } from "@/lib/utils";
 import { Share2 } from "lucide-react";
 
-const socialLinks = [
-  {
-    href: portfolio.site.github,
-    label: "GitHub",
-    logo: SOCIAL_LOGOS.github,
-    hint: "Visit GitHub profile",
-  },
-  {
-    href: portfolio.site.linkedin,
-    label: "LinkedIn",
-    logo: SOCIAL_LOGOS.linkedin,
-    hint: "Visit LinkedIn profile",
-  },
-  {
-    href: portfolio.site.whatsapp,
-    label: "WhatsApp",
-    logo: SOCIAL_LOGOS.whatsapp,
-    hint: "Message on WhatsApp",
-  },
-  {
-    href: portfolio.site.twitter,
-    label: "X",
-    logo: SOCIAL_LOGOS.x,
-    hint: "Visit X profile",
-  },
-] as const;
-
 export function ContactSocialDialog() {
+  const { portfolio } = usePortfolio();
+  const socialLinks = useMemo(
+    () =>
+      [
+        {
+          href: portfolio.site.github,
+          label: "GitHub",
+          logo: SOCIAL_LOGOS.github,
+          hint: "Visit GitHub profile",
+        },
+        {
+          href: portfolio.site.linkedin,
+          label: "LinkedIn",
+          logo: SOCIAL_LOGOS.linkedin,
+          hint: "Visit LinkedIn profile",
+        },
+        {
+          href: portfolio.site.whatsapp,
+          label: "WhatsApp",
+          logo: SOCIAL_LOGOS.whatsapp,
+          hint: "Message on WhatsApp",
+        },
+        {
+          href: portfolio.site.twitter,
+          label: "X",
+          logo: SOCIAL_LOGOS.x,
+          hint: "Visit X profile",
+        },
+      ] as const,
+    [portfolio.site],
+  );
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 

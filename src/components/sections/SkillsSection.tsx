@@ -1,4 +1,4 @@
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import type { SkillGroup, SkillItem } from "@/types/portfolio";
 import {
   NotionBlock,
@@ -54,6 +54,7 @@ function SkillGalleryGroup({ group }: { group: SkillGroup }) {
 }
 
 export function SkillsSection() {
+  const { portfolio } = usePortfolio();
   return (
     <FadeIn>
       <section id="skills" className={SECTION_SCROLL_MT}>

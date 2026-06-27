@@ -1,4 +1,4 @@
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import { CalBookingButton } from "@/components/booking/CalBookingButton";
 import { BookmarkBlock } from "@/components/notion/BookmarkBlock";
 import {
@@ -11,6 +11,7 @@ import { CONTACT_GRID, SECTION_SCROLL_MT } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 
 export function ContactSection() {
+  const { portfolio } = usePortfolio();
   return (
     <FadeIn>
       <section id="contact" className={SECTION_SCROLL_MT}>

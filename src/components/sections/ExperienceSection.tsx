@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import type { ExperienceItem } from "@/types/portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
@@ -139,6 +139,8 @@ function TimelineView({
 }: {
   onSelect: (item: ExperienceItem) => void;
 }) {
+  const { portfolio } = usePortfolio();
+
   return (
     <div className="space-y-0">
       {portfolio.experience.map((item, i) => (
@@ -252,6 +254,8 @@ function StackBadges({
 }
 
 function TableView({ onSelect }: { onSelect: (item: ExperienceItem) => void }) {
+  const { portfolio } = usePortfolio();
+
   return (
     <div
       className={cn(

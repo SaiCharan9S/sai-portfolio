@@ -1,9 +1,9 @@
-import { portfolio } from "@/data";
+import { staticPortfolio } from "@/data/static-portfolio";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CP_CHART_ROW, SURFACE_ELEVATED } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 
-const ROW_COUNT = portfolio.achievements.length;
+const ROW_COUNT = staticPortfolio.achievements.length;
 
 export function CpTableSkeleton() {
   return (

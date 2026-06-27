@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { portfolio } from "@/data";
+import { staticPortfolio } from "@/data/static-portfolio";
 import { cn } from "@/lib/utils";
 
 const MIN_VISIBLE_MS = 650;
@@ -120,7 +120,7 @@ export function NotionLoader({
   onDismiss?: () => void;
 }) {
   const reduceMotion = useReducedMotion();
-  const { profile, site } = portfolio;
+  const { profile, site } = staticPortfolio;
   const dismissedRef = useRef(false);
 
   const dismiss = () => {

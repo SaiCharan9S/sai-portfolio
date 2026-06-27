@@ -1,5 +1,5 @@
 import { getCalApi } from "@calcom/embed-react";
-import { portfolio } from "@/data";
+import type { CalMeetingLink } from "@/types/portfolio";
 
 export const CAL_MODAL_CONFIG = {
   layout: "month_view",
@@ -8,9 +8,9 @@ export const CAL_MODAL_CONFIG = {
 
 export const CAL_MODAL_CONFIG_JSON = JSON.stringify(CAL_MODAL_CONFIG);
 
-export async function initCalNamespaces() {
+export async function initCalNamespaces(calLinks: CalMeetingLink[]) {
   await Promise.all(
-    portfolio.site.calLinks.map(async (meeting) => {
+    calLinks.map(async (meeting) => {
       const cal = await getCalApi({ namespace: meeting.id });
       cal("ui", {
         hideEventTypeDetails: false,
@@ -20,10 +20,11 @@ export async function initCalNamespaces() {
   );
 }
 
-export async function openCalModal(meetingId = "15min") {
-  const meeting =
-    portfolio.site.calLinks.find((m) => m.id === meetingId) ??
-    portfolio.site.calLinks[0];
+export async function openCalModal(
+  calLinks: CalMeetingLink[],
+  meetingId = "15min",
+) {
+  const meeting = calLinks.find((m) => m.id === meetingId) ?? calLinks[0];
 
   if (!meeting) return;
 

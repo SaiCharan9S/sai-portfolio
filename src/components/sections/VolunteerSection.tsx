@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import type { VolunteerItem } from "@/types/portfolio";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import {
@@ -97,6 +97,7 @@ function TodoItem({
 }
 
 export function VolunteerSection() {
+  const { portfolio } = usePortfolio();
   const [selected, setSelected] = useState<VolunteerItem | null>(null);
 
   return (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import codolioSnapshot from "@/data/content/codolio-snapshot.json";
 import {
   buildCpSectionData,
@@ -15,16 +15,20 @@ interface UseCodolioStatsResult {
   source: "live" | "snapshot" | "static";
 }
 
-function buildFromSnapshot(): CpSectionData | null {
+function buildFromSnapshot(
+  achievements: Parameters<typeof buildCpSectionData>[0],
+): CpSectionData | null {
   if (!codolioSnapshot?.data) return null;
-  return buildCpSectionData(portfolio.achievements, {
+  return buildCpSectionData(achievements, {
     status: { success: true },
     data: codolioSnapshot.data,
   } as Parameters<typeof buildCpSectionData>[1]);
 }
 
 export function useCodolioStats(): UseCodolioStatsResult {
-  const staticData = buildStaticCpSectionData(portfolio.achievements);
+  const { portfolio } = usePortfolio();
+  const { achievements } = portfolio;
+  const staticData = buildStaticCpSectionData(achievements);
   const [data, setData] = useState<CpSectionData>(staticData);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -42,16 +46,16 @@ export function useCodolioStats(): UseCodolioStatsResult {
       try {
         const raw = await fetchCodolioProfile();
         if (cancelled) return;
-        setData(buildCpSectionData(portfolio.achievements, raw));
+        setData(buildCpSectionData(achievements, raw));
         setSource("live");
       } catch (err) {
         if (cancelled) return;
-        const snapshotData = buildFromSnapshot();
+        const snapshotData = buildFromSnapshot(achievements);
         if (snapshotData) {
           setData(snapshotData);
           setSource("snapshot");
         } else {
-          setData(buildStaticCpSectionData(portfolio.achievements));
+          setData(buildStaticCpSectionData(achievements));
           setSource("static");
         }
         setError(err instanceof Error ? err.message : "Failed to load stats");
@@ -64,7 +68,7 @@ export function useCodolioStats(): UseCodolioStatsResult {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [achievements]);
 
   return { data, loading, error, source };
 }

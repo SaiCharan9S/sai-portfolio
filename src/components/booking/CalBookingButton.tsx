@@ -1,4 +1,4 @@
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import type { CalMeetingLink } from "@/types/portfolio";
 import { useTimeOnSitePulse } from "@/hooks/useTimeOnSitePulse";
 import { CAL_MODAL_CONFIG_JSON } from "@/lib/cal";
@@ -8,11 +8,10 @@ import { Calendar } from "lucide-react";
 const DEFAULT_MEETING_ID = "15min";
 const LABEL = "15 min call";
 
-function getDefaultMeeting(): CalMeetingLink | undefined {
-  return (
-    portfolio.site.calLinks.find((m) => m.id === DEFAULT_MEETING_ID) ??
-    portfolio.site.calLinks[0]
-  );
+function getDefaultMeeting(
+  calLinks: CalMeetingLink[],
+): CalMeetingLink | undefined {
+  return calLinks.find((m) => m.id === DEFAULT_MEETING_ID) ?? calLinks[0];
 }
 
 export const calBookingSurfaceClass =
@@ -30,7 +29,8 @@ export function CalBookingButton({
   layout = "inline",
   className,
 }: CalBookingButtonProps) {
-  const meeting = getDefaultMeeting();
+  const { portfolio } = usePortfolio();
+  const meeting = getDefaultMeeting(portfolio.site.calLinks);
   const shouldPulse = useTimeOnSitePulse();
   if (!meeting) return null;
 

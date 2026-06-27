@@ -7,11 +7,12 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { portfolio } from "@/data";
+import { usePortfolio } from "@/context/PortfolioProvider";
 import { openCalModal } from "@/lib/cal";
 import { scrollToSection } from "@/lib/utils";
 
 export function SlashCommand() {
+  const { portfolio } = usePortfolio();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export function SlashCommand() {
           <CommandItem
             value="15 min call"
             onSelect={() => {
-              void openCalModal("15min");
+              void openCalModal(portfolio.site.calLinks, "15min");
               setOpen(false);
             }}
           >
