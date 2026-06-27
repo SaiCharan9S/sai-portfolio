@@ -1,9 +1,11 @@
 import { portfolio } from "@/data";
 import { CalBookingButton } from "@/components/booking/CalBookingButton";
+import { ContactSocialDialog } from "@/components/contact/ContactSocialDialog";
 import { PropertyPill } from "@/components/notion/PropertyPill";
-import { SocialLinkButton } from "@/components/ui/BrandLogo";
-import { SOCIAL_LOGOS } from "@/lib/social-logos";
 import { FileText } from "lucide-react";
+
+const HERO_ACTION_CLASS =
+  "h-9 min-w-[10.25rem] justify-center px-4 text-sm font-semibold shadow-sm";
 
 export function PageHeader() {
   const { profile, site } = portfolio;
@@ -20,13 +22,13 @@ export function PageHeader() {
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent" />
       </div>
 
-      <div className="mx-auto max-w-[900px] px-6 sm:px-12">
+      <div className="mx-auto max-w-[900px] px-4 sm:px-12">
         <div className="relative -mt-12 sm:-mt-14">
           <div className="mb-4 inline-flex rounded-md bg-background p-1.5 text-5xl leading-none shadow-sm ring-1 ring-border">
             {profile.pageIcon}
           </div>
 
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
             {profile.name}
           </h1>
           <p className="mt-1 text-lg text-muted-foreground">{profile.title}</p>
@@ -34,7 +36,7 @@ export function PageHeader() {
             {profile.tagline}
           </p>
 
-          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-4 md:gap-4">
             {profile.properties.map((prop) => (
               <PropertyPill
                 key={prop.label}
@@ -45,42 +47,21 @@ export function PageHeader() {
             ))}
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-2">
-            <CalBookingButton />
+          <div className="mt-6 flex items-center gap-2">
+            <CalBookingButton className={HERO_ACTION_CLASS} />
             <a
               href={site.cvPath}
               target="_blank"
               rel="noopener noreferrer"
-              data-cursor-hint="View CV on Google Drive"
-              className="inline-flex h-9 items-center justify-center gap-2 rounded-md bg-[#DC2626] px-4 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              data-cursor-hint="View résumé on Google Drive"
+              className={`inline-flex items-center gap-2 rounded-md bg-[#DC2626] text-white transition-opacity hover:opacity-90 ${HERO_ACTION_CLASS}`}
             >
-              <FileText className="h-4 w-4" />
-              CV
+              <FileText className="h-4 w-4 shrink-0" />
+              Résumé
             </a>
-            <SocialLinkButton
-              href={site.github}
-              label="GitHub"
-              logo={SOCIAL_LOGOS.github}
-              hint="Visit GitHub profile"
-            />
-            <SocialLinkButton
-              href={site.linkedin}
-              label="LinkedIn"
-              logo={SOCIAL_LOGOS.linkedin}
-              hint="Visit LinkedIn profile"
-            />
-            <SocialLinkButton
-              href={site.whatsapp}
-              label="WhatsApp"
-              logo={SOCIAL_LOGOS.whatsapp}
-              hint="Message on WhatsApp"
-            />
-            <SocialLinkButton
-              href={site.twitter}
-              label="X"
-              logo={SOCIAL_LOGOS.x}
-              hint="Visit X profile"
-            />
+            <div className="ml-auto shrink-0">
+              <ContactSocialDialog />
+            </div>
           </div>
         </div>
       </div>

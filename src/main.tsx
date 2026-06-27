@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CursorGuideProvider } from "@/components/cursor/CursorGuide";
 import {
+  MobileNavBar,
   NotionSidebar,
   useActiveSection,
 } from "@/components/notion/NotionSidebar";
@@ -27,12 +28,13 @@ function App() {
     <ThemeProvider>
       <CursorGuideProvider>
         <CalInit />
-        <div className="flex min-h-screen">
+        <div className="min-h-screen md:pl-60">
           <NotionSidebar activeSection={activeSection} />
 
-          <main className="min-h-screen flex-1 overflow-x-hidden md:ml-60">
+          <main className="min-h-screen w-full min-w-0">
+            <MobileNavBar activeSection={activeSection} />
             <PageHeader />
-            <div className="mx-auto max-w-[900px] px-6 pb-6 sm:px-12 sm:pb-10">
+            <div className="mx-auto max-w-[900px] px-4 pb-6 sm:px-12 sm:pb-10">
               <NotionDivider />
               <AboutSection />
               <EducationSection />

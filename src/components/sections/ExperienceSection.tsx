@@ -21,10 +21,7 @@ const VIEW_LABELS: Record<ViewMode, string> = {
   table: "Table",
 };
 
-const TIMELINE_CARD_HEIGHT = 112;
-const TIMELINE_CARD_MARGIN = 12;
-const TABLE_HEADER_HEIGHT = 36;
-const TABLE_ROW_HEIGHT = TIMELINE_CARD_HEIGHT;
+const TABLE_ROW_HEIGHT = 112;
 const TABLE_STACK_MAX_HEIGHT = 56;
 
 function CompanyLogo({
@@ -65,14 +62,6 @@ function CompanyLogo({
       💼
     </span>
   );
-}
-
-function getContentAreaHeight() {
-  const timelineHeight =
-    portfolio.experience.length * (TIMELINE_CARD_HEIGHT + TIMELINE_CARD_MARGIN);
-  const tableHeight =
-    TABLE_HEADER_HEIGHT + portfolio.experience.length * TABLE_ROW_HEIGHT;
-  return Math.max(timelineHeight, tableHeight);
 }
 
 function ExperienceDetail({ item }: { item: ExperienceItem }) {
@@ -298,7 +287,6 @@ function TableView({ onSelect }: { onSelect: (item: ExperienceItem) => void }) {
 export function ExperienceSection() {
   const [view, setView] = useState<ViewMode>("timeline");
   const [selected, setSelected] = useState<ExperienceItem | null>(null);
-  const contentAreaHeight = getContentAreaHeight();
 
   return (
     <FadeIn>
@@ -330,11 +318,9 @@ export function ExperienceSection() {
           </p>
         </NotionBlock>
 
-        <div className="mt-4" style={{ minHeight: contentAreaHeight }}>
-          <div style={{ height: contentAreaHeight }}>
-            {view === "timeline" && <TimelineView onSelect={setSelected} />}
-            {view === "table" && <TableView onSelect={setSelected} />}
-          </div>
+        <div className="mt-4">
+          {view === "timeline" && <TimelineView onSelect={setSelected} />}
+          {view === "table" && <TableView onSelect={setSelected} />}
         </div>
 
         <Sheet open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>

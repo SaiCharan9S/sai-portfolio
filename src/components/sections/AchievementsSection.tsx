@@ -42,8 +42,8 @@ function TableView({
   loading: boolean;
 }) {
   return (
-    <div className="h-full overflow-hidden rounded-md border border-border">
-      <table className="w-full table-fixed text-sm">
+    <div className="h-full overflow-x-auto overflow-y-hidden rounded-md border border-border">
+      <table className="w-full min-w-[640px] table-fixed text-sm">
         <colgroup>
           <col className="w-[24%]" />
           <col className="w-[13%]" />
