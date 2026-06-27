@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" role="img" aria-label="Obviously fake placeholder avatar">
+  <circle cx="48" cy="48" r="48" fill="#27272a"/>
+  <circle cx="48" cy="48" r="45" stroke="#52525b" stroke-width="2" stroke-dasharray="7 5"/>
+  <circle cx="48" cy="34" r="13" fill="#71717a"/>
+  <path d="M24 78c4-14 16-22 24-22s20 8 24 22" fill="#71717a"/>
+  <rect x="16" y="42" width="64" height="22" rx="3" fill="#ef4444" transform="rotate(-14 48 53)"/>
+  <text
+    x="48"
+    y="57"
+    text-anchor="middle"
+    fill="#fff"
+    font-size="13"
+    font-weight="700"
+    font-family="system-ui, -apple-system, sans-serif"
+    transform="rotate(-14 48 53)"
+  >FAKE</text>
+  <text
+    x="48"
+    y="88"
+    text-anchor="middle"
+    fill="#a1a1aa"
+    font-size="7"
+    font-family="system-ui, -apple-system, sans-serif"
+  >stock human.jpg</text>
+</svg>

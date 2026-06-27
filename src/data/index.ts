@@ -6,6 +6,7 @@ import education from "./content/education.json";
 import certifications from "./content/certifications.json";
 import achievements from "./content/achievements.json";
 import volunteer from "./content/volunteer.json";
+import recommendations from "./content/recommendations.json";
 import contact from "./content/contact.json";
 import heroStats from "./content/hero-stats.json";
 import sections from "./content/sections.json";
@@ -24,6 +25,7 @@ import type {
   SiteConfig,
   SkillGroup,
   VolunteerItem,
+  RecommendationsData,
 } from "@/types/portfolio";
 
 export const portfolio = {
@@ -35,6 +37,7 @@ export const portfolio = {
   certifications: certifications as Certification[],
   achievements: achievements as Achievement[],
   volunteer: volunteer as VolunteerItem[],
+  recommendations: recommendations as RecommendationsData,
   contact: contact as ContactLink[],
   heroStats: heroStats as HeroStat[],
   sections: (sections as Section[]).filter((s) => s.visible),

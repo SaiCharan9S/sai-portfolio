@@ -23,5 +23,11 @@
     "icon": "🤝",
     "visible": true
   },
+  {
+    "id": "recommendations",
+    "label": "Recommendations",
+    "icon": "💬",
+    "visible": true
+  },
   { "id": "contact", "label": "Contact", "icon": "📬", "visible": true }
 ]

@@ -95,6 +95,23 @@ export interface VolunteerItem {
   highlights: string[];
 }
 
+export interface Recommendation {
+  id: string;
+  name: string;
+  role: string;
+  date: string;
+  relationship: string;
+  text: string;
+  avatar?: string;
+  linkedin?: string;
+  stack?: string[];
+}
+
+export interface RecommendationsData {
+  received: Recommendation[];
+  given: Recommendation[];
+}
+
 export interface Certification {
   id: string;
   text: string;

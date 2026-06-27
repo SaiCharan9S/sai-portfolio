@@ -22,6 +22,7 @@ import { EducationSection } from "@/components/sections/EducationSection";
 import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { AchievementsSection } from "@/components/sections/AchievementsSection";
 import { VolunteerSection } from "@/components/sections/VolunteerSection";
+import { RecommendationsSection } from "@/components/sections/RecommendationsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { PageFooter } from "@/components/sections/PageFooter";
 import { PAGE_PB, PAGE_X, SECTION_STACK } from "@/lib/layout";
@@ -55,6 +56,7 @@ function AppShell() {
           <CertificationsSection />
           <AchievementsSection />
           <VolunteerSection />
+          <RecommendationsSection />
           <ContactSection />
           <PageFooter />
         </div>

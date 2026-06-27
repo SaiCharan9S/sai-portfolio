@@ -67,6 +67,13 @@ export const CERTS_SCROLL = "-mx-px overflow-x-auto sm:overflow-visible";
 export const CERT_CARD_MOBILE =
   "flex w-[min(260px,calc(100vw-2rem))] shrink-0 snap-start flex-col sm:w-auto sm:shrink";
 
+/** Recommendations: one full-width card per slide (flex on scroll viewport) */
+export const RECS_SCROLL =
+  "flex w-full items-stretch snap-x snap-mandatory overflow-x-auto scroll-smooth overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
+
+export const REC_SLIDE =
+  "box-border flex min-w-0 flex-[0_0_100%] snap-start snap-always self-stretch";
+
 /** CP problems chart: stacked → row at sm */
 export const CP_CHART_ROW =
   "mx-auto flex h-full min-h-0 w-full flex-col items-stretch justify-start gap-0 overflow-y-auto sm:flex-row sm:items-center sm:justify-center";
