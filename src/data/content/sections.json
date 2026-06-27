@@ -17,5 +17,11 @@
     "icon": "🏆",
     "visible": true
   },
+  {
+    "id": "volunteer",
+    "label": "Volunteer",
+    "icon": "🤝",
+    "visible": true
+  },
   { "id": "contact", "label": "Contact", "icon": "📬", "visible": true }
 ]

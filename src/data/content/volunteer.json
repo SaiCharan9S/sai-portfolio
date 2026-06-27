@@ -1,0 +1,44 @@
+[
+  {
+    "id": "effervescence",
+    "text": "Led a 4-member team as Web Developer to build the Effervescence event site.",
+    "period": "08/2022 – 12/2022",
+    "done": true,
+    "title": "Effervescence",
+    "role": "Web Development",
+    "pageIcon": "🎉",
+    "description": "Led a 4-member team as Web Developer to build the Effervescence event site.",
+    "highlights": [
+      "Led a 4-member web development team for the campus event.",
+      "Built and shipped the full event website end to end."
+    ]
+  },
+  {
+    "id": "aparoksha",
+    "text": "Built 2 dedicated websites for the Aparoksha event for registrations and to enhance user engagement.",
+    "period": "01/2022 – 05/2022",
+    "done": true,
+    "title": "Aparoksha",
+    "role": "Web Development",
+    "pageIcon": "🌐",
+    "description": "Built 2 dedicated websites for the event for registrations and to enhance user engagement.",
+    "highlights": [
+      "Delivered separate registration and engagement-focused event sites.",
+      "Improved sign-up flow and on-site user engagement for attendees."
+    ]
+  },
+  {
+    "id": "prayaas",
+    "text": "Taught underprivileged students through Prayaas, IIIT-A's community outreach NGO.",
+    "period": "02/2022 – 02/2023",
+    "done": true,
+    "title": "Prayaas",
+    "role": "Teaching Volunteer",
+    "pageIcon": "📚",
+    "description": "Volunteered with Prayaas, the IIIT Allahabad NGO, teaching underprivileged students in nearby communities.",
+    "highlights": [
+      "Conducted regular teaching sessions for students from underserved backgrounds.",
+      "Supported academic learning and mentorship through the Prayaas outreach program."
+    ]
+  }
+]

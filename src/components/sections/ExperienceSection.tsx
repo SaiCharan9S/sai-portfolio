@@ -170,7 +170,7 @@ function TimelineView({
               </div>
             </div>
             <div className="mt-2 flex flex-wrap gap-1">
-              {item.stack.slice(0, 4).map((s) => (
+              {item.stack.map((s) => (
                 <Badge key={s} variant="tag" className="text-[10px]">
                   {s}
                 </Badge>

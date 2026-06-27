@@ -73,6 +73,7 @@ export interface EducationItem {
   marksLabel?: string;
   location?: string;
   rank?: string;
+  rankLabel?: string;
   status: EducationStatus;
   statusLabel: string;
   pageIcon: string;
@@ -81,6 +82,18 @@ export interface EducationItem {
 }
 
 export type CertificationStatus = "todo" | "in-progress" | "done";
+
+export interface VolunteerItem {
+  id: string;
+  text: string;
+  period?: string;
+  done: boolean;
+  title: string;
+  role: string;
+  pageIcon: string;
+  description: string;
+  highlights: string[];
+}
 
 export interface Certification {
   id: string;

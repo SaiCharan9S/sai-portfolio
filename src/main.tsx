@@ -18,6 +18,7 @@ import { SkillsSection } from "@/components/sections/SkillsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { AchievementsSection } from "@/components/sections/AchievementsSection";
+import { VolunteerSection } from "@/components/sections/VolunteerSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { PAGE_PB, PAGE_X, SECTION_STACK } from "@/lib/layout";
 import { cn } from "@/lib/utils";
@@ -52,6 +53,7 @@ function App() {
               <SkillsSection />
               <CertificationsSection />
               <AchievementsSection />
+              <VolunteerSection />
               <ContactSection />
             </div>
           </main>

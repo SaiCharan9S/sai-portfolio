@@ -301,14 +301,41 @@ export function useActiveSection() {
     const ids = portfolio.sections.map((s) => s.id);
 
     const updateActiveSection = () => {
-      // Line ~32% from top — section whose top has passed this wins (last in doc order)
-      const marker = window.innerHeight * 0.32;
-      let current = ids[0];
+      const viewportHeight = window.innerHeight;
+      const marker = viewportHeight * 0.32;
+      const maxScroll = document.documentElement.scrollHeight - viewportHeight;
+      const atBottom = window.scrollY >= maxScroll - 2;
 
+      // At document bottom, trailing sections never reach the marker line
+      if (atBottom) {
+        for (let i = ids.length - 1; i >= 0; i--) {
+          const el = document.getElementById(ids[i]);
+          if (!el) continue;
+          const { top, bottom } = el.getBoundingClientRect();
+          if (bottom > 0 && top < viewportHeight) {
+            setActiveSection(ids[i]);
+            return;
+          }
+        }
+      }
+
+      let current = ids[0];
       for (const id of ids) {
         const el = document.getElementById(id);
         if (!el) continue;
         if (el.getBoundingClientRect().top <= marker) {
+          current = id;
+        }
+      }
+
+      // Trailing sections: visible but top stays below marker — not enough scroll left
+      const remainingScroll = maxScroll - window.scrollY;
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const { top, bottom } = el.getBoundingClientRect();
+        if (top <= marker || bottom <= 0 || top >= viewportHeight) continue;
+        if (top - marker > remainingScroll + 2) {
           current = id;
         }
       }

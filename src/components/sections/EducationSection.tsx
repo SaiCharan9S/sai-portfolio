@@ -73,7 +73,7 @@ function EducationDetail({ edu }: { edu: EducationItem }) {
     { label: "Period", value: periodLabel(edu) },
     ...(edu.location ? [{ label: "Location", value: edu.location }] : []),
     { label: edu.marksLabel ?? "Marks", value: edu.marks },
-    ...(edu.rank ? [{ label: "Rank", value: edu.rank }] : []),
+    ...(edu.rank ? [{ label: edu.rankLabel ?? "Rank", value: edu.rank }] : []),
     {
       label: "Status",
       value: (
