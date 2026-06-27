@@ -360,7 +360,7 @@ export function CpTopicsChart({
       <Sheet open={heatmapOpen} onOpenChange={setHeatmapOpen}>
         <SheetContent className="overflow-y-auto sm:max-w-xl">
           <p className="mb-1 text-xs text-muted-foreground">
-            Workspace / Competitive Programming / Topic heatmap
+            Workspace / Coding / Topic heatmap
           </p>
           <h3 className="mb-1 text-lg font-semibold">Topic heatmap</h3>
           <p className="mb-4 text-xs text-muted-foreground">{selectedLabel}</p>

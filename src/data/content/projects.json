@@ -26,7 +26,7 @@
     },
     "highlights": [
       "Built a Notion-inspired portfolio SPA with sidebar navigation, block-style sections, and detail sheets for experience, education, and projects.",
-      "Shipped multi-view sections — bento + table for projects, timeline + table for experience, kanban for certifications, and table/problems/topics for competitive programming.",
+      "Shipped multi-view sections — bento + table for projects, timeline + table for experience, kanban for certifications, and table/problems/topics for coding.",
       "Integrated live Codolio stats with snapshot fallback for CP ratings, problem breakdowns, and topic heatmaps via Recharts.",
       "Authored content as JSON with TypeScript types, pre-commit hooks, and a Vite + Tailwind 4 + shadcn/ui component stack."
     ]

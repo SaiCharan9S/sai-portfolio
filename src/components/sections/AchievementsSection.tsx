@@ -132,7 +132,7 @@ export function AchievementsSection() {
       <section id="achievements" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <NotionHeading>Competitive Programming</NotionHeading>
+            <NotionHeading>Coding</NotionHeading>
             <div className="flex rounded-md border border-border p-0.5 text-xs">
               {(["table", "problems", "topics"] as ViewMode[]).map((v) => (
                 <button
@@ -158,7 +158,7 @@ export function AchievementsSection() {
         </NotionBlock>
 
         <div
-          className="mt-4 overflow-hidden"
+          className="mt-4 overflow-y-auto"
           style={{ height: CP_VIEW_HEIGHT }}
         >
           <div className="h-full min-h-0">

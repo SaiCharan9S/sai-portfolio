@@ -66,7 +66,7 @@ export const CERT_CARD_MOBILE =
 
 /** CP problems chart: stacked → row at sm */
 export const CP_CHART_ROW =
-  "mx-auto flex h-full w-full flex-col items-stretch justify-center gap-0 overflow-y-auto sm:flex-row sm:items-center";
+  "mx-auto flex h-full min-h-0 w-full flex-col items-stretch justify-start gap-0 overflow-y-auto sm:flex-row sm:items-center sm:justify-center";
 
 /** Skills section inner padding */
 export const SKILLS_INNER_X = "px-3 py-3 sm:px-4";

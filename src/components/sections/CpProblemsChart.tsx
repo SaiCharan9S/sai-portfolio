@@ -85,21 +85,21 @@ export function CpProblemsChart({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-md border border-border bg-accent/10 transition-opacity",
+        "relative min-h-0 overflow-y-auto rounded-md border border-border bg-accent/10 transition-opacity",
         loading && "opacity-60",
         className,
       )}
     >
       <div className={CP_CHART_ROW}>
-        <div className="relative flex flex-1 items-center justify-center px-2 py-2 sm:w-[65%] sm:flex-none">
+        <div className="relative flex shrink-0 items-center justify-center px-2 pt-3 pb-2 sm:w-[65%] sm:flex-1 sm:flex-none sm:pt-2">
           <CpDataSourceIndicator
             source={dataSource}
             loading={loading}
             className="absolute top-2 left-3 z-10"
           />
-          <div className="relative h-[256px] w-[256px] sm:h-[268px] sm:w-[268px]">
+          <div className="relative mx-auto aspect-square h-[220px] w-[220px] sm:h-[268px] sm:w-[268px]">
             <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
+              <PieChart margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
                 <Pie
                   data={chartData}
                   dataKey="value"
@@ -107,7 +107,7 @@ export function CpProblemsChart({
                   cx="50%"
                   cy="50%"
                   innerRadius="56%"
-                  outerRadius="88%"
+                  outerRadius="84%"
                   paddingAngle={3}
                   cornerRadius={5}
                   stroke="transparent"

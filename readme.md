@@ -1,6 +1,6 @@
 # Notion Portfolio
 
-A Notion-inspired developer portfolio — single-page SPA with sidebar navigation, database-style sections, and detail sheets. Content lives in JSON; competitive programming stats can load live from Codolio; project sheets pull **`DETAILS.md`** and repo metadata from each GitHub repo.
+A Notion-inspired developer portfolio — single-page SPA with sidebar navigation, database-style sections, and detail sheets. Content lives in JSON; coding stats can load live from Codolio; project sheets pull **`DETAILS.md`** and repo metadata from each GitHub repo.
 
 **Live:** add your deployment URL here  
 **Author:** [SK Sahil Parvez](https://github.com/SK-ILLish-GIT)
@@ -18,13 +18,13 @@ A Notion-inspired developer portfolio — single-page SPA with sidebar navigatio
 
 ### Multi-view sections
 
-| Section                     | Views                                                                                               |
-| --------------------------- | --------------------------------------------------------------------------------------------------- |
-| **Projects**                | Bento grid + table; detail sheet with GitHub `DETAILS.md`, repo stats, stack, languages, highlights |
-| **Experience**              | Timeline + table                                                                                    |
-| **Education**               | Gantt + table                                                                                       |
-| **Certifications**          | Kanban (To do / In progress / Done)                                                                 |
-| **Competitive Programming** | Table, problems donut, topics breakdown                                                             |
+| Section            | Views                                                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------- |
+| **Projects**       | Bento grid + table; detail sheet with GitHub `DETAILS.md`, repo stats, stack, languages, highlights |
+| **Experience**     | Timeline + table                                                                                    |
+| **Education**      | Gantt + table                                                                                       |
+| **Certifications** | Kanban (To do / In progress / Done)                                                                 |
+| **Coding**         | Table, problems donut, topics breakdown                                                             |
 
 ### Live integrations
 

@@ -6,15 +6,15 @@ A single-page developer portfolio that mimics Notion’s workspace UX: sidebar n
 
 The app is a client-only React SPA — no backend server. Vite bundles the site; content ships with the build. Users browse sections via the sidebar or `⌘K` slash command, open project detail sheets, and view live stats where APIs allow.
 
-| Area                        | What it does                                                                        |
-| --------------------------- | ----------------------------------------------------------------------------------- |
-| **Layout**                  | Fixed Notion-style sidebar, cover banner header, scrollable main column (max 900px) |
-| **Projects**                | Bento grid with mixed tile sizes, portfolio widgets, GitHub-powered detail sheets   |
-| **Experience**              | Timeline + table views                                                              |
-| **Education**               | Gantt chart + table                                                                 |
-| **Certifications**          | Kanban board (To do / In progress / Done)                                           |
-| **Competitive Programming** | Live Codolio stats, problems donut, topic breakdown charts                          |
-| **Contact**                 | Links + Cal.com embed for booking calls                                             |
+| Area               | What it does                                                                        |
+| ------------------ | ----------------------------------------------------------------------------------- |
+| **Layout**         | Fixed Notion-style sidebar, cover banner header, scrollable main column (max 900px) |
+| **Projects**       | Bento grid with mixed tile sizes, portfolio widgets, GitHub-powered detail sheets   |
+| **Experience**     | Timeline + table views                                                              |
+| **Education**      | Gantt chart + table                                                                 |
+| **Certifications** | Kanban board (To do / In progress / Done)                                           |
+| **Coding**         | Live Codolio stats, problems donut, topic breakdown charts                          |
+| **Contact**        | Links + Cal.com embed for booking calls                                             |
 
 ---
 
@@ -112,7 +112,7 @@ Optional `VITE_GITHUB_TOKEN` in `.env` raises the rate limit from 60 → 5,000 r
 
 ### Codolio API
 
-Fetches competitive programming stats for LeetCode, GeeksforGeeks, and InterviewBit handles defined in `achievements.json`. Normalizes:
+Fetches coding stats for LeetCode, GeeksforGeeks, and InterviewBit handles defined in `achievements.json`. Normalizes:
 
 - Current / max rating and rank
 - Total problems solved per platform
