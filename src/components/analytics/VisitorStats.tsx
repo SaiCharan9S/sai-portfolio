@@ -13,7 +13,7 @@ export function VisitorStats({
 
   if (!available) return null;
 
-  const totalLabel = totalVisits === 1 ? "total visitor" : "total visitors";
+  const totalLabel = totalVisits === 1 ? "total visit" : "total visits";
 
   if (variant === "hero") {
     return (
