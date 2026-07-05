@@ -43,44 +43,44 @@
   },
   {
     "id": "data-science",
-    "text": "Planned: Data Science certification.",
+    "text": "Ongoing: Data Science certification.",
     "title": "Data Science",
-    "issuer": "Planned",
-    "period": "Planned",
-    "status": "todo",
+    "issuer": "Ongoing",
+    "period": "Ongoing",
+    "status": "in-progress",
     "pageIcon": "📊",
-    "description": "Planning to build data science skills covering data analysis, statistics, and visualization to complement backend engineering work.",
+    "description": "Currently building data science skills covering data analysis, statistics, and visualization to complement backend engineering work.",
     "highlights": [
-      "Strengthen data analysis and statistics fundamentals.",
-      "Learn tools like Pandas, NumPy, and visualization libraries."
+      "Strengthening data analysis and statistics fundamentals.",
+      "Learning tools like Pandas, NumPy, and visualization libraries."
     ]
   },
   {
     "id": "gen-ai",
-    "text": "Planned: Generative AI certification.",
+    "text": "Ongoing: Generative AI certification.",
     "title": "Gen AI",
-    "issuer": "Planned",
-    "period": "Planned",
-    "status": "todo",
+    "issuer": "Ongoing",
+    "period": "Ongoing",
+    "status": "in-progress",
     "pageIcon": "✨",
-    "description": "Planning to deepen expertise in Generative AI to build on existing experience integrating OpenAI and AWS Sagemaker into backend systems.",
+    "description": "Currently deepening expertise in Generative AI to build on existing experience integrating OpenAI and AWS Sagemaker into backend systems.",
     "highlights": [
-      "Learn LLM application patterns, prompt engineering, and RAG pipelines.",
-      "Apply Generative AI to backend and API-driven products."
+      "Learning LLM application patterns, prompt engineering, and RAG pipelines.",
+      "Applying Generative AI to backend and API-driven products."
     ]
   },
   {
     "id": "machine-learning",
-    "text": "Planned: Machine Learning certification.",
+    "text": "Ongoing: Machine Learning certification.",
     "title": "Machine Learning",
-    "issuer": "Planned",
-    "period": "Planned",
-    "status": "todo",
+    "issuer": "Ongoing",
+    "period": "Ongoing",
+    "status": "in-progress",
     "pageIcon": "🤖",
-    "description": "Planning to build core machine learning skills to better integrate ML models into backend systems.",
+    "description": "Currently building core machine learning skills to better integrate ML models into backend systems.",
     "highlights": [
-      "Learn core ML algorithms and model evaluation techniques.",
-      "Apply ML concepts to real backend integrations, building on existing Sagemaker experience."
+      "Learning core ML algorithms and model evaluation techniques.",
+      "Applying ML concepts to real backend integrations, building on existing Sagemaker experience."
     ]
   }
 ]

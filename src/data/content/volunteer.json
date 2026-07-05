@@ -1,158 +1,80 @@
 [
   {
     "id": "mentoring-interns",
-    "text": "Mentored interns and freshers in Python, Django, Git, and backend development.",
+    "text": "Mentored interns and freshers in Python, Django, REST APIs, Git, and backend development.",
     "title": "Mentoring Interns & Freshers",
     "role": "Backend Mentor",
     "done": true,
     "pageIcon": "👨‍🏫",
-    "description": "Mentored interns and freshers in Python, Django, Git, and backend development.",
+    "description": "Mentored interns and freshers in Python, Django, REST APIs, Git, and backend development.",
     "highlights": [
-      "Guided newcomers through Python and Django fundamentals.",
-      "Helped build confidence with Git workflows and backend basics."
+      "Taught Python, Django, and REST API fundamentals to interns and freshers.",
+      "Built confidence with Git workflows and core backend development practices."
     ]
   },
   {
     "id": "developer-onboarding",
-    "text": "Helped onboard new developers by guiding them through project architecture and development workflows.",
+    "text": "Helped onboard new developers by explaining project architecture, coding standards, and development workflows.",
     "title": "Developer Onboarding",
     "role": "Onboarding Guide",
     "done": true,
     "pageIcon": "🤝",
-    "description": "Helped onboard new developers by guiding them through project architecture and development workflows.",
+    "description": "Helped onboard new developers by explaining project architecture, coding standards, and development workflows.",
     "highlights": [
       "Walked new hires through project architecture and codebase structure.",
-      "Shared development workflows to speed up ramp-up time."
-    ]
-  },
-  {
-    "id": "open-source-contributions",
-    "text": "Contributed to community-driven or open-source projects by fixing bugs and implementing features.",
-    "title": "Open Source Contributions",
-    "role": "Contributor",
-    "done": true,
-    "pageIcon": "💻",
-    "description": "Contributed to community-driven or open-source projects by fixing bugs and implementing features.",
-    "highlights": [
-      "Fixed bugs and implemented features in community-driven projects.",
-      "Collaborated with contributors outside regular work responsibilities."
-    ]
-  },
-  {
-    "id": "knowledge-sharing-sessions",
-    "text": "Conducted technical knowledge-sharing sessions on backend development and best practices.",
-    "title": "Knowledge-Sharing Sessions",
-    "role": "Session Speaker",
-    "done": true,
-    "pageIcon": "🎤",
-    "description": "Conducted technical knowledge-sharing sessions on backend development and best practices.",
-    "highlights": [
-      "Led sessions on backend development concepts and best practices.",
-      "Encouraged discussion around scalable API and system design."
-    ]
-  },
-  {
-    "id": "interview-preparation",
-    "text": "Assisted students and aspiring developers with interview preparation and coding guidance.",
-    "title": "Interview Prep Guidance",
-    "role": "Interview Coach",
-    "done": true,
-    "pageIcon": "📚",
-    "description": "Assisted students and aspiring developers with interview preparation and coding guidance.",
-    "highlights": [
-      "Helped students prepare for technical interviews.",
-      "Provided coding guidance and mock interview practice."
+      "Shared coding standards and development workflows to speed up ramp-up time."
     ]
   },
   {
     "id": "code-reviews",
-    "text": "Reviewed code and provided constructive feedback to help junior developers improve.",
+    "text": "Reviewed pull requests and provided technical feedback to improve code quality.",
     "title": "Code Reviews & Feedback",
     "role": "Code Reviewer",
     "done": true,
     "pageIcon": "🛠️",
-    "description": "Reviewed code and provided constructive feedback to help junior developers improve.",
+    "description": "Reviewed pull requests and provided technical feedback to improve code quality.",
     "highlights": [
-      "Reviewed pull requests and provided actionable feedback.",
-      "Helped junior developers build better coding habits."
+      "Reviewed pull requests and provided actionable technical feedback.",
+      "Helped junior developers build stronger coding habits and code quality."
     ]
   },
   {
-    "id": "career-guidance",
-    "text": "Supported aspiring developers through career guidance, resume reviews, and technical mentoring.",
-    "title": "Career Guidance & Resume Reviews",
-    "role": "Career Mentor",
+    "id": "interview-preparation",
+    "text": "Assisted aspiring backend developers with interview preparation, resume reviews, and career guidance.",
+    "title": "Interview Prep & Career Guidance",
+    "role": "Interview Coach",
     "done": true,
-    "pageIcon": "🌱",
-    "description": "Supported aspiring developers through career guidance, resume reviews, and technical mentoring.",
+    "pageIcon": "📚",
+    "description": "Assisted aspiring backend developers with interview preparation, resume reviews, and career guidance.",
     "highlights": [
-      "Reviewed resumes and offered career guidance.",
-      "Provided ongoing technical mentoring to aspiring developers."
+      "Helped aspiring backend developers prepare for technical interviews.",
+      "Reviewed resumes and offered career guidance to early-career engineers."
     ]
   },
   {
-    "id": "hackathons-communities",
-    "text": "Organized or participated in hackathons, coding events, or developer communities.",
-    "title": "Hackathons & Dev Communities",
-    "role": "Participant / Organizer",
+    "id": "knowledge-sharing-sessions",
+    "text": "Conducted informal knowledge-sharing sessions on Django, REST APIs, Celery, Redis, and AWS.",
+    "title": "Knowledge-Sharing Sessions",
+    "role": "Session Speaker",
     "done": true,
-    "pageIcon": "👥",
-    "description": "Organized or participated in hackathons, coding events, or developer communities.",
+    "pageIcon": "🎤",
+    "description": "Conducted informal knowledge-sharing sessions on Django, REST APIs, Celery, Redis, and AWS.",
     "highlights": [
-      "Took part in hackathons and coding events.",
-      "Engaged with developer communities beyond regular work."
+      "Led sessions on Django, REST APIs, Celery, Redis, and AWS.",
+      "Encouraged discussion around scalable backend and system design."
     ]
   },
   {
-    "id": "nonprofit-tech",
-    "text": "Volunteered technical expertise to build websites or applications for educational or non-profit initiatives.",
-    "title": "Nonprofit & Educational Tech",
-    "role": "Volunteer Developer",
-    "done": true,
-    "pageIcon": "❤️",
-    "description": "Volunteered technical expertise to build websites or applications for educational or non-profit initiatives.",
+    "id": "ai-learning-platform",
+    "text": "Currently contributing to the backend architecture of an AI-powered learning platform designed for competitive exam preparation.",
+    "title": "AI-Powered Learning Platform",
+    "role": "Backend Contributor",
+    "done": false,
+    "pageIcon": "🤖",
+    "description": "Currently contributing to the backend architecture of an AI-powered learning platform designed for competitive exam preparation.",
     "highlights": [
-      "Built websites/applications for educational or non-profit initiatives.",
-      "Applied backend skills to support causes beyond regular work."
-    ]
-  },
-  {
-    "id": "internal-tools",
-    "text": "Helped maintain internal tools or community projects outside regular work responsibilities.",
-    "title": "Internal Tools & Community Projects",
-    "role": "Contributor",
-    "done": true,
-    "pageIcon": "🧑‍💻",
-    "description": "Helped maintain internal tools or community projects outside regular work responsibilities.",
-    "highlights": [
-      "Maintained internal tools beyond assigned work responsibilities.",
-      "Supported community projects with ongoing contributions."
-    ]
-  },
-  {
-    "id": "college-workshops",
-    "text": "Guided college students in learning backend development through workshops or mentorship programs.",
-    "title": "College Workshops & Mentorship",
-    "role": "Workshop Mentor",
-    "done": true,
-    "pageIcon": "🎓",
-    "description": "Guided college students in learning backend development through workshops or mentorship programs.",
-    "highlights": [
-      "Ran workshops introducing college students to backend development.",
-      "Mentored students through structured learning programs."
-    ]
-  },
-  {
-    "id": "blogs-tutorials",
-    "text": "Shared technical knowledge through blogs, tutorials, or developer communities.",
-    "title": "Blogs & Tutorials",
-    "role": "Content Contributor",
-    "done": true,
-    "pageIcon": "🤲",
-    "description": "Shared technical knowledge through blogs, tutorials, or developer communities.",
-    "highlights": [
-      "Wrote and shared technical content with the developer community.",
-      "Contributed tutorials to help others learn backend concepts."
+      "Designing backend services for an AI-powered learning platform.",
+      "Supporting competitive exam preparation through scalable backend systems."
     ]
   }
 ]

@@ -17,6 +17,7 @@ import { CalInit } from "@/components/booking/CalInit";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { FeaturedAchievementsSection } from "@/components/sections/FeaturedAchievementsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
@@ -57,6 +58,7 @@ function AppShell() {
           <EducationSection />
           <ExperienceSection />
           <ProjectsSection />
+          <FeaturedAchievementsSection />
           <SkillsSection />
           <CertificationsSection />
           <VolunteerSection />

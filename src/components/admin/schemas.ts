@@ -378,6 +378,26 @@ export const ADMIN_SCHEMAS: Record<string, AdminSchema> = {
       { type: "string-list", key: "stack", label: "Topic tags" },
     ],
   },
+  featuredAchievements: {
+    kind: "array",
+    itemLabel: (item) => String(item.text ?? "Achievement").slice(0, 60),
+    defaultItem: () => ({
+      id: "new-achievement",
+      text: "",
+      icon: "🏆",
+    }),
+    fields: [
+      { type: "text", key: "id", label: "ID" },
+      { type: "text", key: "icon", label: "Icon (emoji)" },
+      {
+        type: "textarea",
+        key: "text",
+        label: "Achievement text",
+        rows: 2,
+        wide: true,
+      },
+    ],
+  },
   achievements: {
     kind: "array",
     itemLabel: (item) => String(item.platform ?? "Platform"),

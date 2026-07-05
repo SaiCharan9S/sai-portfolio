@@ -83,6 +83,12 @@ export interface EducationItem {
 
 export type CertificationStatus = "todo" | "in-progress" | "done";
 
+export interface FeaturedAchievement {
+  id: string;
+  text: string;
+  icon: string;
+}
+
 export interface VolunteerItem {
   id: string;
   text: string;
@@ -228,6 +234,7 @@ export interface Portfolio {
   education: EducationItem[];
   certifications: Certification[];
   achievements: Achievement[];
+  featuredAchievements: FeaturedAchievement[];
   volunteer: VolunteerItem[];
   recommendations: Recommendation[];
   contact: ContactLink[];

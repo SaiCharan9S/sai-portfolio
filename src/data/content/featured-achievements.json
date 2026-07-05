@@ -1,0 +1,42 @@
+[
+  {
+    "id": "production-apps",
+    "text": "Built backend systems for 4 production applications across healthcare, education, and AI.",
+    "icon": "🚀"
+  },
+  {
+    "id": "celery-throughput",
+    "text": "Improved background task throughput by 40% using Celery and Redis.",
+    "icon": "⚡"
+  },
+  {
+    "id": "video-pipeline",
+    "text": "Reduced video loading time by 50% using AWS MediaConvert, Lambda, and CloudFront.",
+    "icon": "📹"
+  },
+  {
+    "id": "payments",
+    "text": "Implemented secure payment workflows using Razorpay webhooks and asynchronous verification.",
+    "icon": "💳"
+  },
+  {
+    "id": "aws",
+    "text": "Worked extensively with AWS (EC2, S3, Lambda, CloudFront, MediaConvert, EventBridge).",
+    "icon": "☁️"
+  },
+  {
+    "id": "mentorship",
+    "text": "Guided interns and junior developers through onboarding, code reviews, and backend best practices.",
+    "icon": "👨‍🏫"
+  },
+  {
+    "id": "scalable-apis",
+    "text": "Built scalable REST APIs supporting real-world users and production deployments.",
+    "icon": "📈"
+  },
+  {
+    "id": "nadiswara-rnd",
+    "text": "Collaborated with the hardware team on R&D for the Nadiswara device, validating sensor data, optimizing signal processing workflows, and enabling reliable backend integration.",
+    "icon": "🔬"
+  }
+]

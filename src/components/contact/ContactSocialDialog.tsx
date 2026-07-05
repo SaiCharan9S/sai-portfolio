@@ -4,7 +4,7 @@ import { SocialLinkButton } from "@/components/ui/BrandLogo";
 import { Button } from "@/components/ui/button";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
 import { cn } from "@/lib/utils";
-import { Share2 } from "lucide-react";
+import { Users } from "lucide-react";
 
 export function ContactSocialDialog() {
   const { portfolio } = usePortfolio();
@@ -75,7 +75,7 @@ export function ContactSocialDialog() {
         data-cursor-hint="Open social links"
         onClick={() => setOpen((value) => !value)}
       >
-        <Share2 className="h-4 w-4" />
+        <Users className="h-4 w-4" />
       </Button>
 
       <div

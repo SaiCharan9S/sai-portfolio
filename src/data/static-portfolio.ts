@@ -5,6 +5,7 @@ import skills from "./content/skills.json";
 import education from "./content/education.json";
 import certifications from "./content/certifications.json";
 import achievements from "./content/achievements.json";
+import featuredAchievements from "./content/featured-achievements.json";
 import volunteer from "./content/volunteer.json";
 import recommendations from "./content/recommendations.json";
 import contact from "./content/contact.json";
@@ -18,6 +19,7 @@ import type {
   ContactLink,
   EducationItem,
   ExperienceItem,
+  FeaturedAchievement,
   HeroStat,
   Portfolio,
   Profile,
@@ -38,6 +40,7 @@ export function buildStaticPortfolio(): Portfolio {
     education: education as EducationItem[],
     certifications: certifications as Certification[],
     achievements: achievements as Achievement[],
+    featuredAchievements: featuredAchievements as FeaturedAchievement[],
     volunteer: volunteer as VolunteerItem[],
     recommendations: recommendations as Recommendation[],
     contact: contact as ContactLink[],

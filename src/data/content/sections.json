@@ -4,6 +4,12 @@
   { "id": "education", "label": "Education", "icon": "🎓", "visible": true },
   { "id": "experience", "label": "Experience", "icon": "💼", "visible": true },
   { "id": "projects", "label": "Projects", "icon": "🚀", "visible": true },
+  {
+    "id": "featured-achievements",
+    "label": "Achievements",
+    "icon": "🏆",
+    "visible": true
+  },
   { "id": "skills", "label": "Skills", "icon": "🧠", "visible": true },
   {
     "id": "certifications",

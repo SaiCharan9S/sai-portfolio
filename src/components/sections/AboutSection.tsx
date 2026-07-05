@@ -21,7 +21,7 @@ export function AboutSection() {
           <CalloutBlock icon="💡" title="About me" variant="blue">
             {portfolio.profile.summary}
           </CalloutBlock>
-          <CalloutBlock icon="🎯" title="Currently building" variant="yellow">
+          <CalloutBlock icon="🧠" title="Currently building" variant="yellow">
             Working on an AI-powered learning platform designed to help students
             prepare more effectively for competitive exams. The platform enables
             students to take AI-assisted mock tests, identifies their strengths

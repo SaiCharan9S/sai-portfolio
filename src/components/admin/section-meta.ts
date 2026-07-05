@@ -66,6 +66,12 @@ export const SECTION_META: Record<string, SectionMeta> = {
     description: "Competitive programming profiles and ranks",
     group: "Content",
   },
+  featuredAchievements: {
+    label: "Featured achievements",
+    icon: "🏆",
+    description: "High-impact achievement highlights shown after Experience",
+    group: "Career",
+  },
   volunteer: {
     label: "Volunteer",
     icon: "🤝",

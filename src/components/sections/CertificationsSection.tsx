@@ -21,7 +21,7 @@ import {
 } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Check, Circle, CircleDashed, ExternalLink } from "lucide-react";
+import { Check, Circle, ExternalLink } from "lucide-react";
 
 const STATUS_LABELS: Record<CertificationStatus, string> = {
   todo: "To do",
@@ -54,14 +54,6 @@ const COLUMNS: {
     headerClass: "text-amber-600 dark:text-amber-400",
     columnClass: "bg-amber-50/40 dark:bg-amber-950/10",
     headerBgClass: "bg-amber-50/80 dark:bg-amber-950/25",
-  },
-  {
-    status: "todo",
-    label: "To do",
-    icon: <CircleDashed className="h-3.5 w-3.5 text-muted-foreground" />,
-    headerClass: "text-muted-foreground",
-    columnClass: "bg-muted/10",
-    headerBgClass: "bg-muted/25",
   },
 ];
 
@@ -229,10 +221,7 @@ export function CertificationsSection() {
     portfolio.certifications.filter((c) => c.status === status);
 
   const boardColumns = useMemo(
-    () =>
-      COLUMNS.filter(
-        (col) => col.status === "todo" || certsByStatus(col.status).length > 0,
-      ),
+    () => COLUMNS.filter((col) => certsByStatus(col.status).length > 0),
     [portfolio.certifications],
   );
 
