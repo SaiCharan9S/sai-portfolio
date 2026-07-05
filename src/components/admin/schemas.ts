@@ -1,12 +1,18 @@
 export type FieldSchema =
   | {
+      type: "text";
+      key: string;
+      label: string;
+      placeholder?: string;
+      wide?: boolean;
+    }
+  | {
       type: "textarea";
       key: string;
       label: string;
       rows?: number;
       wide?: boolean;
     }
-  | { type: "textarea"; key: string; label: string; rows?: number }
   | { type: "number"; key: string; label: string }
   | { type: "checkbox"; key: string; label: string }
   | {
