@@ -1,23 +1,22 @@
 [
   {
-    "id": "raghu-nittala",
-    "name": "Raghu Nittala",
-    "role": "Engineering",
-    "date": "August 13, 2025",
-    "relationship": "Raghu was Sahil's mentor",
-    "avatar": "/avatars/raghu-nittala.png",
-    "linkedin": "https://www.linkedin.com/in/raghu-nittala-2781101b/",
-    "text": "It was a distinct pleasure to mentor and work alongside Sahil over his highly impactful six-month internship. During his time, Sahil played a pivotal role in enhancing the capabilities of our OpenTelemetry (OTel) collector. He demonstrated impressive technical acumen by successfully integrating crucial features such as TLS support, RabbitMQ receivers, and Redis receivers, significantly broadening our data ingestion capabilities and improving our observability stack's security. He is a proactive, quick learner with an exceptional aptitude for complex technical challenges. I wholeheartedly recommend Sahil for future engineering roles and wish him the very best in his career journey.",
-    "stack": ["OpenTelemetry", "TLS", "RabbitMQ", "Redis", "Observability"]
+    "id": "placeholder-manager",
+    "name": "[Add your recommender's name]",
+    "role": "[Their title, e.g. Engineering Manager]",
+    "date": "[Month Year]",
+    "relationship": "[e.g. Sai's manager for 2 years]",
+    "avatar": "/avatars/placeholder.svg",
+    "text": "[Placeholder testimonial — replace with a real recommendation, e.g. from LinkedIn or a manager/colleague. Keep it to 3-5 sentences covering what you worked on together and the impact you had.]",
+    "stack": ["Python", "Django", "AWS"]
   },
   {
-    "id": "priya-sharma-test",
-    "name": "Definitely Not Fake Person",
-    "role": "CEO, Fake Company",
-    "date": "February 30, 2026",
-    "relationship": "Met Sahil once in a dream during a production outage",
-    "avatar": "/avatars/definitely-not-fake.svg",
-    "text": "I have never actually worked with Sahil, and to be clear, I do not exist. This recommendation is 100% filler so the carousel has two slides and the dot indicators look cool. That said, Sahil did ask me nicely, and any engineer who debugs scroll-snap on a Friday evening deserves a fake testimonial written in JSON. Would recommend him for real jobs. Would not recommend trusting this card.",
-    "stack": ["Carousel", "Fake Data", "Scroll-Snap", "JSON", "Humour"]
+    "id": "placeholder-colleague",
+    "name": "[Add another recommender's name]",
+    "role": "[Their title]",
+    "date": "[Month Year]",
+    "relationship": "[e.g. Worked together on Carehub]",
+    "avatar": "/avatars/placeholder.svg",
+    "text": "[Placeholder testimonial — replace with a real recommendation from a teammate, mentor, or client.]",
+    "stack": ["Django REST Framework", "PostgreSQL", "Celery"]
   }
 ]

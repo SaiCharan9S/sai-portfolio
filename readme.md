@@ -3,7 +3,7 @@
 A Notion-inspired developer portfolio — single-page SPA with sidebar navigation, database-style sections, and detail sheets. Content lives in JSON; coding stats can load live from Codolio; project sheets pull **`DETAILS.md`** and repo metadata from each GitHub repo.
 
 **Live:** add your deployment URL here  
-**Author:** [SK Sahil Parvez](https://github.com/SK-ILLish-GIT)
+**Author:** [Sai Charan S](https://github.com/SK-ILLish-GIT)
 
 ---
 
@@ -74,8 +74,8 @@ A Notion-inspired developer portfolio — single-page SPA with sidebar navigatio
 ### Install & run
 
 ```bash
-git clone https://github.com/SK-ILLish-GIT/sksahilparvez-notion.git
-cd sksahilparvez-notion
+git clone https://github.com/SK-ILLish-GIT/sai-portfolio.git
+cd sai-portfolio
 npm install
 npm run dev
 ```
@@ -140,12 +140,12 @@ Types are defined in `src/types/portfolio.ts`. The barrel export is `src/data/in
 
 ### Static assets
 
-| Path                   | Purpose                        |
-| ---------------------- | ------------------------------ |
-| `public/sk_sahil.jpeg` | Hero avatar, favicon, OG image |
-| `public/*.png`         | Cover banner, logos            |
+| Path              | Purpose                        |
+| ----------------- | ------------------------------ |
+| `public/sai.jpeg` | Hero avatar, favicon, OG image |
+| `public/*.png`    | Cover banner, logos            |
 
-Set `profile.avatar` in `profile.json` (e.g. `"/sk_sahil.jpeg"`) to use the hero photo.
+Set `profile.avatar` in `profile.json` (e.g. `"/sai.jpeg"`) to use the hero photo.
 
 ---
 
@@ -213,4 +213,4 @@ src/
 
 ## License
 
-Personal portfolio — © SK Sahil Parvez. Fork and adapt with attribution.
+Personal portfolio — © Sai Charan S. Fork and adapt with attribution.

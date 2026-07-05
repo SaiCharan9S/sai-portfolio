@@ -1,6 +1,11 @@
 [
-  { "id": "dsa", "label": "DSA problems", "value": 1714, "suffix": "+" },
-  { "id": "roles", "label": "roles shipped", "value": 3, "suffix": "" },
-  { "id": "services", "label": "microservices", "value": 10, "suffix": "+" },
-  { "id": "codechef", "label": "CodeChef", "value": 4, "suffix": "★" }
+  {
+    "id": "experience",
+    "label": "years experience",
+    "value": 3.4,
+    "suffix": ""
+  },
+  { "id": "products", "label": "products shipped", "value": 4, "suffix": "" },
+  { "id": "latency", "label": "latency reduced", "value": 35, "suffix": "%" },
+  { "id": "patients", "label": "patients served", "value": 2000, "suffix": "+" }
 ]

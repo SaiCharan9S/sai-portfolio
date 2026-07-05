@@ -21,7 +21,6 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { CertificationsSection } from "@/components/sections/CertificationsSection";
-import { AchievementsSection } from "@/components/sections/AchievementsSection";
 import { VolunteerSection } from "@/components/sections/VolunteerSection";
 import { RecommendationsSection } from "@/components/sections/RecommendationsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -60,7 +59,6 @@ function AppShell() {
           <ProjectsSection />
           <SkillsSection />
           <CertificationsSection />
-          <AchievementsSection />
           <VolunteerSection />
           <RecommendationsSection />
           <ContactSection />

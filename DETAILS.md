@@ -116,7 +116,7 @@ CSS variables in `src/index.css`. Dark mode is unchanged; light mode uses a warm
 
 The `.surface-elevated` utility applies the shadow in light mode; dark mode sets `--surface-elevated-shadow: none`.
 
-Hero avatar, favicon, and OG meta image use `public/sk_sahil.jpeg`.
+Hero avatar, favicon, and OG meta image use `public/sai.jpeg`.
 
 ---
 

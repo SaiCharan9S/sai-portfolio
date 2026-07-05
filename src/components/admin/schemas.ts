@@ -165,7 +165,7 @@ export const ADMIN_SCHEMAS: Record<string, AdminSchema> = {
         type: "text",
         key: "avatar",
         label: "Avatar path",
-        placeholder: "/sk_sahil.jpeg",
+        placeholder: "/sai.jpeg",
       },
       { type: "text", key: "tagline", label: "Tagline", wide: true },
       { type: "textarea", key: "summary", label: "Summary", rows: 4 },
@@ -181,7 +181,7 @@ export const ADMIN_SCHEMAS: Record<string, AdminSchema> = {
     fields: [
       { type: "text", key: "workspaceName", label: "Workspace name" },
       { type: "text", key: "lastUpdated", label: "Last updated label" },
-      { type: "text", key: "cvPath", label: "CV URL", wide: true },
+      { type: "text", key: "cvPath", label: "Resume URL", wide: true },
       { type: "text", key: "coverImage", label: "Cover image path" },
       {
         type: "text",
@@ -191,7 +191,7 @@ export const ADMIN_SCHEMAS: Record<string, AdminSchema> = {
       },
       { type: "text", key: "github", label: "GitHub URL", wide: true },
       { type: "text", key: "linkedin", label: "LinkedIn URL", wide: true },
-      { type: "text", key: "twitter", label: "X / Twitter URL", wide: true },
+      { type: "text", key: "discord", label: "Discord URL", wide: true },
       { type: "text", key: "whatsapp", label: "WhatsApp URL", wide: true },
     ],
   },

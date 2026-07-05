@@ -57,7 +57,7 @@ export function hasGithubToken() {
 function getGithubHeaders(accept: string): Record<string, string> {
   const headers: Record<string, string> = {
     Accept: accept,
-    "User-Agent": "sksahilparvez-portfolio",
+    "User-Agent": "saicharan-portfolio",
   };
 
   const token = import.meta.env.VITE_GITHUB_TOKEN;

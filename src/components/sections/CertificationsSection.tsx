@@ -20,6 +20,7 @@ import {
   SURFACE_ELEVATED,
 } from "@/lib/layout";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import { Check, Circle, CircleDashed, ExternalLink } from "lucide-react";
 
 const STATUS_LABELS: Record<CertificationStatus, string> = {
@@ -294,12 +295,22 @@ export function CertificationsSection() {
                     </div>
                     <div className="flex flex-1 flex-col gap-2 p-2">
                       {items.length > 0 ? (
-                        items.map((cert) => (
-                          <CertCard
+                        items.map((cert, certIndex) => (
+                          <motion.div
                             key={cert.id}
-                            cert={cert}
-                            onClick={() => setSelected(cert)}
-                          />
+                            initial={{ opacity: 0, y: 8 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{
+                              duration: 0.3,
+                              delay: Math.min(certIndex, 6) * 0.06,
+                            }}
+                          >
+                            <CertCard
+                              cert={cert}
+                              onClick={() => setSelected(cert)}
+                            />
+                          </motion.div>
                         ))
                       ) : (
                         <CertFillerCard status={col.status} />

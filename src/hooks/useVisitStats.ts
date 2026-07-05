@@ -3,6 +3,8 @@ import { fetchVisitStats, pingVisit } from "@/lib/api";
 
 const SESSION_KEY = "portfolio-visit-session";
 const PING_INTERVAL_MS = 45_000;
+const LOCAL_TOTAL_KEY = "portfolio-local-total-visits";
+const LOCAL_SESSION_SEEN_KEY = "portfolio-local-session-seen";
 
 function getOrCreateSessionId() {
   const existing = sessionStorage.getItem(SESSION_KEY);
@@ -13,6 +15,23 @@ function getOrCreateSessionId() {
   return sessionId;
 }
 
+/** Client-only fallback so the widget still shows something useful when the
+ * backend/API isn't reachable (e.g. local dev without the server running). */
+function getLocalFallbackStats() {
+  const alreadyCountedThisSession = sessionStorage.getItem(
+    LOCAL_SESSION_SEEN_KEY,
+  );
+  let total = Number(localStorage.getItem(LOCAL_TOTAL_KEY) ?? "0");
+
+  if (!alreadyCountedThisSession) {
+    total += 1;
+    localStorage.setItem(LOCAL_TOTAL_KEY, String(total));
+    sessionStorage.setItem(LOCAL_SESSION_SEEN_KEY, "1");
+  }
+
+  return { liveVisitors: 1, totalVisits: total };
+}
+
 export function useVisitStats() {
   const [stats, setStats] = useState({ liveVisitors: 0, totalVisits: 0 });
   const [available, setAvailable] = useState(false);
@@ -20,6 +39,12 @@ export function useVisitStats() {
   useEffect(() => {
     let cancelled = false;
     const sessionId = getOrCreateSessionId();
+
+    const useFallback = () => {
+      if (cancelled) return;
+      setStats(getLocalFallbackStats());
+      setAvailable(true);
+    };
 
     const refreshStats = () => {
       void fetchVisitStats()
@@ -29,17 +54,11 @@ export function useVisitStats() {
             setAvailable(true);
           }
         })
-        .catch(() => {
-          if (!cancelled) setAvailable(false);
-        });
+        .catch(useFallback);
     };
 
     const ping = () => {
-      void pingVisit(sessionId)
-        .then(refreshStats)
-        .catch(() => {
-          if (!cancelled) setAvailable(false);
-        });
+      void pingVisit(sessionId).then(refreshStats).catch(useFallback);
     };
 
     ping();

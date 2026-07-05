@@ -1,5 +1,4 @@
 import { usePortfolio } from "@/context/PortfolioProvider";
-import { CalBookingButton } from "@/components/booking/CalBookingButton";
 import { BookmarkBlock } from "@/components/notion/BookmarkBlock";
 import {
   NotionBlock,
@@ -30,7 +29,6 @@ export function ContactSection() {
               logo={link.logo}
             />
           ))}
-          <CalBookingButton layout="card" />
         </div>
       </section>
     </FadeIn>

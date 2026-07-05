@@ -1,0 +1,17 @@
+{
+  "services": {
+    "sai-portfolio": {
+      "root": ".",
+      "framework": "vite"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": {
+        "type": "service",
+        "service": "sai-portfolio"
+      }
+    }
+  ]
+}

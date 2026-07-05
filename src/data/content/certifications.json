@@ -1,46 +1,86 @@
 [
   {
-    "id": "fde-iit-roorkee",
-    "text": "PG Certification in Forward Deployed Engineering (FDE) — IIT Roorkee.",
-    "title": "Forward Deployed Engineering (FDE)",
-    "issuer": "IIT Roorkee",
-    "period": "Pursuing",
-    "status": "in-progress",
-    "pageIcon": "🎓",
-    "description": "Postgraduate certification program focused on forward deployed engineering — bridging product development with customer-facing technical problem solving.",
+    "id": "python-for-everybody",
+    "text": "Python Programming (Python for Everybody) — University of Michigan.",
+    "title": "Python for Everybody",
+    "issuer": "University of Michigan",
+    "period": "Completed",
+    "status": "done",
+    "pageIcon": "🐍",
+    "description": "Specialization covering Python programming fundamentals, data structures, web scraping, and databases.",
     "highlights": [
-      "Learning to deploy and integrate solutions directly with enterprise customers.",
-      "Building skills in rapid prototyping, system design, and cross-functional delivery."
+      "Built a strong foundation in Python syntax, data structures, and problem solving.",
+      "Covered working with APIs, databases, and data retrieval in Python."
     ]
   },
   {
-    "id": "skillsoft-bash",
-    "text": "Skillsoft's Bash Scripting (Track 2) — automating common tasks with bash.",
-    "title": "Bash Scripting (Track 2)",
-    "issuer": "Skillsoft",
+    "id": "aws-devops-masterclass",
+    "text": "AWS Masterclass: DevOps with AWS Command Line Interface (CLI) — Eduonix Learning Solutions.",
+    "title": "AWS Masterclass: DevOps w/ AWS CLI",
+    "issuer": "Eduonix Learning Solutions",
     "period": "Completed",
     "status": "done",
-    "pageIcon": "🐚",
-    "link": "https://skillsoft.digitalbadges.skillsoft.com/b252b63c-5835-45d5-84f6-ad436bfdcb70##acc.zsoGwngN",
-    "description": "Track 2 certification covering bash scripting for automating common system administration and development tasks.",
+    "pageIcon": "☁️",
+    "description": "Hands-on course on DevOps practices and cloud infrastructure management using the AWS Command Line Interface.",
     "highlights": [
-      "Automating file operations, process management, and shell workflows.",
-      "Writing reusable scripts for CI/CD and local development tooling."
+      "Practiced managing AWS resources via the CLI for deployment workflows.",
+      "Learned DevOps fundamentals applied to cloud infrastructure management."
     ]
   },
   {
-    "id": "google-pm",
-    "text": "Google's Foundations of Project Management — Agile & risk analysis.",
-    "title": "Foundations of Project Management",
-    "issuer": "Google",
+    "id": "django-certification",
+    "text": "Django Certification — Sevenmentor.",
+    "title": "Django Certification",
+    "issuer": "Sevenmentor",
     "period": "Completed",
     "status": "done",
-    "pageIcon": "📋",
-    "link": "https://drive.google.com/file/d/1y-vA2-KL91K49sSYUVopEc4qqcYQziZ3/view",
-    "description": "Google Career Certificate covering project management fundamentals, Agile methodologies, and risk analysis.",
+    "pageIcon": "🎯",
+    "description": "Certification covering Django web framework fundamentals for building backend applications.",
     "highlights": [
-      "Agile and Scrum frameworks for iterative delivery.",
-      "Risk identification, stakeholder communication, and project planning."
+      "Built backend applications using Django's ORM, views, and templating.",
+      "Practiced structuring scalable Django projects and REST integrations."
+    ]
+  },
+  {
+    "id": "data-science",
+    "text": "Planned: Data Science certification.",
+    "title": "Data Science",
+    "issuer": "Planned",
+    "period": "Planned",
+    "status": "todo",
+    "pageIcon": "📊",
+    "description": "Planning to build data science skills covering data analysis, statistics, and visualization to complement backend engineering work.",
+    "highlights": [
+      "Strengthen data analysis and statistics fundamentals.",
+      "Learn tools like Pandas, NumPy, and visualization libraries."
+    ]
+  },
+  {
+    "id": "gen-ai",
+    "text": "Planned: Generative AI certification.",
+    "title": "Gen AI",
+    "issuer": "Planned",
+    "period": "Planned",
+    "status": "todo",
+    "pageIcon": "✨",
+    "description": "Planning to deepen expertise in Generative AI to build on existing experience integrating OpenAI and AWS Sagemaker into backend systems.",
+    "highlights": [
+      "Learn LLM application patterns, prompt engineering, and RAG pipelines.",
+      "Apply Generative AI to backend and API-driven products."
+    ]
+  },
+  {
+    "id": "machine-learning",
+    "text": "Planned: Machine Learning certification.",
+    "title": "Machine Learning",
+    "issuer": "Planned",
+    "period": "Planned",
+    "status": "todo",
+    "pageIcon": "🤖",
+    "description": "Planning to build core machine learning skills to better integrate ML models into backend systems.",
+    "highlights": [
+      "Learn core ML algorithms and model evaluation techniques.",
+      "Apply ML concepts to real backend integrations, building on existing Sagemaker experience."
     ]
   }
 ]

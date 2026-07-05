@@ -53,17 +53,10 @@ type BentoLayoutItem =
   | { type: "filler"; id: string; size: BentoTileSize };
 
 const BENTO_LAYOUT: BentoLayoutItem[] = [
-  { type: "project", id: "coldmail" },
-  { type: "project", id: "portfolio" },
-  { type: "widget", id: "building", widget: "building", size: "tall" },
-  { type: "project", id: "gamevault" },
-  { type: "project", id: "pricetracker" },
-  { type: "widget", id: "stats", widget: "stats", size: "wide" },
-  { type: "project", id: "gametheory" },
-  { type: "project", id: "file-organizer" },
-  { type: "filler", id: "grid-filler-1", size: "tall" },
-  { type: "project", id: "mini-project" },
-  { type: "filler", id: "grid-filler-2", size: "small" },
+  { type: "project", id: "carehub" },
+  { type: "project", id: "tongue-analysis" },
+  { type: "project", id: "baa-elearn" },
+  { type: "project", id: "nadiswara" },
 ];
 
 function isProjectInProgress(period: string) {
@@ -296,9 +289,9 @@ function ProjectBentoCard({
       onClick={onClick}
       data-cursor-hint="Open project details"
       className={cn(
-        "group relative flex h-full min-h-40 flex-col overflow-hidden rounded-lg border border-border bg-card p-4 text-left transition-all",
+        "group relative flex h-full min-h-40 flex-col overflow-hidden rounded-lg border border-border bg-card p-4 text-left transition-all duration-300 ease-out",
         SURFACE_ELEVATED,
-        "hover:border-primary/25 hover:bg-notion-hover hover:shadow-sm",
+        "hover:-translate-y-0.5 hover:border-primary/25 hover:bg-notion-hover hover:shadow-md",
         BENTO_GRID_CLASS[project.bentoSize],
       )}
     >

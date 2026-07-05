@@ -17,7 +17,7 @@ export function logConsoleEasterEgg() {
     "font-size: 12px; color: #8f8778;",
   );
   console.log(
-    "%cSK Sahil Parvez — open to full-stack / backend roles. Let's build something useful together.",
+    "%cSai Charan S — open to full-stack / backend roles. Let's build something useful together.",
     "font-size: 12px; color: inherit;",
   );
   console.log(

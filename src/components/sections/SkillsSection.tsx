@@ -13,11 +13,14 @@ import {
   SURFACE_ELEVATED,
 } from "@/lib/layout";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 function SkillTile({ skill }: { skill: SkillItem }) {
   return (
-    <div
+    <motion.div
       data-cursor-hint={skill.name}
+      whileHover={{ scale: 1.06, y: -1 }}
+      transition={{ type: "spring", stiffness: 400, damping: 20 }}
       className="inline-flex max-w-full items-center gap-1.5 rounded-md border border-border/60 bg-muted/20 px-2 py-1 text-[11px] leading-tight transition-colors hover:bg-notion-hover"
     >
       <img
@@ -27,7 +30,7 @@ function SkillTile({ skill }: { skill: SkillItem }) {
         className="h-3.5 w-3.5 shrink-0 object-contain dark:invert dark:brightness-200"
       />
       <span className="truncate">{skill.name}</span>
-    </div>
+    </motion.div>
   );
 }
 
@@ -43,10 +46,16 @@ function SkillGalleryGroup({ group }: { group: SkillGroup }) {
         </span>
       </div>
       <ul className="flex flex-wrap gap-1.5">
-        {group.items.map((skill) => (
-          <li key={skill.name}>
+        {group.items.map((skill, index) => (
+          <motion.li
+            key={skill.name}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.25, delay: Math.min(index, 10) * 0.03 }}
+          >
             <SkillTile skill={skill} />
-          </li>
+          </motion.li>
         ))}
       </ul>
     </div>

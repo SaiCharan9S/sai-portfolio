@@ -3,7 +3,7 @@
 
 services:
   - type: web
-    name: sksahilparvez-notion
+    name: sai-portfolio
     runtime: node
     buildCommand: npm install --include=dev && npm run build && npm install --prefix server --omit=dev
     startCommand: npm run start:prod

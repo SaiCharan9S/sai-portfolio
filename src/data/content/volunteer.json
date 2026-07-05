@@ -1,44 +1,158 @@
 [
   {
-    "id": "effervescence",
-    "text": "Led a 4-member team as Web Developer to build the Effervescence event site.",
-    "period": "08/2022 – 12/2022",
+    "id": "mentoring-interns",
+    "text": "Mentored interns and freshers in Python, Django, Git, and backend development.",
+    "title": "Mentoring Interns & Freshers",
+    "role": "Backend Mentor",
     "done": true,
-    "title": "Effervescence",
-    "role": "Web Development",
-    "pageIcon": "🎉",
-    "description": "Led a 4-member team as Web Developer to build the Effervescence event site.",
+    "pageIcon": "👨‍🏫",
+    "description": "Mentored interns and freshers in Python, Django, Git, and backend development.",
     "highlights": [
-      "Led a 4-member web development team for the campus event.",
-      "Built and shipped the full event website end to end."
+      "Guided newcomers through Python and Django fundamentals.",
+      "Helped build confidence with Git workflows and backend basics."
     ]
   },
   {
-    "id": "aparoksha",
-    "text": "Built 2 dedicated websites for the Aparoksha event for registrations and to enhance user engagement.",
-    "period": "01/2022 – 05/2022",
+    "id": "developer-onboarding",
+    "text": "Helped onboard new developers by guiding them through project architecture and development workflows.",
+    "title": "Developer Onboarding",
+    "role": "Onboarding Guide",
     "done": true,
-    "title": "Aparoksha",
-    "role": "Web Development",
-    "pageIcon": "🌐",
-    "description": "Built 2 dedicated websites for the event for registrations and to enhance user engagement.",
+    "pageIcon": "🤝",
+    "description": "Helped onboard new developers by guiding them through project architecture and development workflows.",
     "highlights": [
-      "Delivered separate registration and engagement-focused event sites.",
-      "Improved sign-up flow and on-site user engagement for attendees."
+      "Walked new hires through project architecture and codebase structure.",
+      "Shared development workflows to speed up ramp-up time."
     ]
   },
   {
-    "id": "prayaas",
-    "text": "Taught underprivileged students through Prayaas, IIIT-A's community outreach NGO.",
-    "period": "02/2022 – 02/2023",
+    "id": "open-source-contributions",
+    "text": "Contributed to community-driven or open-source projects by fixing bugs and implementing features.",
+    "title": "Open Source Contributions",
+    "role": "Contributor",
     "done": true,
-    "title": "Prayaas",
-    "role": "Teaching Volunteer",
+    "pageIcon": "💻",
+    "description": "Contributed to community-driven or open-source projects by fixing bugs and implementing features.",
+    "highlights": [
+      "Fixed bugs and implemented features in community-driven projects.",
+      "Collaborated with contributors outside regular work responsibilities."
+    ]
+  },
+  {
+    "id": "knowledge-sharing-sessions",
+    "text": "Conducted technical knowledge-sharing sessions on backend development and best practices.",
+    "title": "Knowledge-Sharing Sessions",
+    "role": "Session Speaker",
+    "done": true,
+    "pageIcon": "🎤",
+    "description": "Conducted technical knowledge-sharing sessions on backend development and best practices.",
+    "highlights": [
+      "Led sessions on backend development concepts and best practices.",
+      "Encouraged discussion around scalable API and system design."
+    ]
+  },
+  {
+    "id": "interview-preparation",
+    "text": "Assisted students and aspiring developers with interview preparation and coding guidance.",
+    "title": "Interview Prep Guidance",
+    "role": "Interview Coach",
+    "done": true,
     "pageIcon": "📚",
-    "description": "Volunteered with Prayaas, the IIIT Allahabad NGO, teaching underprivileged students in nearby communities.",
+    "description": "Assisted students and aspiring developers with interview preparation and coding guidance.",
     "highlights": [
-      "Conducted regular teaching sessions for students from underserved backgrounds.",
-      "Supported academic learning and mentorship through the Prayaas outreach program."
+      "Helped students prepare for technical interviews.",
+      "Provided coding guidance and mock interview practice."
+    ]
+  },
+  {
+    "id": "code-reviews",
+    "text": "Reviewed code and provided constructive feedback to help junior developers improve.",
+    "title": "Code Reviews & Feedback",
+    "role": "Code Reviewer",
+    "done": true,
+    "pageIcon": "🛠️",
+    "description": "Reviewed code and provided constructive feedback to help junior developers improve.",
+    "highlights": [
+      "Reviewed pull requests and provided actionable feedback.",
+      "Helped junior developers build better coding habits."
+    ]
+  },
+  {
+    "id": "career-guidance",
+    "text": "Supported aspiring developers through career guidance, resume reviews, and technical mentoring.",
+    "title": "Career Guidance & Resume Reviews",
+    "role": "Career Mentor",
+    "done": true,
+    "pageIcon": "🌱",
+    "description": "Supported aspiring developers through career guidance, resume reviews, and technical mentoring.",
+    "highlights": [
+      "Reviewed resumes and offered career guidance.",
+      "Provided ongoing technical mentoring to aspiring developers."
+    ]
+  },
+  {
+    "id": "hackathons-communities",
+    "text": "Organized or participated in hackathons, coding events, or developer communities.",
+    "title": "Hackathons & Dev Communities",
+    "role": "Participant / Organizer",
+    "done": true,
+    "pageIcon": "👥",
+    "description": "Organized or participated in hackathons, coding events, or developer communities.",
+    "highlights": [
+      "Took part in hackathons and coding events.",
+      "Engaged with developer communities beyond regular work."
+    ]
+  },
+  {
+    "id": "nonprofit-tech",
+    "text": "Volunteered technical expertise to build websites or applications for educational or non-profit initiatives.",
+    "title": "Nonprofit & Educational Tech",
+    "role": "Volunteer Developer",
+    "done": true,
+    "pageIcon": "❤️",
+    "description": "Volunteered technical expertise to build websites or applications for educational or non-profit initiatives.",
+    "highlights": [
+      "Built websites/applications for educational or non-profit initiatives.",
+      "Applied backend skills to support causes beyond regular work."
+    ]
+  },
+  {
+    "id": "internal-tools",
+    "text": "Helped maintain internal tools or community projects outside regular work responsibilities.",
+    "title": "Internal Tools & Community Projects",
+    "role": "Contributor",
+    "done": true,
+    "pageIcon": "🧑‍💻",
+    "description": "Helped maintain internal tools or community projects outside regular work responsibilities.",
+    "highlights": [
+      "Maintained internal tools beyond assigned work responsibilities.",
+      "Supported community projects with ongoing contributions."
+    ]
+  },
+  {
+    "id": "college-workshops",
+    "text": "Guided college students in learning backend development through workshops or mentorship programs.",
+    "title": "College Workshops & Mentorship",
+    "role": "Workshop Mentor",
+    "done": true,
+    "pageIcon": "🎓",
+    "description": "Guided college students in learning backend development through workshops or mentorship programs.",
+    "highlights": [
+      "Ran workshops introducing college students to backend development.",
+      "Mentored students through structured learning programs."
+    ]
+  },
+  {
+    "id": "blogs-tutorials",
+    "text": "Shared technical knowledge through blogs, tutorials, or developer communities.",
+    "title": "Blogs & Tutorials",
+    "role": "Content Contributor",
+    "done": true,
+    "pageIcon": "🤲",
+    "description": "Shared technical knowledge through blogs, tutorials, or developer communities.",
+    "highlights": [
+      "Wrote and shared technical content with the developer community.",
+      "Contributed tutorials to help others learn backend concepts."
     ]
   }
 ]

@@ -22,9 +22,15 @@ export function AboutSection() {
             {portfolio.profile.summary}
           </CalloutBlock>
           <CalloutBlock icon="🎯" title="Currently building" variant="yellow">
-            Analytics scorecards, blueprint-based visualizations, and
-            CRM-integrated data views at Highspot — turning reports into
-            interactive charts and tables.
+            Working on an AI-powered learning platform designed to help students
+            prepare more effectively for competitive exams. The platform enables
+            students to take AI-assisted mock tests, identifies their strengths
+            and knowledge gaps, provides personalized study recommendations,
+            explains concepts in an easy-to-understand manner, and offers
+            detailed performance analytics to track progress over time. I'm
+            contributing to the backend architecture, API development, database
+            design, AI integrations, and building scalable services to support a
+            seamless learning experience.
           </CalloutBlock>
         </div>
       </section>

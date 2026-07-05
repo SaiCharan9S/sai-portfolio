@@ -3,7 +3,7 @@ import type { EducationItem } from "@/types/portfolio";
 export const TIMELINE_WINDOW_YEARS = 8;
 export const TIMELINE_FORWARD_YEARS = 2;
 export const TIMELINE_START = "1999-01-01";
-export const BIRTHDATE = "2000-07-12";
+export const BIRTHDATE = "2000-02-09";
 
 export interface TimelineMilestone {
   date: string;
@@ -15,19 +15,10 @@ export interface TimelineMilestone {
   badgeClass: string;
 }
 
-export const BIRTHDAY_DISPLAY_DATE = "Jul 12, 2000";
+export const BIRTHDAY_DISPLAY_DATE = "Feb 9, 2000";
 export const BIRTHDAY_CAPTION = `🎂 ${BIRTHDAY_DISPLAY_DATE} — My Birthday`;
 
-export const TIMELINE_MILESTONES: TimelineMilestone[] = [
-  {
-    date: "2010-02-01",
-    displayDate: "Feb 2010",
-    label: "I met Her",
-    icon: "💕",
-    lineClass: "bg-rose-400",
-    badgeClass: "bg-rose-400",
-  },
-];
+export const TIMELINE_MILESTONES: TimelineMilestone[] = [];
 
 export interface TimelineLayout {
   left: number;

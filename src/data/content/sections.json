@@ -12,12 +12,6 @@
     "visible": true
   },
   {
-    "id": "achievements",
-    "label": "Coding",
-    "icon": "🏆",
-    "visible": true
-  },
-  {
     "id": "volunteer",
     "label": "Volunteer",
     "icon": "🤝",

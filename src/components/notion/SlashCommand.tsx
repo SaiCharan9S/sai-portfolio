@@ -57,13 +57,13 @@ export function SlashCommand() {
             📅 15 min call
           </CommandItem>
           <CommandItem
-            value="cv resume"
+            value="resume cv"
             onSelect={() => {
               window.open(portfolio.site.cvPath, "_blank");
               setOpen(false);
             }}
           >
-            📄 CV
+            📄 Resume
           </CommandItem>
         </CommandGroup>
       </CommandList>

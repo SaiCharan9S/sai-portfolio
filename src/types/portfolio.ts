@@ -211,7 +211,7 @@ export interface SiteConfig {
   coverImage: string;
   github: string;
   linkedin: string;
-  twitter: string;
+  discord: string;
   whatsapp: string;
   workspaceName: string;
   lastUpdated: string;

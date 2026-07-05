@@ -1,17 +1,15 @@
 [
   {
-    "id": "frontend-backend",
-    "label": "Frontend & Backend",
+    "id": "backend",
+    "label": "Backend Development",
     "icon": "⚡",
     "coverGradient": "from-blue-500 to-indigo-600",
     "items": [
-      { "name": "React.js", "logo": "/logos/skills/react.svg" },
-      { "name": "Next.js", "logo": "/logos/skills/nextdotjs.svg" },
-      { "name": "TypeScript", "logo": "/logos/skills/typescript.svg" },
-      { "name": "Node.js", "logo": "/logos/skills/nodedotjs.svg" },
-      { "name": "Express.js", "logo": "/logos/skills/express.svg" },
-      { "name": "Java Spring Boot", "logo": "/logos/skills/springboot.svg" },
-      { "name": "REST APIs", "logo": "/logos/skills/openapi.svg" }
+      { "name": "Python", "logo": "/logos/skills/python.svg" },
+      { "name": "Django", "logo": "/logos/skills/django.svg" },
+      { "name": "Django REST Framework", "logo": "/logos/skills/django.svg" },
+      { "name": "REST APIs", "logo": "/logos/skills/openapi.svg" },
+      { "name": "Swagger / OpenAPI", "logo": "/logos/skills/openapi.svg" }
     ]
   },
   {
@@ -20,63 +18,59 @@
     "icon": "🗄️",
     "coverGradient": "from-emerald-500 to-teal-600",
     "items": [
-      { "name": "PostgreSQL", "logo": "/logos/skills/postgresql.svg" },
-      { "name": "MongoDB", "logo": "/logos/skills/mongodb.svg" },
       { "name": "MySQL", "logo": "/logos/skills/mysql.svg" },
-      { "name": "Redis", "logo": "/logos/skills/redis.svg" },
-      { "name": "Prisma", "logo": "/logos/skills/prisma.svg" }
+      { "name": "PostgreSQL", "logo": "/logos/skills/postgresql.svg" },
+      { "name": "SQL Optimization", "logo": "/logos/skills/sqlite.svg" }
     ]
   },
   {
-    "id": "devops",
-    "label": "DevOps & Observability",
-    "icon": "🛠️",
+    "id": "cloud-devops",
+    "label": "Cloud & DevOps",
+    "icon": "☁️",
     "coverGradient": "from-slate-500 to-slate-800",
     "items": [
+      { "name": "AWS EC2", "logo": "/logos/skills/amazonwebservices.svg" },
+      { "name": "AWS S3", "logo": "/logos/skills/amazonwebservices.svg" },
+      { "name": "AWS Lambda", "logo": "/logos/skills/amazonwebservices.svg" },
+      {
+        "name": "AWS CloudFront",
+        "logo": "/logos/skills/amazonwebservices.svg"
+      },
       { "name": "Docker", "logo": "/logos/skills/docker.svg" },
       { "name": "CI/CD", "logo": "/logos/skills/cicd.svg" },
-      { "name": "OpenTelemetry", "logo": "/logos/skills/opentelemetry.svg" },
-      { "name": "Prometheus", "logo": "/logos/skills/prometheus.svg" },
-      { "name": "Grafana", "logo": "/logos/skills/grafana.svg" },
-      { "name": "Loki", "logo": "/logos/skills/loki.svg" },
-      { "name": "Tempo", "logo": "/logos/skills/tempo.svg" }
+      { "name": "Linux", "logo": "/logos/skills/linux.svg" }
     ]
   },
   {
-    "id": "languages",
-    "label": "Languages",
-    "icon": "💻",
-    "coverGradient": "from-violet-500 to-purple-600",
-    "items": [
-      { "name": "C++", "logo": "/logos/skills/cplusplus.svg" },
-      { "name": "Java", "logo": "/logos/skills/java.svg" },
-      { "name": "Python", "logo": "/logos/skills/python.svg" },
-      { "name": "JavaScript", "logo": "/logos/skills/javascript.svg" },
-      { "name": "TypeScript", "logo": "/logos/skills/typescript.svg" },
-      { "name": "Bash", "logo": "/logos/skills/bash.svg" }
-    ]
-  },
-  {
-    "id": "concepts",
-    "label": "Concepts",
-    "icon": "🧠",
+    "id": "async",
+    "label": "Asynchronous Processing",
+    "icon": "🔄",
     "coverGradient": "from-amber-500 to-orange-600",
     "items": [
-      {
-        "name": "Data Structures",
-        "logo": "/logos/skills/data-structures.svg"
-      },
-      { "name": "OOP", "logo": "/logos/skills/oop.svg" },
-      {
-        "name": "Operating Systems",
-        "logo": "/logos/skills/linux.svg"
-      },
-      { "name": "DBMS", "logo": "/logos/skills/sqlite.svg" },
-      { "name": "System Design", "logo": "/logos/skills/nginx.svg" },
-      {
-        "name": "Distributed Systems",
-        "logo": "/logos/skills/kubernetes.svg"
-      }
+      { "name": "Celery", "logo": "/logos/skills/celery.svg" },
+      { "name": "Redis", "logo": "/logos/skills/redis.svg" }
+    ]
+  },
+  {
+    "id": "tools",
+    "label": "Tools & Version Control",
+    "icon": "🛠️",
+    "coverGradient": "from-violet-500 to-purple-600",
+    "items": [
+      { "name": "Git", "logo": "/logos/skills/git.svg" },
+      { "name": "GitHub", "logo": "/logos/skills/github.svg" },
+      { "name": "Bitbucket", "logo": "/logos/skills/bitbucket.svg" },
+      { "name": "Postman", "logo": "/logos/skills/postman.svg" }
+    ]
+  },
+  {
+    "id": "integrations",
+    "label": "Integrations",
+    "icon": "🔌",
+    "coverGradient": "from-rose-500 to-pink-600",
+    "items": [
+      { "name": "Razorpay", "logo": "/logos/skills/razorpay.svg" },
+      { "name": "Twilio", "logo": "/logos/skills/twilio.svg" }
     ]
   }
 ]

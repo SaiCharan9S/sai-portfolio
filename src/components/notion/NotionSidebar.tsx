@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePortfolio } from "@/context/PortfolioProvider";
 import { getDisplayStatus } from "@/lib/easter-eggs/status";
-import { CalBookingButton } from "@/components/booking/CalBookingButton";
+import { ContactMeButton } from "@/components/contact/ContactMeButton";
 import { SocialLinkButton } from "@/components/ui/BrandLogo";
 import { scrollToSection } from "@/lib/utils";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
@@ -135,7 +135,7 @@ function SidebarNav({
               onNavigate?.();
             }}
             className={cn(
-              "flex items-center gap-2.5 rounded-md px-2 py-1.5 text-left text-sm transition-all",
+              "flex items-center gap-2.5 rounded-md px-2 py-1.5 text-left text-sm transition-all duration-200 hover:translate-x-0.5",
               isActive
                 ? "bg-notion-hover font-medium text-foreground shadow-sm ring-1 ring-border/50"
                 : "text-muted-foreground hover:bg-notion-hover hover:text-foreground",
@@ -213,7 +213,7 @@ function SidebarFooter() {
     { href: site.github, label: "GitHub", logo: SOCIAL_LOGOS.github },
     { href: site.linkedin, label: "LinkedIn", logo: SOCIAL_LOGOS.linkedin },
     { href: site.whatsapp, label: "WhatsApp", logo: SOCIAL_LOGOS.whatsapp },
-    { href: site.twitter, label: "X", logo: SOCIAL_LOGOS.x },
+    { href: site.discord, label: "Discord", logo: SOCIAL_LOGOS.discord },
   ] as const;
 
   return (
@@ -237,7 +237,7 @@ function SidebarFooter() {
             />
           ))}
         </div>
-        <CalBookingButton layout="full" />
+        <ContactMeButton layout="full" />
         <ThemeToggle />
       </div>
     </div>

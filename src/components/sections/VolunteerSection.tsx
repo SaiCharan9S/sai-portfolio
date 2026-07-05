@@ -11,6 +11,7 @@ import {
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
+import { motion } from "framer-motion";
 import { SECTION_SCROLL_MT } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
@@ -82,13 +83,7 @@ function TodoItem({
             />
           )}
         </span>
-        <p
-          className={cn(
-            "text-sm leading-relaxed",
-            item.done &&
-              "text-muted-foreground line-through decoration-muted-foreground/50",
-          )}
-        >
+        <p className="text-sm leading-relaxed text-foreground/90">
           {item.text}
         </p>
       </button>
@@ -109,12 +104,16 @@ export function VolunteerSection() {
         </NotionBlock>
 
         <div className="mt-2 space-y-0.5">
-          {portfolio.volunteer.map((item) => (
-            <TodoItem
+          {portfolio.volunteer.map((item, index) => (
+            <motion.div
               key={item.id}
-              item={item}
-              onClick={() => setSelected(item)}
-            />
+              initial={{ opacity: 0, x: -8 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.3, delay: Math.min(index, 8) * 0.05 }}
+            >
+              <TodoItem item={item} onClick={() => setSelected(item)} />
+            </motion.div>
           ))}
         </div>
 

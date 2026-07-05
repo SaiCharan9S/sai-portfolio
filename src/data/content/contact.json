@@ -1,32 +1,38 @@
 [
   {
     "label": "Email",
-    "value": "sksahilparvez2000@gmail.com",
-    "href": "mailto:sksahilparvez2000@gmail.com",
+    "value": "saivkab@gmail.com",
+    "href": "mailto:saivkab@gmail.com",
     "logo": "/logos/social/gmail.svg"
   },
   {
     "label": "Phone",
-    "value": "+91 98744 35806",
-    "href": "tel:+919874435806",
+    "value": "+91 78929 74551",
+    "href": "tel:+917892974551",
     "logo": "/logos/social/phone.svg"
   },
   {
     "label": "LinkedIn",
-    "value": "sk-sahil-parvez-iiita",
-    "href": "https://www.linkedin.com/in/sk-sahil-parvez-iiita/",
+    "value": "sai-charan-s-7b3a5b171",
+    "href": "https://www.linkedin.com/in/sai-charan-s-7b3a5b171/",
     "logo": "/logos/social/linkedin.svg"
   },
   {
-    "label": "X",
-    "value": "@sahilparvez_sk",
-    "href": "https://x.com/sahilparvez_sk",
-    "logo": "/logos/social/x.svg"
+    "label": "GitHub",
+    "value": "SaiCharan9S",
+    "href": "https://github.com/SaiCharan9S",
+    "logo": "/logos/social/github.svg"
   },
   {
-    "label": "GitHub",
-    "value": "SK-ILLish-GIT",
-    "href": "https://github.com/SK-ILLish-GIT",
-    "logo": "/logos/social/github.svg"
+    "label": "WhatsApp",
+    "value": "+91 78929 74551",
+    "href": "https://wa.me/917892974551",
+    "logo": "/logos/social/whatsapp.svg"
+  },
+  {
+    "label": "Discord",
+    "value": "913026832603963402",
+    "href": "https://discord.com/users/913026832603963402",
+    "logo": "/logos/social/discord.svg"
   }
 ]

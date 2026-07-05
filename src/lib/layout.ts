@@ -39,8 +39,7 @@ export const PROPERTY_PILL_GRID =
   "grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-4 md:gap-4";
 
 /** Projects bento: 1 → 2 (sm) → 2 (md) → 3 (lg) */
-export const PROJECTS_BENTO_GRID =
-  "grid auto-rows-min grid-flow-dense grid-cols-1 gap-3 sm:auto-rows-[11rem] sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[12rem]";
+export const PROJECTS_BENTO_GRID = "grid grid-cols-1 gap-3";
 
 export const PROJECT_BENTO_SPAN = {
   large: "sm:col-span-2 sm:row-span-2",

@@ -1,24 +1,24 @@
 {
-  "name": "SK Sahil Parvez",
-  "title": "Software Engineer",
+  "name": "Sai Charan S",
+  "title": "Software Developer",
   "pageIcon": "👨‍💻",
-  "avatar": "/sk_sahil.jpeg",
-  "tagline": "Building analytics platforms, observability systems & scalable backends.",
-  "summary": "Software Engineer with experience building analytics platforms, observability systems, and distributed backend services using React.js, GraphQL, Node.js, Java Spring Boot, and OpenTelemetry. Skilled in CI/CD automation, telemetry pipelines, and scalable microservices architecture.",
+  "avatar": "/sai.jpeg",
+  "tagline": "Python Backend Developer with 3.4 years of experience specializing in Python, Django, and AWS. I build scalable REST APIs, asynchronous systems with Celery, and cloud-native backend services powering real-world applications.",
+  "summary": "I'm a Python Backend Developer with 3.4 years of experience building production-grade applications using Python, Django, Django REST Framework, PostgreSQL, MySQL, Docker, AWS, Celery, Redis, and REST APIs. I have worked on healthcare, education, and analytics platforms, developing scalable backend services, payment integrations, media pipelines, and cloud deployments. I enjoy designing clean APIs, optimizing database queries, and solving real-world backend problems.",
   "taglineRotation": [
-    "analytics platforms",
-    "observability pipelines",
-    "distributed backends"
+    "healthcare platforms",
+    "async pipelines",
+    "cloud-native backends"
   ],
   "properties": [
     {
       "label": "Status",
-      "value": "Open to chat",
+      "value": "Immediate Joiner",
       "type": "status",
       "color": "green"
     },
-    { "label": "Role", "value": "Software Engineer", "type": "text" },
-    { "label": "Location", "value": "Hyderabad, India", "type": "text" },
-    { "label": "Currently", "value": "Highspot", "type": "text" }
+    { "label": "Role", "value": "Software Developer", "type": "text" },
+    { "label": "Location", "value": "Bengaluru, India", "type": "text" },
+    { "label": "Experience", "value": "3.4 years", "type": "text" }
   ]
 }
