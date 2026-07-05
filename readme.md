@@ -74,8 +74,8 @@ A Notion-inspired developer portfolio — single-page SPA with sidebar navigatio
 ### Install & run
 
 ```bash
-git clone https://github.com/SK-ILLish-GIT/sai-portfolio.git
-cd sai-portfolio
+git clone https://github.com/SK-ILLish-GIT/sksahilparvez-notion.git
+cd sksahilparvez-notion
 npm install
 npm run dev
 ```

@@ -19,7 +19,7 @@ interface NotionSidebarProps {
 function ProfileAvatar({ size = "md" }: { size?: "sm" | "md" }) {
   const { portfolio } = usePortfolio();
   const { profile } = portfolio;
-  const boxClass = size === "sm" ? "h-7 w-7" : "h-9 w-9";
+  const boxClass = size === "sm" ? "h-7 w-7" : "h-12 w-12";
 
   if (profile.avatar) {
     return (
@@ -78,9 +78,17 @@ function SidebarWorkspaceHeader({
       >
         <ProfileAvatar />
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold leading-tight text-foreground">
-            {profile.name}
-          </p>
+          <div className="flex items-center gap-1.5">
+            <p className="truncate text-sm font-semibold leading-tight text-foreground">
+              {profile.name}
+            </p>
+            {statusProp && (
+              <span
+                className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)]"
+                aria-hidden
+              />
+            )}
+          </div>
           <p className="mt-0.5 truncate text-xs text-muted-foreground">
             {profile.title}
           </p>

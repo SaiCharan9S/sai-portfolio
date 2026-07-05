@@ -38,12 +38,14 @@ const COLUMNS: {
   headerBgClass: string;
 }[] = [
   {
-    status: "todo",
-    label: "To do",
-    icon: <CircleDashed className="h-3.5 w-3.5 text-muted-foreground" />,
-    headerClass: "text-muted-foreground",
-    columnClass: "bg-muted/10",
-    headerBgClass: "bg-muted/25",
+    status: "done",
+    label: "Done",
+    icon: (
+      <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+    ),
+    headerClass: "text-emerald-600 dark:text-emerald-400",
+    columnClass: "bg-emerald-50/40 dark:bg-emerald-950/10",
+    headerBgClass: "bg-emerald-50/80 dark:bg-emerald-950/25",
   },
   {
     status: "in-progress",
@@ -54,14 +56,12 @@ const COLUMNS: {
     headerBgClass: "bg-amber-50/80 dark:bg-amber-950/25",
   },
   {
-    status: "done",
-    label: "Done",
-    icon: (
-      <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
-    ),
-    headerClass: "text-emerald-600 dark:text-emerald-400",
-    columnClass: "bg-emerald-50/40 dark:bg-emerald-950/10",
-    headerBgClass: "bg-emerald-50/80 dark:bg-emerald-950/25",
+    status: "todo",
+    label: "To do",
+    icon: <CircleDashed className="h-3.5 w-3.5 text-muted-foreground" />,
+    headerClass: "text-muted-foreground",
+    columnClass: "bg-muted/10",
+    headerBgClass: "bg-muted/25",
   },
 ];
 

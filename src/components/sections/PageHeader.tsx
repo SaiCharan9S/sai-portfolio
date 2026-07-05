@@ -38,7 +38,7 @@ export function PageHeader() {
         <div className={HERO_AVATAR_OFFSET}>
           <div className="mb-4 inline-flex overflow-hidden rounded-md bg-background p-1 shadow-sm ring-1 ring-border">
             {profile.avatar ? (
-              <div className="relative h-16 w-16 overflow-hidden rounded-sm sm:h-[4.5rem] sm:w-[4.5rem]">
+              <div className="relative h-20 w-20 overflow-hidden rounded-sm sm:h-24 sm:w-24">
                 <img
                   src={profile.avatar}
                   alt={profile.name}
@@ -57,7 +57,7 @@ export function PageHeader() {
           {site.lastUpdated ? (
             <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground/70">
               <RefreshCw className="h-3 w-3" aria-hidden />
-              Profile last updated · {site.lastUpdated}
+              Updated {site.lastUpdated}
             </p>
           ) : null}
           <p className="mt-3 text-sm text-muted-foreground">

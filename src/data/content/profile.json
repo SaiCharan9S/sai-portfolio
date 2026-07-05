@@ -1,6 +1,6 @@
 {
   "name": "Sai Charan S",
-  "title": "Software Developer",
+  "title": "Python Backend Developer",
   "pageIcon": "👨‍💻",
   "avatar": "/sai.jpeg",
   "tagline": "Python Backend Developer with 3.4 years of experience specializing in Python, Django, and AWS. I build scalable REST APIs, asynchronous systems with Celery, and cloud-native backend services powering real-world applications.",
@@ -17,7 +17,7 @@
       "type": "status",
       "color": "green"
     },
-    { "label": "Role", "value": "Software Developer", "type": "text" },
+    { "label": "Role", "value": "Python Backend Developer", "type": "text" },
     { "label": "Location", "value": "Bengaluru, India", "type": "text" },
     { "label": "Experience", "value": "3.4 years", "type": "text" }
   ]
