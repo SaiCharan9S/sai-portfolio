@@ -5,6 +5,28 @@ import { cn } from "@/lib/utils";
 
 const MIN_VISIBLE_MS = 650;
 const MAX_WAIT_MS = 3200;
+/**
+ * localStorage key that marks "user has seen the loader at least once".
+ * On repeat visits we skip the loader entirely to remove the 2.5-3 s wait
+ * that was the single largest LCP delay on the site.
+ */
+const LOADER_SEEN_KEY = "portfolio-loaded";
+
+/**
+ * Returns true if the loader should be skipped (user has visited before).
+ * Pure check — does not write the key. The key is written only when the
+ * loader's `dismiss` callback fires (so a half-finished first visit
+ * doesn't cause future visits to skip).
+ */
+export function hasSeenLoader(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.localStorage.getItem(LOADER_SEEN_KEY) === "1";
+  } catch {
+    // Private mode / disabled storage — behave as if not seen.
+    return false;
+  }
+}
 
 function waitForReady(): Promise<void> {
   return new Promise((resolve) => {
@@ -28,8 +50,17 @@ function waitForReady(): Promise<void> {
 export function useInitialLoad() {
   const [ready, setReady] = useState(false);
   const [progress, setProgress] = useState(0);
+  // Track whether the user has previously seen the loader so we can skip
+  // straight to ready on repeat visits.
+  const skip = useRef(hasSeenLoader());
 
   useEffect(() => {
+    if (skip.current) {
+      setProgress(100);
+      setReady(true);
+      return;
+    }
+
     let cancelled = false;
     let finished = false;
     const started = performance.now();
@@ -73,7 +104,7 @@ export function useInitialLoad() {
     };
   }, []);
 
-  return { ready, progress };
+  return { ready, progress, skip: skip.current };
 }
 
 function LoaderProgressBar({
@@ -114,10 +145,13 @@ export function NotionLoader({
   exiting,
   progress,
   onDismiss,
+  skip = false,
 }: {
   exiting: boolean;
   progress: number;
   onDismiss?: () => void;
+  /** When true, don't render the loader at all. */
+  skip?: boolean;
 }) {
   const reduceMotion = useReducedMotion();
   const { profile, site } = staticPortfolio;
@@ -126,12 +160,19 @@ export function NotionLoader({
   const dismiss = () => {
     if (dismissedRef.current) return;
     dismissedRef.current = true;
+    try {
+      window.localStorage.setItem(LOADER_SEEN_KEY, "1");
+    } catch {
+      // Ignore — non-critical.
+    }
     onDismiss?.();
   };
 
   useEffect(() => {
     if (exiting && reduceMotion) dismiss();
   }, [exiting, reduceMotion]);
+
+  if (skip) return null;
 
   return (
     <motion.div

@@ -19,9 +19,10 @@ import {
   SECTION_SCROLL_MT,
   SURFACE_ELEVATED,
 } from "@/lib/layout";
+import { interactive } from "@/lib/interactions";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Check, Circle, ExternalLink } from "lucide-react";
+import { Check, ExternalLink } from "lucide-react";
 
 const STATUS_LABELS: Record<CertificationStatus, string> = {
   todo: "To do",
@@ -46,14 +47,6 @@ const COLUMNS: {
     headerClass: "text-emerald-600 dark:text-emerald-400",
     columnClass: "bg-emerald-50/40 dark:bg-emerald-950/10",
     headerBgClass: "bg-emerald-50/80 dark:bg-emerald-950/25",
-  },
-  {
-    status: "in-progress",
-    label: "In progress",
-    icon: <Circle className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />,
-    headerClass: "text-amber-600 dark:text-amber-400",
-    columnClass: "bg-amber-50/40 dark:bg-amber-950/10",
-    headerBgClass: "bg-amber-50/80 dark:bg-amber-950/25",
   },
 ];
 
@@ -152,10 +145,12 @@ function CertCard({
       data-cursor-hint="View certification details"
       className={cn(
         "group w-full rounded-md border border-border bg-background px-3 py-2.5 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:bg-notion-hover hover:shadow-md",
+        "active:translate-y-0 active:scale-[0.99]",
         "border-l-[3px]",
         cert.status === "todo" && "border-l-muted-foreground/40",
         cert.status === "in-progress" && "border-l-amber-400",
         cert.status === "done" && "border-l-emerald-500",
+        interactive,
       )}
     >
       <div className="flex items-start gap-2.5">

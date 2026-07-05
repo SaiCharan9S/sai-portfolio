@@ -20,6 +20,17 @@ const buttonVariants = cva(
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-6",
         icon: "h-9 w-9",
+        /**
+         * Mobile-friendly icon button: 44×44 on phones (HIG/Material), 36×36 on sm+.
+         * Apply to chrome icon buttons (menu, theme, share, social) so tap targets
+         * meet accessibility floors without inflating desktop sizes.
+         */
+        iconTouch: "h-11 w-11 sm:h-9 sm:w-9",
+        /**
+         * Mobile-friendly primary action: 44 tall on phones, 36 on sm+.
+         * Apply to hero CTAs (Contact me, Resume).
+         */
+        cta: "h-11 px-4 sm:h-9",
       },
     },
     defaultVariants: {

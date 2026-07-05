@@ -6,12 +6,20 @@ import { ShareMenu } from "@/components/contact/ShareMenu";
 import { VisitorStats } from "@/components/analytics/VisitorStats";
 import { PropertyPill } from "@/components/notion/PropertyPill";
 import {
+  AVATAR_SIZES,
+  AVATAR_WIDTHS,
+  BANNER_SIZES,
+  BANNER_WIDTHS,
+  ResponsiveImage,
+} from "@/components/notion/ResponsiveImage";
+import {
   HERO_AVATAR_OFFSET,
   HERO_COVER,
   HERO_TITLE,
   PAGE_X,
   PROPERTY_PILL_GRID,
 } from "@/lib/layout";
+import { interactive } from "@/lib/interactions";
 import { cn } from "@/lib/utils";
 import { FileText, RefreshCw, Rocket, Eye, Download } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -20,8 +28,33 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 
+/** Derive a ResponsiveImage "base" path stem from the avatar URL. */
+function avatarBaseFromUrl(url: string): string | null {
+  if (!url) return null;
+  // We expect URLs like "/sai.jpeg" → stem is "sai".
+  const filename = url.split("/").pop() ?? "";
+  const stem = filename.split(".")[0];
+  if (!stem) return null;
+  return stem;
+}
+
+/** Derive a ResponsiveImage "base" path stem from the cover URL. */
+function coverBaseFromUrl(url: string): string | null {
+  if (!url) return null;
+  const filename = url.split("/").pop() ?? "";
+  const stem = filename.split(".")[0];
+  if (!stem) return null;
+  return stem;
+}
+
+/**
+ * Hero action buttons stack full-width on mobile, sit side-by-side from sm.
+ * h-11 (44 px) on phones meets the iOS HIG / Material 48 dp tap target;
+ * shrinks to h-9 (36 px) on tablets+ where the chrome can afford smaller
+ * targets and the wider viewport makes misses less likely.
+ */
 const HERO_ACTION_CLASS =
-  "h-9 min-w-[10.25rem] justify-center px-4 text-sm font-semibold shadow-sm";
+  "h-11 w-full justify-center px-4 text-sm font-semibold shadow-sm sm:h-9 sm:min-w-[10.25rem] sm:w-auto sm:px-4";
 
 export function PageHeader() {
   const { portfolio } = usePortfolio();
@@ -32,6 +65,12 @@ export function PageHeader() {
 
   // Derive a sensible download filename from the CV path (e.g. "Sai-Charan-S-Resume.pdf")
   const resumeFileName = site.cvPath.split("/").pop() ?? "resume.pdf";
+
+  // Stems for the AVIF/WebP variants (e.g. "sai", "Sai_banner"). Falls back
+  // to null so callers can decide whether to render the optimized image or
+  // a plain <img> with the original source.
+  const avatarBase = profile.avatar ? avatarBaseFromUrl(profile.avatar) : null;
+  const coverBase = site.coverImage ? coverBaseFromUrl(site.coverImage) : null;
 
   useEffect(() => {
     if (!resumeMenuOpen) return;
@@ -56,13 +95,26 @@ export function PageHeader() {
   return (
     <section id="hero" className="scroll-mt-4">
       <div className={HERO_COVER}>
-        <div
-          className="h-full w-full bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url("${encodeURI(site.coverImage)}")` }}
-          role="img"
-          aria-label="Sai Charan S banner"
-        />
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent" />
+        {coverBase ? (
+          <ResponsiveImage
+            base={coverBase}
+            src={site.coverImage}
+            widths={BANNER_WIDTHS}
+            sizes={BANNER_SIZES}
+            alt="Sai Charan S banner"
+            role="presentation"
+            priority
+            className="absolute inset-0 h-full w-full bg-cover bg-center bg-no-repeat object-cover"
+          />
+        ) : (
+          <div
+            className="h-full w-full bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url("${encodeURI(site.coverImage)}")` }}
+            role="img"
+            aria-label="Sai Charan S banner"
+          />
+        )}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent" />
       </div>
 
       <div className={cn("mx-auto max-w-[900px]", PAGE_X)}>
@@ -76,11 +128,25 @@ export function PageHeader() {
           >
             {profile.avatar ? (
               <div className="relative h-20 w-20 overflow-hidden rounded-sm sm:h-24 sm:w-24">
-                <img
-                  src={profile.avatar}
-                  alt={profile.name}
-                  className="absolute left-1/2 top-1/2 h-[108%] w-[108%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_22%] transition-transform duration-300 group-hover:scale-105"
-                />
+                {avatarBase ? (
+                  <ResponsiveImage
+                    base={avatarBase}
+                    src={profile.avatar}
+                    widths={AVATAR_WIDTHS}
+                    sizes={AVATAR_SIZES}
+                    alt={profile.name}
+                    priority
+                    width={80}
+                    height={80}
+                    className="absolute left-1/2 top-1/2 h-[108%] w-[108%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_22%] transition-transform duration-300 group-hover:scale-105"
+                  />
+                ) : (
+                  <img
+                    src={profile.avatar}
+                    alt={profile.name}
+                    className="absolute left-1/2 top-1/2 h-[108%] w-[108%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_22%] transition-transform duration-300 group-hover:scale-105"
+                  />
+                )}
               </div>
             ) : (
               <span className="p-1.5 text-5xl leading-none">
@@ -197,9 +263,9 @@ export function PageHeader() {
             ))}
           </div>
 
-          <div className="mt-6 flex items-center gap-2">
-            <ContactMeButton className={HERO_ACTION_CLASS} />
-            <div ref={resumeMenuRef} className="relative">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-2">
+            <ContactMeButton className={cn(HERO_ACTION_CLASS, interactive)} />
+            <div ref={resumeMenuRef} className="relative w-full sm:w-auto">
               <Button
                 type="button"
                 aria-haspopup="menu"
@@ -207,7 +273,10 @@ export function PageHeader() {
                 aria-label="Resume options"
                 data-cursor-hint="Resume options"
                 onClick={() => setResumeMenuOpen((v) => !v)}
-                className={`inline-flex items-center gap-2 rounded-md bg-[#DC2626] text-white transition-all duration-200 hover:scale-[1.02] hover:opacity-90 active:scale-[0.98] ${HERO_ACTION_CLASS}`}
+                className={cn(
+                  "inline-flex w-full items-center gap-2 rounded-md bg-[#DC2626] text-white transition-all duration-200 hover:scale-[1.02] hover:opacity-90 active:scale-[0.98] sm:w-auto",
+                  HERO_ACTION_CLASS,
+                )}
               >
                 <FileText className="h-4 w-4 shrink-0" />
                 Resume
@@ -255,7 +324,7 @@ export function PageHeader() {
                 </a>
               </div>
             </div>
-            <div className="ml-auto flex shrink-0 items-center gap-2">
+            <div className="flex items-center gap-2 sm:ml-auto">
               <ShareMenu />
               <ContactSocialDialog />
             </div>

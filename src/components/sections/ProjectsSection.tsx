@@ -27,6 +27,7 @@ import {
   SECTION_SCROLL_MT,
   SURFACE_ELEVATED,
 } from "@/lib/layout";
+import { interactive, interactiveSubtle } from "@/lib/interactions";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
 import { ExternalLink, Star } from "lucide-react";
@@ -86,7 +87,10 @@ function ProjectLinkButton({
       aria-label={label}
       title={label}
       onClick={onClick}
-      className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border bg-background/80 text-muted-foreground transition-colors hover:border-primary/40 hover:bg-background hover:text-primary"
+      className={cn(
+        "inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background/80 text-muted-foreground transition-colors hover:border-primary/40 hover:bg-background hover:text-primary sm:h-9 sm:w-9",
+        interactiveSubtle,
+      )}
     >
       {children}
     </a>
@@ -292,6 +296,8 @@ function ProjectBentoCard({
         "group relative flex h-full min-h-40 flex-col overflow-hidden rounded-lg border border-border bg-card p-4 text-left transition-all duration-300 ease-out",
         SURFACE_ELEVATED,
         "hover:-translate-y-0.5 hover:border-primary/25 hover:bg-notion-hover hover:shadow-md",
+        "active:scale-[0.99] active:translate-y-0",
+        interactive,
         BENTO_GRID_CLASS[project.bentoSize],
       )}
     >

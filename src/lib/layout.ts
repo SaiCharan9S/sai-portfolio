@@ -79,3 +79,13 @@ export const CP_CHART_ROW =
 
 /** Skills section inner padding */
 export const SKILLS_INNER_X = "px-3 py-3 sm:px-4";
+
+/**
+ * Container with horizontal-scroll affordance: a 24 px gradient fade on the
+ * right edge that hides itself when the user scrolls. Use on any horizontal
+ * scroller that lands the user mid-canvas (Gantt chart, long tables, etc.).
+ * The fade is a child of the scroll container's first child — caller adds
+ * the indicator element separately.
+ */
+export const HORIZONTAL_SCROLL_FADE =
+  "relative after:pointer-events-none after:absolute after:right-0 after:top-0 after:h-full after:w-6 after:bg-gradient-to-l after:from-background after:to-transparent after:opacity-100 after:transition-opacity [&[data-scrolled=true]]:after:opacity-0";

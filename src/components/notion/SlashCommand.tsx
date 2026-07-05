@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -10,21 +9,17 @@ import {
 import { usePortfolio } from "@/context/PortfolioProvider";
 import { openCalModal } from "@/lib/cal";
 import { scrollToSection } from "@/lib/utils";
+import { useCommandPalette } from "@/components/notion/CommandPaletteProvider";
 
+/**
+ * The ⌘K command palette dialog body. The keyboard listener lives in
+ * {@link CommandPaletteProvider}; this component only renders the dialog
+ * using the provider's shared `open` state so the same dialog can be opened
+ * by the desktop shortcut OR a mobile button.
+ */
 export function SlashCommand() {
   const { portfolio } = usePortfolio();
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((o) => !o);
-      }
-    };
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
+  const { open, setOpen } = useCommandPalette();
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>

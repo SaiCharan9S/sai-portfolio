@@ -58,7 +58,7 @@ export function CalBookingButton({
       >
         <span
           className={cn(
-            "flex h-9 w-9 shrink-0 items-center justify-center rounded-md",
+            "flex h-11 w-11 shrink-0 items-center justify-center rounded-md sm:h-9 sm:w-9",
             "bg-black/5 dark:bg-white/15",
           )}
         >
@@ -85,7 +85,9 @@ export function CalBookingButton({
         calBookingHoverClass,
         pulseClass,
         "text-black dark:text-white",
-        layout === "full" ? "h-9 w-full justify-start px-3" : "h-9 px-4",
+        layout === "full"
+          ? "h-11 w-full justify-start px-3 sm:h-9"
+          : "h-11 px-4 sm:h-9",
         className,
       )}
     >

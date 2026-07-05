@@ -20,8 +20,9 @@ function SkillTile({ skill }: { skill: SkillItem }) {
     <motion.div
       data-cursor-hint={skill.name}
       whileHover={{ scale: 1.06, y: -1 }}
+      whileTap={{ scale: 0.96, y: 0 }}
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
-      className="inline-flex max-w-full items-center gap-1.5 rounded-md border border-border/60 bg-muted/20 px-2 py-1 text-[11px] leading-tight transition-colors hover:bg-notion-hover"
+      className="inline-flex max-w-full items-center gap-1.5 rounded-md border border-border/60 bg-muted/20 px-2 py-1 text-[11px] leading-tight transition-colors hover:bg-notion-hover active:scale-[0.96]"
     >
       <img
         src={skill.logo}

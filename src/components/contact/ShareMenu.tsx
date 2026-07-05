@@ -283,8 +283,8 @@ export function ShareMenu() {
       <Button
         type="button"
         variant="notion"
-        size="icon"
-        className="h-9 w-9 shrink-0 shadow-sm"
+        size="iconTouch"
+        className="shrink-0 shadow-sm"
         aria-label="Share"
         aria-haspopup="menu"
         aria-expanded={open}

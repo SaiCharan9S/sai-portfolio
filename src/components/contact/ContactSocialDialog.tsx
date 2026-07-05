@@ -67,8 +67,8 @@ export function ContactSocialDialog() {
       <Button
         type="button"
         variant="notion"
-        size="icon"
-        className="h-9 w-9 shrink-0 shadow-sm"
+        size="iconTouch"
+        className="shrink-0 shadow-sm"
         aria-label="Contact"
         aria-expanded={open}
         aria-haspopup="menu"

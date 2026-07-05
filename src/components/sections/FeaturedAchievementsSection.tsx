@@ -8,7 +8,6 @@ import { FadeIn } from "@/components/notion/FadeIn";
 import { motion, useReducedMotion } from "framer-motion";
 import { SECTION_SCROLL_MT, SURFACE_ELEVATED } from "@/lib/layout";
 import { cn } from "@/lib/utils";
-
 /**
  * Featured achievement card — bento-style tile with a glowing gradient
  * border, animated icon, and a corner accent that fades in on hover.
@@ -35,6 +34,7 @@ function AchievementCard({
         ease: [0.22, 1, 0.36, 1],
       }}
       whileHover={reduceMotion ? undefined : { y: -4 }}
+      whileTap={reduceMotion ? undefined : { scale: 0.98, y: 0 }}
       className="group relative"
     >
       <div
@@ -42,6 +42,7 @@ function AchievementCard({
           "relative h-full overflow-hidden rounded-xl border border-border/70 bg-card p-4",
           "transition-all duration-300",
           "hover:border-emerald-400/60 hover:shadow-[0_8px_30px_-12px_rgba(16,185,129,0.35)]",
+          "active:scale-[0.99]",
           SURFACE_ELEVATED,
         )}
       >

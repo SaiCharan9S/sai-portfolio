@@ -1,22 +1,20 @@
 [
   {
-    "id": "placeholder-manager",
-    "name": "[Add your recommender's name]",
-    "role": "[Their title, e.g. Engineering Manager]",
-    "date": "[Month Year]",
-    "relationship": "[e.g. Sai's manager for 2 years]",
-    "avatar": "/avatars/placeholder.svg",
-    "text": "[Placeholder testimonial — replace with a real recommendation, e.g. from LinkedIn or a manager/colleague. Keep it to 3-5 sentences covering what you worked on together and the impact you had.]",
+    "id": "raghavendra-prabhu",
+    "name": "Raghavendra Prabhu",
+    "role": "Engineering Manager",
+    "date": "Apr 2025",
+    "relationship": "Manager from Jan 2023 – Apr 2025",
+    "text": "I had the opportunity to work with Sai Charan during his early years as a Backend Developer. He consistently demonstrated a strong willingness to learn, took ownership of assigned tasks, and delivered reliable backend solutions. Over time, he grew into a dependable engineer who handled REST APIs, database optimization, third-party integrations, and production deployments with confidence. Sai collaborated effectively with cross-functional teams and was always proactive in solving technical challenges. I appreciate his dedication to continuous learning and his positive attitude toward taking on new responsibilities.",
     "stack": ["Python", "Django", "AWS"]
   },
   {
-    "id": "placeholder-colleague",
-    "name": "[Add another recommender's name]",
-    "role": "[Their title]",
-    "date": "[Month Year]",
-    "relationship": "[e.g. Worked together on Carehub]",
-    "avatar": "/avatars/placeholder.svg",
-    "text": "[Placeholder testimonial — replace with a real recommendation from a teammate, mentor, or client.]",
-    "stack": ["Django REST Framework", "PostgreSQL", "Celery"]
+    "id": "sahil-hussain",
+    "name": "Sahil Hussain",
+    "role": "Engineering Manager",
+    "date": "Apr 2026",
+    "relationship": "Manager from Apr 2025 – Apr 2026",
+    "text": "During the time Sai reported to me, he played an important role in building and maintaining several production backend systems. He contributed to scalable API development, asynchronous processing with Celery and Redis, AWS cloud deployments, payment integrations, and performance optimization across multiple projects. Sai demonstrated ownership, mentored junior developers when needed, and worked well with both product and technical teams. He is a dependable backend engineer who approaches problems thoughtfully and consistently delivers quality work.",
+    "stack": ["Python", "Django", "AWS"]
   }
 ]

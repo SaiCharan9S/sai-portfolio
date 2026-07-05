@@ -4,7 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/sai.jpeg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="/sai.jpeg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="theme-color"
+      content="#f6f1e6"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#191919"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="format-detection" content="telephone=no" />
     <meta
       name="description"
       content="Sai Charan S — Software Developer portfolio"
@@ -26,6 +45,17 @@
     <title>Sai Charan S</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload the LCP image at the smallest size the mobile viewport
+         will pick; modern browsers will then also preload the others via
+         the `<link rel="preload" imagesrcset>`. -->
+    <link
+      rel="preload"
+      as="image"
+      href="/Sai_banner-768w.avif"
+      imagesrcset="/Sai_banner-768w.avif 768w, /Sai_banner-1280w.avif 1280w, /Sai_banner-1920w.avif 1920w"
+      imagesizes="(min-width: 768px) 900px, 100vw"
+      type="image/avif"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -78,6 +108,15 @@
       </style>
       <script>
         (function () {
+          // Repeat visitors: the React loader will be a no-op (see
+          // NotionLoader.hasSeenLoader), so don't bother animating the
+          // inline bar — leave the loader painted in the background and
+          // let React replace it as soon as it mounts.
+          try {
+            if (localStorage.getItem("portfolio-loaded") === "1") return;
+          } catch (e) {
+            /* private mode — fall through to the animation */
+          }
           var bar = document.getElementById("initial-loader-bar");
           if (!bar) return;
           var p = 0;

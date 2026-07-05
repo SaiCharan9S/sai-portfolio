@@ -291,22 +291,30 @@ function RecommendationCarousel({
       </div>
 
       {showControls ? (
-        <div className="mt-3 flex items-center justify-center gap-1.5">
-          {items.map((item, index) => (
-            <button
-              key={item.id}
-              type="button"
-              aria-label={`Go to recommendation ${index + 1}`}
-              aria-current={index === activeIndex ? "true" : undefined}
-              onClick={() => scrollToIndex(index)}
-              className={cn(
-                "h-1.5 rounded-full transition-all",
-                index === activeIndex
-                  ? "w-4 bg-emerald-500 dark:bg-emerald-400"
-                  : "w-1.5 bg-border hover:bg-muted-foreground/50",
-              )}
-            />
-          ))}
+        <div className="mt-3 flex items-center justify-center gap-1">
+          {items.map((item, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                aria-label={`Go to recommendation ${index + 1}`}
+                aria-current={isActive ? "true" : undefined}
+                onClick={() => scrollToIndex(index)}
+                className="flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <span
+                  aria-hidden
+                  className={cn(
+                    "block rounded-full transition-all",
+                    isActive
+                      ? "h-1.5 w-4 bg-emerald-500 dark:bg-emerald-400"
+                      : "h-1.5 w-1.5 bg-border hover:bg-muted-foreground/50",
+                  )}
+                />
+              </button>
+            );
+          })}
         </div>
       ) : (
         <div className="mt-3 min-h-[0.375rem]" aria-hidden />

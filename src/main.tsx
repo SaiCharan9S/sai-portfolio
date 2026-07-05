@@ -12,6 +12,7 @@ import {
 } from "@/components/notion/NotionSidebar";
 import { NotionLoader, useInitialLoad } from "@/components/notion/NotionLoader";
 import { SlashCommand } from "@/components/notion/SlashCommand";
+import { CommandPaletteProvider } from "@/components/notion/CommandPaletteProvider";
 import { NotionDivider } from "@/components/notion/NotionBlock";
 import { CalInit } from "@/components/booking/CalInit";
 import { PageHeader } from "@/components/sections/PageHeader";
@@ -39,43 +40,47 @@ function AppShell() {
   const activeSection = useActiveSection();
 
   return (
-    <div className="min-h-screen md:pl-60">
-      <NotionSidebar activeSection={activeSection} />
+    <CommandPaletteProvider>
+      <div className="min-h-screen md:pl-60">
+        <NotionSidebar activeSection={activeSection} />
 
-      <main className="min-h-screen w-full min-w-0">
-        <MobileNavBar activeSection={activeSection} />
-        <PageHeader />
-        <div
-          className={cn(
-            "mx-auto max-w-[900px]",
-            SECTION_STACK,
-            PAGE_X,
-            PAGE_PB,
-          )}
-        >
-          <NotionDivider />
-          <AboutSection />
-          <EducationSection />
-          <ExperienceSection />
-          <ProjectsSection />
-          <FeaturedAchievementsSection />
-          <SkillsSection />
-          <CertificationsSection />
-          <VolunteerSection />
-          <RecommendationsSection />
-          <ContactSection />
-          <PageFooter />
-        </div>
-      </main>
+        <main className="min-h-screen w-full min-w-0">
+          <MobileNavBar activeSection={activeSection} />
+          <PageHeader />
+          <div
+            className={cn(
+              "mx-auto max-w-[900px]",
+              SECTION_STACK,
+              PAGE_X,
+              PAGE_PB,
+            )}
+          >
+            <NotionDivider />
+            <AboutSection />
+            <EducationSection />
+            <ExperienceSection />
+            <ProjectsSection />
+            <FeaturedAchievementsSection />
+            <SkillsSection />
+            <CertificationsSection />
+            <VolunteerSection />
+            <RecommendationsSection />
+            <ContactSection />
+            <PageFooter />
+          </div>
+        </main>
 
-      <SlashCommand />
-    </div>
+        <SlashCommand />
+      </div>
+    </CommandPaletteProvider>
   );
 }
 
 function App() {
-  const { ready, progress } = useInitialLoad();
-  const [showLoader, setShowLoader] = useState(true);
+  const { ready, progress, skip } = useInitialLoad();
+  // Repeat visits: `skip` is true and the loader mounts as `null`; the local
+  // app shell paints immediately without the overlay flash.
+  const [showLoader, setShowLoader] = useState(!skip);
 
   return (
     <ThemeProvider>
@@ -88,6 +93,7 @@ function App() {
             <NotionLoader
               exiting={ready}
               progress={progress}
+              skip={skip}
               onDismiss={() => setShowLoader(false)}
             />
           )}

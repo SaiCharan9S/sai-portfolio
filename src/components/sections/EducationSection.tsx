@@ -28,6 +28,7 @@ import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
 import { SECTION_SCROLL_MT, SURFACE_ELEVATED } from "@/lib/layout";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
 
 const ROW_HEIGHT = 38;
@@ -40,6 +41,8 @@ const CANVAS_PADDING = 20;
 const MILESTONE_REVEAL_MS = 1000;
 const MILESTONE_FADE_MS = 400;
 const BIRTHDAY_REVEAL_MS = 3000;
+/** Minimum touch target for Gantt bars on phones (iOS HIG). */
+const GANTT_BAR_MIN_HEIGHT = 44;
 
 type ViewMode = "gantt" | "table";
 
@@ -129,8 +132,15 @@ export function EducationSection() {
     null,
   );
   const [milestoneVisible, setMilestoneVisible] = useState(false);
+  /** True once the user has scrolled the Gantt canvas away from the
+   *  initial "today" position. Drives the right-edge gradient fade. */
+  const [ganttScrolled, setGanttScrolled] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const atBirthEdgeRef = useRef(false);
+  const isMobile = useMediaQuery("(max-width: 639px)");
+  /** Education bars must be at least 44 px tall on phones (HIG) — taller
+   *  than ROW_HEIGHT-8=30, so we shrink the row gap on mobile to fit. */
+  const ganttBarHeight = isMobile ? GANTT_BAR_MIN_HEIGHT : ROW_HEIGHT - 8;
   const birthdayHideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
@@ -273,6 +283,8 @@ export function EducationSection() {
       revealBirthdayCaption();
     }
     atBirthEdgeRef.current = atBirthEdge;
+
+    setGanttScrolled(el.scrollLeft > 4);
   };
 
   const applyDefaultScroll = (behavior: ScrollBehavior = "auto") => {
@@ -367,157 +379,176 @@ export function EducationSection() {
         >
           <div style={{ height: timeline.contentAreaHeight }}>
             {view === "gantt" ? (
-              <div
-                ref={scrollRef}
-                onScroll={handleScroll}
-                className={cn(
-                  "w-full overflow-x-auto overflow-y-hidden rounded-lg border border-border bg-card scroll-smooth",
-                  SURFACE_ELEVATED,
-                )}
-                style={{ height: timeline.timelineHeight }}
-              >
+              <div className="relative">
                 <div
-                  className="relative"
-                  style={{
-                    width: timeline.canvasWidth,
-                    height: timeline.timelineHeight,
-                  }}
+                  ref={scrollRef}
+                  onScroll={handleScroll}
+                  className={cn(
+                    "w-full overflow-x-auto overflow-y-hidden rounded-lg border border-border bg-card scroll-smooth",
+                    SURFACE_ELEVATED,
+                  )}
+                  style={{ height: timeline.timelineHeight }}
                 >
-                  {/* Year header */}
                   <div
-                    className="relative border-b border-border bg-card"
-                    style={{ height: HEADER_HEIGHT }}
+                    className="relative"
+                    style={{
+                      width: timeline.canvasWidth,
+                      height: timeline.timelineHeight,
+                    }}
                   >
-                    {timeline.markers.map((m, i) => (
+                    {/* Year header */}
+                    <div
+                      className="relative border-b border-border bg-card"
+                      style={{ height: HEADER_HEIGHT }}
+                    >
+                      {timeline.markers.map((m, i) => (
+                        <div
+                          key={m.label}
+                          className="absolute top-0 flex h-full items-end pb-2"
+                          style={{
+                            left: m.leftPx,
+                            transform:
+                              i === 0
+                                ? "translateX(0)"
+                                : i === timeline.markers.length - 1
+                                  ? "translateX(-100%)"
+                                  : "translateX(-50%)",
+                          }}
+                        >
+                          <span className="whitespace-nowrap text-xs font-medium text-muted-foreground">
+                            {m.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Grid lines */}
+                    {timeline.markers.map((m) => (
                       <div
-                        key={m.label}
-                        className="absolute top-0 flex h-full items-end pb-2"
-                        style={{
-                          left: m.leftPx,
-                          transform:
-                            i === 0
-                              ? "translateX(0)"
-                              : i === timeline.markers.length - 1
-                                ? "translateX(-100%)"
-                                : "translateX(-50%)",
-                        }}
+                        key={`grid-${m.label}`}
+                        className="absolute top-0 bottom-0 w-px bg-border/80"
+                        style={{ left: m.leftPx }}
+                      />
+                    ))}
+
+                    {/* Birth marker — auto-reveals caption at scroll edge */}
+                    {timeline.birthPx !== null && (
+                      <div
+                        className="absolute top-0 bottom-0 z-10 w-0.5 bg-pink-400"
+                        style={{ left: timeline.birthPx }}
                       >
-                        <span className="whitespace-nowrap text-xs font-medium text-muted-foreground">
-                          {m.label}
-                        </span>
+                        <div
+                          className={cn(
+                            "absolute -left-3 -top-1 flex items-center justify-center rounded-full bg-pink-400 text-[10px]",
+                            isMobile ? "h-11 w-11" : "h-6 w-6",
+                          )}
+                        >
+                          🎂
+                        </div>
+                        {birthdayActive && (
+                          <div
+                            className={cn(
+                              "pointer-events-none absolute bottom-2 z-20 -translate-x-1/2 whitespace-nowrap rounded bg-card/95 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground shadow-sm ring-1 ring-border/60 transition-opacity duration-400",
+                              birthdayVisible ? "opacity-100" : "opacity-0",
+                            )}
+                            style={{ left: 0 }}
+                          >
+                            {BIRTHDAY_CAPTION}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Life milestones — click pin to reveal caption */}
+                    {timeline.milestoneMarkers.map((milestone) => (
+                      <div
+                        key={milestone.label}
+                        className={cn(
+                          "absolute top-0 bottom-0 z-10 w-0.5",
+                          milestone.lineClass,
+                        )}
+                        style={{ left: milestone.leftPx! }}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => handleMilestoneClick(milestone.label)}
+                          data-cursor-hint="?"
+                          aria-label={`Reveal: ${milestone.label}`}
+                          className={cn(
+                            "absolute -left-3 -top-1 flex items-center justify-center rounded-full text-[10px] transition-transform hover:scale-110",
+                            isMobile ? "h-11 w-11" : "h-6 w-6",
+                            milestone.badgeClass,
+                          )}
+                        >
+                          {milestone.icon}
+                        </button>
+                        {revealedMilestone === milestone.label && (
+                          <div
+                            className={cn(
+                              "pointer-events-none absolute bottom-2 z-20 -translate-x-1/2 whitespace-nowrap rounded bg-card/95 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground shadow-sm ring-1 ring-border/60 transition-opacity duration-400",
+                              milestoneVisible ? "opacity-100" : "opacity-0",
+                            )}
+                            style={{ left: 0 }}
+                          >
+                            {milestone.caption}
+                          </div>
+                        )}
                       </div>
                     ))}
+
+                    {/* Today marker */}
+                    {timeline.todayPx !== null && (
+                      <div
+                        className="absolute top-0 bottom-0 z-10 w-0.5 bg-red-500"
+                        style={{ left: timeline.todayPx }}
+                      >
+                        <div
+                          className={cn(
+                            "absolute -left-2 -top-0.5 flex items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white",
+                            isMobile ? "h-11 w-11" : "h-4 w-4",
+                          )}
+                        >
+                          {new Date().getDate()}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Education bars */}
+                    {portfolio.education.map((edu) => {
+                      const layout = timeline.layouts.get(edu.id);
+                      if (!layout) return null;
+
+                      return (
+                        <button
+                          key={edu.id}
+                          type="button"
+                          onClick={() => setSelected(edu)}
+                          data-cursor-hint="Open education details"
+                          className="absolute z-[5] flex items-center gap-1.5 overflow-hidden rounded-md border border-border bg-background px-2 py-1 text-left shadow-sm transition-all hover:z-10 hover:border-primary/40 hover:shadow-md active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                          style={{
+                            left: layout.leftPx,
+                            width: layout.widthPx,
+                            top: HEADER_HEIGHT + layout.row * ROW_HEIGHT + 4,
+                            height: ganttBarHeight,
+                          }}
+                        >
+                          <span className="shrink-0 text-base leading-none">
+                            {edu.pageIcon}
+                          </span>
+                          <span className="min-w-0 flex-1 truncate text-xs font-medium">
+                            {edu.shortTitle}
+                          </span>
+                        </button>
+                      );
+                    })}
                   </div>
-
-                  {/* Grid lines */}
-                  {timeline.markers.map((m) => (
-                    <div
-                      key={`grid-${m.label}`}
-                      className="absolute top-0 bottom-0 w-px bg-border/80"
-                      style={{ left: m.leftPx }}
-                    />
-                  ))}
-
-                  {/* Birth marker — auto-reveals caption at scroll edge */}
-                  {timeline.birthPx !== null && (
-                    <div
-                      className="absolute top-0 bottom-0 z-10 w-0.5 bg-pink-400"
-                      style={{ left: timeline.birthPx }}
-                    >
-                      <div className="absolute -left-3 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-pink-400 text-[10px]">
-                        🎂
-                      </div>
-                      {birthdayActive && (
-                        <div
-                          className={cn(
-                            "pointer-events-none absolute bottom-2 z-20 -translate-x-1/2 whitespace-nowrap rounded bg-card/95 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground shadow-sm ring-1 ring-border/60 transition-opacity duration-400",
-                            birthdayVisible ? "opacity-100" : "opacity-0",
-                          )}
-                          style={{ left: 0 }}
-                        >
-                          {BIRTHDAY_CAPTION}
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Life milestones — click pin to reveal caption */}
-                  {timeline.milestoneMarkers.map((milestone) => (
-                    <div
-                      key={milestone.label}
-                      className={cn(
-                        "absolute top-0 bottom-0 z-10 w-0.5",
-                        milestone.lineClass,
-                      )}
-                      style={{ left: milestone.leftPx! }}
-                    >
-                      <button
-                        type="button"
-                        onClick={() => handleMilestoneClick(milestone.label)}
-                        data-cursor-hint="?"
-                        aria-label={`Reveal: ${milestone.label}`}
-                        className={cn(
-                          "absolute -left-3 -top-1 flex h-6 w-6 items-center justify-center rounded-full text-[10px] transition-transform hover:scale-110",
-                          milestone.badgeClass,
-                        )}
-                      >
-                        {milestone.icon}
-                      </button>
-                      {revealedMilestone === milestone.label && (
-                        <div
-                          className={cn(
-                            "pointer-events-none absolute bottom-2 z-20 -translate-x-1/2 whitespace-nowrap rounded bg-card/95 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground shadow-sm ring-1 ring-border/60 transition-opacity duration-400",
-                            milestoneVisible ? "opacity-100" : "opacity-0",
-                          )}
-                          style={{ left: 0 }}
-                        >
-                          {milestone.caption}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-
-                  {/* Today marker */}
-                  {timeline.todayPx !== null && (
-                    <div
-                      className="absolute top-0 bottom-0 z-10 w-0.5 bg-red-500"
-                      style={{ left: timeline.todayPx }}
-                    >
-                      <div className="absolute -left-2 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white">
-                        {new Date().getDate()}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Education bars */}
-                  {portfolio.education.map((edu) => {
-                    const layout = timeline.layouts.get(edu.id);
-                    if (!layout) return null;
-
-                    return (
-                      <button
-                        key={edu.id}
-                        type="button"
-                        onClick={() => setSelected(edu)}
-                        data-cursor-hint="Open education details"
-                        className="absolute z-[5] flex items-center gap-1.5 overflow-hidden rounded-md border border-border bg-background px-2 py-1 text-left shadow-sm transition-all hover:z-10 hover:border-primary/40 hover:shadow-md"
-                        style={{
-                          left: layout.leftPx,
-                          width: layout.widthPx,
-                          top: HEADER_HEIGHT + layout.row * ROW_HEIGHT + 4,
-                          height: ROW_HEIGHT - 8,
-                        }}
-                      >
-                        <span className="shrink-0 text-base leading-none">
-                          {edu.pageIcon}
-                        </span>
-                        <span className="min-w-0 flex-1 truncate text-xs font-medium">
-                          {edu.shortTitle}
-                        </span>
-                      </button>
-                    );
-                  })}
                 </div>
+                {!ganttScrolled && (
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 rounded-r-lg bg-gradient-to-l from-background to-transparent"
+                  />
+                )}
               </div>
             ) : (
               <div

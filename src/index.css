@@ -106,6 +106,13 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "cv11", "ss01";
     overflow-x: clip;
+    /* Disable iOS double-tap-to-zoom and 300 ms tap delay on clickable
+       elements — `manipulation` permits panning/zoom but disallows the
+       double-tap gesture and removes the synthetic delay. */
+    touch-action: manipulation;
+    /* Remove the default gray flash on tap; rely on our own focus/active
+       rings for touch feedback. */
+    -webkit-tap-highlight-color: transparent;
   }
 
   @media (pointer: fine) {

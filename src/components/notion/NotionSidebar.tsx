@@ -6,11 +6,26 @@ import { SocialLinkButton } from "@/components/ui/BrandLogo";
 import { scrollToSection } from "@/lib/utils";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
 import { cn } from "@/lib/utils";
-import { ChevronRight, Menu, Moon, Sun } from "lucide-react";
+import { ChevronRight, Menu, Moon, Search, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "@/components/theme-provider";
 import { VisitorStats } from "@/components/analytics/VisitorStats";
+import { useCommandPalette } from "@/components/notion/CommandPaletteProvider";
+import {
+  AVATAR_SIZES,
+  AVATAR_WIDTHS,
+  ResponsiveImage,
+} from "@/components/notion/ResponsiveImage";
+
+/** Derive a ResponsiveImage "base" path stem from the avatar URL. */
+function avatarBaseFromUrl(url: string | undefined): string | null {
+  if (!url) return null;
+  const filename = url.split("/").pop() ?? "";
+  const stem = filename.split(".")[0];
+  if (!stem) return null;
+  return stem;
+}
 
 interface NotionSidebarProps {
   activeSection: string;
@@ -20,6 +35,7 @@ function ProfileAvatar({ size = "md" }: { size?: "sm" | "md" }) {
   const { portfolio } = usePortfolio();
   const { profile } = portfolio;
   const boxClass = size === "sm" ? "h-7 w-7" : "h-12 w-12";
+  const base = avatarBaseFromUrl(profile.avatar);
 
   if (profile.avatar) {
     return (
@@ -29,11 +45,25 @@ function ProfileAvatar({ size = "md" }: { size?: "sm" | "md" }) {
           boxClass,
         )}
       >
-        <img
-          src={profile.avatar}
-          alt=""
-          className="absolute left-1/2 top-1/2 h-[108%] w-[108%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_22%]"
-        />
+        {base ? (
+          <ResponsiveImage
+            base={base}
+            src={profile.avatar}
+            widths={AVATAR_WIDTHS}
+            sizes={size === "sm" ? "28px" : AVATAR_SIZES}
+            alt=""
+            aria-hidden
+            width={size === "sm" ? 28 : 48}
+            height={size === "sm" ? 28 : 48}
+            className="absolute left-1/2 top-1/2 h-[108%] w-[108%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_22%]"
+          />
+        ) : (
+          <img
+            src={profile.avatar}
+            alt=""
+            className="absolute left-1/2 top-1/2 h-[108%] w-[108%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_22%]"
+          />
+        )}
       </div>
     );
   }
@@ -271,12 +301,18 @@ export function MobileNavBar({ activeSection }: NotionSidebarProps) {
   const { portfolio } = usePortfolio();
   const { profile } = portfolio;
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { setOpen: setCommandOpen } = useCommandPalette();
 
   return (
-    <header className="sticky top-0 z-40 flex w-full items-center justify-between border-b border-border bg-background/95 px-3 py-2.5 backdrop-blur supports-[backdrop-filter]:bg-background/80 md:hidden">
+    <header className="sticky top-0 z-40 flex w-full items-center justify-between gap-1 border-b border-border bg-background/95 pb-2.5 pl-3 pr-2 pt-[calc(0.625rem+env(safe-area-inset-top))] backdrop-blur supports-[backdrop-filter]:bg-background/80 md:hidden">
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" aria-label="Open navigation">
+          <Button
+            variant="ghost"
+            size="iconTouch"
+            aria-label="Open navigation"
+            data-cursor-hint="Open navigation"
+          >
             <Menu className="h-5 w-5" />
           </Button>
         </SheetTrigger>
@@ -309,12 +345,22 @@ export function MobileNavBar({ activeSection }: NotionSidebarProps) {
         <span className="truncate text-sm font-semibold">{profile.name}</span>
       </button>
 
-      <div className="flex shrink-0">
+      <div className="flex shrink-0 items-center">
         <Button
           variant="ghost"
-          size="icon"
-          onClick={toggleTheme}
+          size="iconTouch"
+          aria-label="Search"
+          data-cursor-hint="Search pages"
+          onClick={() => setCommandOpen(true)}
+        >
+          <Search className="h-4 w-4" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="iconTouch"
           aria-label="Toggle theme"
+          data-cursor-hint="Toggle theme"
+          onClick={toggleTheme}
         >
           {theme === "light" ? (
             <Moon className="h-4 w-4" />
