@@ -1,9 +1,9 @@
 export type FieldSchema =
   | {
-      type: "text";
+      type: "textarea";
       key: string;
       label: string;
-      placeholder?: string;
+      rows?: number;
       wide?: boolean;
     }
   | { type: "textarea"; key: string; label: string; rows?: number }
