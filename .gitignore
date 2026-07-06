@@ -40,3 +40,6 @@ lerna-debug.log*
 
 # Test coverage
 coverage
+
+# Local Claude plan files
+Users/

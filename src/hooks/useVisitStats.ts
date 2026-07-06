@@ -40,8 +40,14 @@ export function useVisitStats() {
     let cancelled = false;
     const sessionId = getOrCreateSessionId();
 
-    const useFallback = () => {
+    const applyFallback = (err?: unknown) => {
       if (cancelled) return;
+      if (import.meta.env.DEV || !err) {
+        console.warn(
+          "[visit-stats] API unreachable, using local fallback",
+          err,
+        );
+      }
       setStats(getLocalFallbackStats());
       setAvailable(true);
     };
@@ -54,11 +60,13 @@ export function useVisitStats() {
             setAvailable(true);
           }
         })
-        .catch(useFallback);
+        .catch((err: unknown) => applyFallback(err));
     };
 
     const ping = () => {
-      void pingVisit(sessionId).then(refreshStats).catch(useFallback);
+      void pingVisit(sessionId)
+        .then(refreshStats)
+        .catch((err: unknown) => applyFallback(err));
     };
 
     ping();

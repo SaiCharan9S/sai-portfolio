@@ -17,6 +17,6 @@ services:
       - key: ADMIN_PASSWORD
         sync: false
       - key: CORS_ORIGINS
-        value: http://localhost:5173
+        value: http://localhost:5173,https://sksahilparvez.vercel.app
       - key: VITE_GITHUB_TOKEN
         sync: false
