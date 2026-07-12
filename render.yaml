@@ -1,12 +1,13 @@
-# Single Render Web Service — serves API + Vite frontend from one Node app
-# https://render.com/docs/blueprint-spec
+# Render Web Service — API only
+# Frontend is hosted separately on Vercel.
 
 services:
   - type: web
-    name: sksahilparvez-notion
+    name: sai-portfolio-api
     runtime: node
-    buildCommand: npm install --include=dev && npm run build && npm install --prefix server --omit=dev
-    startCommand: npm run start:prod
+    plan: free
+    buildCommand: npm install --prefix server
+    startCommand: npm start --prefix server
     envVars:
       - key: NODE_ENV
         value: production
@@ -18,5 +19,3 @@ services:
         sync: false
       - key: CORS_ORIGINS
         value: http://localhost:5173,https://sksahilparvez.vercel.app
-      - key: VITE_GITHUB_TOKEN
-        sync: false
