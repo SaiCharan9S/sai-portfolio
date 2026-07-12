@@ -108,13 +108,36 @@ Copy the example file and add an optional GitHub token:
 cp .env.example .env
 ```
 
-| Variable            | Required | Description                                                                                                                          |
-| ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `VITE_GITHUB_TOKEN` | No       | GitHub PAT for project sheets (`DETAILS.md`, languages, contributors, releases). Without it: 60 req/hr limit; with it: 5,000 req/hr. |
+| Variable            | Required | Description                                                                                                                                                           |
+| ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VITE_GITHUB_TOKEN` | No       | GitHub PAT for project sheets (`DETAILS.md`, languages, contributors, releases). Without it: 60 req/hr limit; with it: 5,000 req/hr.                                  |
+| `VITE_API_URL`      | Prod     | Base URL of the deployed API (e.g. `https://portfolio-api.onrender.com`). Leave empty in local dev to use the same-origin fallback. Used by the live-visitor counter. |
 
 Create a token at [github.com/settings/tokens](https://github.com/settings/tokens) with `public_repo` (classic) or read-only repo access (fine-grained).
 
 Restart the dev server after changing `.env`.
+
+### Production: split frontend (Vercel) + API (Render)
+
+The visitor counter and admin panel live in `server/` (Express + MongoDB), which
+is **not** deployed by Vercel. Deploy the server separately and point the
+frontend at it:
+
+1. **Render (API)** — push to GitHub, create a Web Service from
+   `render.yaml`. Set in the dashboard:
+   - `MONGODB_URI` — Atlas connection string (required)
+   - `ADMIN_API_KEY`, `ADMIN_PASSWORD` — for the admin panel
+   - `CORS_ORIGINS` — comma-separated list including the Vercel origin
+     (e.g. `https://your-site.vercel.app`). `render.yaml` ships a default of
+     `http://localhost:5173,https://sksahilparvez.vercel.app`; update it for
+     your actual Vercel domain.
+2. **Vercel (frontend)** — set `VITE_API_URL` to the Render service URL
+   (e.g. `https://portfolio-api.onrender.com`), then redeploy. Env-var changes
+   require a fresh build.
+
+If the API is unreachable, the widget falls back to a per-browser count
+(`localStorage`) and logs `[visit-stats] API unreachable, using local fallback`
+to the console — counts will be wrong until the API is reachable.
 
 ---
 
