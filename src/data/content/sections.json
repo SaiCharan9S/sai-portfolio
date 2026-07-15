@@ -1,9 +1,17 @@
 [
   { "id": "hero", "label": "Home", "icon": "🏠", "visible": true },
   { "id": "about", "label": "About", "icon": "💡", "visible": true },
+  { "id": "stats", "label": "Stats", "icon": "📊", "visible": true },
   { "id": "education", "label": "Education", "icon": "🎓", "visible": true },
   { "id": "experience", "label": "Experience", "icon": "💼", "visible": true },
+  { "id": "journey", "label": "Timeline", "icon": "🧭", "visible": true },
   { "id": "projects", "label": "Projects", "icon": "🚀", "visible": true },
+  {
+    "id": "currently-building",
+    "label": "Building",
+    "icon": "🛠️",
+    "visible": true
+  },
   {
     "id": "featured-achievements",
     "label": "Achievements",

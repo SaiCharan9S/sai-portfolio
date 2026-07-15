@@ -108,10 +108,10 @@ Copy the example file and add an optional GitHub token:
 cp .env.example .env
 ```
 
-| Variable            | Required | Description                                                                                                                                                           |
-| ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `VITE_GITHUB_TOKEN` | No       | GitHub PAT for project sheets (`DETAILS.md`, languages, contributors, releases). Without it: 60 req/hr limit; with it: 5,000 req/hr.                                  |
-| `VITE_API_URL`      | Prod     | Base URL of the deployed API (e.g. `https://portfolio-api.onrender.com`). Leave empty in local dev to use the same-origin fallback. Used by the live-visitor counter. |
+| Variable            | Required | Description                                                                                                                                                        |
+| ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `VITE_GITHUB_TOKEN` | No       | GitHub PAT for project sheets (`DETAILS.md`, languages, contributors, releases). Without it: 60 req/hr limit; with it: 5,000 req/hr.                               |
+| `VITE_API_URL`      | Prod     | Base URL of the deployed API (e.g. `https://portfolio-api.onrender.com`). Leave empty in local dev to use the same-origin fallback. Used by the admin content API. |
 
 Create a token at [github.com/settings/tokens](https://github.com/settings/tokens) with `public_repo` (classic) or read-only repo access (fine-grained).
 
@@ -119,7 +119,7 @@ Restart the dev server after changing `.env`.
 
 ### Production: split frontend (Vercel) + API (Render)
 
-The visitor counter and admin panel live in `server/` (Express + MongoDB), which
+The admin panel lives in `server/` (Express + MongoDB), which
 is **not** deployed by Vercel. Deploy the server separately and point the
 frontend at it:
 
@@ -135,9 +135,8 @@ frontend at it:
    (e.g. `https://portfolio-api.onrender.com`), then redeploy. Env-var changes
    require a fresh build.
 
-If the API is unreachable, the widget falls back to a per-browser count
-(`localStorage`) and logs `[visit-stats] API unreachable, using local fallback`
-to the console — counts will be wrong until the API is reachable.
+If the API is unreachable, the admin content panel falls back to the static
+JSON files bundled in `src/data/content/`.
 
 ---
 

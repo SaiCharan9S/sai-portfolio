@@ -195,6 +195,10 @@ export interface HeroStat {
   label: string;
   value: number;
   suffix: string;
+  /** Whether to run the count-up animation. Defaults to true when omitted. */
+  animate?: boolean;
+  /** Static text to show instead of the animated number (e.g. "Multiple"). */
+  display?: string;
 }
 
 export interface Section {
