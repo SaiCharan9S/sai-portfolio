@@ -21,7 +21,6 @@ export const config = {
   get sessionSecret(): string {
     return this.adminApiKey || this.adminPassword;
   },
-  liveVisitorWindowMs: 2 * 60 * 1000,
 };
 
 export const CONTENT_KEYS = [

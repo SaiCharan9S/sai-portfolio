@@ -225,12 +225,21 @@ export const ADMIN_SCHEMAS: Record<string, AdminSchema> = {
       label: "New stat",
       value: 0,
       suffix: "",
+      animate: true,
+      display: "",
     }),
     fields: [
       { type: "text", key: "id", label: "ID" },
       { type: "text", key: "label", label: "Label" },
       { type: "number", key: "value", label: "Value" },
       { type: "text", key: "suffix", label: "Suffix", placeholder: "+ or ★" },
+      { type: "checkbox", key: "animate", label: "Animate count-up" },
+      {
+        type: "text",
+        key: "display",
+        label: "Static text (overrides number)",
+        placeholder: "e.g. Multiple",
+      },
     ],
   },
   contact: {

@@ -8,7 +8,6 @@ import { config } from "./config.js";
 import { connectDb } from "./db.js";
 import { adminRouter } from "./routes/admin.js";
 import { contentRouter } from "./routes/content.js";
-import { visitsRouter } from "./routes/visits.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -44,7 +43,6 @@ app.get("/api/health", (_req, res) => {
   res.json({ ok: true });
 });
 
-app.use("/api/visits", visitsRouter);
 app.use("/api/admin", adminRouter);
 app.use("/api/content", contentRouter);
 

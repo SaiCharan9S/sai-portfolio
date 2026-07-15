@@ -1,11 +1,32 @@
 [
   {
     "id": "experience",
-    "label": "years experience",
+    "label": "Years Experience",
     "value": 3.4,
-    "suffix": ""
+    "suffix": "+",
+    "animate": true
   },
-  { "id": "products", "label": "products shipped", "value": 4, "suffix": "" },
-  { "id": "latency", "label": "latency reduced", "value": 35, "suffix": "%" },
-  { "id": "patients", "label": "patients served", "value": 2000, "suffix": "+" }
+  {
+    "id": "apis",
+    "label": "REST APIs Built",
+    "value": 150,
+    "suffix": "+",
+    "animate": true
+  },
+  {
+    "id": "projects",
+    "label": "Production Projects",
+    "value": 0,
+    "suffix": "",
+    "animate": false,
+    "display": "Multiple"
+  },
+  {
+    "id": "specialization",
+    "label": "Backend Specialist",
+    "value": 0,
+    "suffix": "",
+    "animate": false,
+    "display": "Python"
+  }
 ]

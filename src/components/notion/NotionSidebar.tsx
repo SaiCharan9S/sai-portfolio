@@ -10,7 +10,6 @@ import { ChevronRight, Menu, Moon, Search, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "@/components/theme-provider";
-import { VisitorStats } from "@/components/analytics/VisitorStats";
 import { useCommandPalette } from "@/components/notion/CommandPaletteProvider";
 import {
   AVATAR_SIZES,
@@ -134,7 +133,7 @@ function SidebarWorkspaceHeader({
         )}
       </button>
 
-      <div className="mx-3 mb-3 space-y-2">
+      <div className="mx-3 mb-3">
         <div className="flex items-center gap-1.5 rounded-md border border-border/60 bg-background/50 px-2.5 py-1.5 shadow-sm">
           <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
             Workspace
@@ -144,7 +143,6 @@ function SidebarWorkspaceHeader({
             {site.workspaceName}
           </span>
         </div>
-        <VisitorStats className="hidden md:flex" />
       </div>
     </div>
   );

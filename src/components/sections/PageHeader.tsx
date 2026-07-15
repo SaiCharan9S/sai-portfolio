@@ -3,7 +3,6 @@ import { ContactMeButton } from "@/components/contact/ContactMeButton";
 import { getDisplayStatus } from "@/lib/easter-eggs/status";
 import { ContactSocialDialog } from "@/components/contact/ContactSocialDialog";
 import { ShareMenu } from "@/components/contact/ShareMenu";
-import { VisitorStats } from "@/components/analytics/VisitorStats";
 import { PropertyPill } from "@/components/notion/PropertyPill";
 import {
   AVATAR_SIZES,
@@ -238,10 +237,6 @@ export function PageHeader() {
             {profile.tagline}
           </p>
 
-          <div className="mt-3 md:hidden">
-            <VisitorStats variant="hero" />
-          </div>
-
           <div className={cn("mt-6", PROPERTY_PILL_GRID)}>
             {profile.properties.map((prop, index) => (
               <motion.div
@@ -274,7 +269,7 @@ export function PageHeader() {
                 data-cursor-hint="Resume options"
                 onClick={() => setResumeMenuOpen((v) => !v)}
                 className={cn(
-                  "inline-flex w-full items-center gap-2 rounded-md bg-[#DC2626] text-white transition-all duration-200 hover:scale-[1.02] hover:opacity-90 active:scale-[0.98] sm:w-auto",
+                  "inline-flex w-full items-center gap-2 rounded-md bg-[#7A1F2B] text-white shadow-sm ring-1 ring-inset ring-white/10 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#8C2533] hover:shadow-md active:scale-[0.98] sm:w-auto",
                   HERO_ACTION_CLASS,
                 )}
               >

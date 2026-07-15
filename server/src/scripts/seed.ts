@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { CONTENT_KEYS, contentFileName } from "../config.js";
 import { connectDb, disconnectDb } from "../db.js";
-import { SectionContent, SiteStats } from "../models/index.js";
+import { SectionContent } from "../models/index.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const contentDir = path.resolve(__dirname, "../../../src/data/content");
@@ -24,12 +24,6 @@ async function seed() {
 
     console.log(`Seeded ${key}`);
   }
-
-  await SiteStats.findByIdAndUpdate(
-    "global",
-    { $setOnInsert: { totalVisits: 0 } },
-    { upsert: true },
-  );
 
   console.log("Seed complete");
   await disconnectDb();
