@@ -57,7 +57,7 @@ export const CURRENTLY_BUILDING: CurrentlyBuildingItem[] = [
     description:
       "A Django-based system for tracking crops, livestock, inventory, and expenses on a farm, with role-based dashboards and automated reporting for owners and workers.",
     stack: ["Django", "Django REST Framework", "MySQL", "AWS", "Docker"],
-    status: "Completed",
+    status: "In Progress",
     icon: "🌾",
     coverGradient: "from-amber-400/25 to-lime-500/20",
   },
