@@ -26,6 +26,7 @@ import { PageFooter } from "@/components/sections/PageFooter";
 import { PAGE_PB, PAGE_X, SECTION_STACK } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { AdminPage } from "@/pages/AdminPage";
+import { Analytics } from "@vercel/analytics/react";
 import "@/index.css";
 
 // Below-the-fold sections are code-split so the initial bundle only pays for
@@ -184,6 +185,7 @@ createRoot(document.getElementById("root")!).render(
     ) : (
       <PortfolioProvider>
         <App />
+        <Analytics />
       </PortfolioProvider>
     )}
   </StrictMode>,
